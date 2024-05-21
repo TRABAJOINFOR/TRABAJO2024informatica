@@ -56,7 +56,7 @@ int main() {
 	}
 	
 	contador = i;
-	printf("%d", contador);
+	printf("%d\n", contador);
 	fclose(fichero);
     //COMIENZA EL PROGRAMA:
 	int a; 

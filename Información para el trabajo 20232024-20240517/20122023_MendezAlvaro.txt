@@ -15,7 +15,7 @@ Hora	NO2	PM2.5	PM10	Calidad_del_aire
 13	22	21.375	30.458	Regular 
 14	23	20.458	29.125	Regular 
 15	29	19.875	28.167	Razonablemente_buena
-16	27	19208	27	Razonablemente_buena
+16	27	19.208	27	Razonablemente_buena
 17	21	18.458	25.875	Razonablemente_buena
 18	24	17.667	24.917	Razonablemente_buena
 19	31	16.625	23.583	Razonablemente_buena
