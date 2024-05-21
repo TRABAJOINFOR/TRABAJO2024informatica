@@ -17,6 +17,7 @@ typedef struct {
     int HR;
 } TEscuelasAguirre;
 
+int calculoNO2max(TMendezAlvaro vectorMendezAlvaro[], int y);
 
 
 int main() {
@@ -92,6 +93,7 @@ int main() {
 			case(2): {
 				//Declaramos las variables.
 				int n=0;
+				int NO2max = calculoNO2max(vectorMendezAlvaro, y);
 				int opcion;
 				int x,b;
 				do {
@@ -99,8 +101,8 @@ int main() {
 					if(n>1) {
 						printf("El valor intoducido es incorrecto, por favor introdúzcalo de nuevo\n");
 					}
-					printf("Ha seleccionado \n\n");
-					printf("Si desea volver al menu principal, pulse 0\n");
+					printf("Ha seleccionado ESTADÍSTICAS \n\n");
+					printf("Si desea volver al menu principal, pulse 0, si no pulse 1\n");
 					scanf("%d", &b);
 				} while (b!=1 && b!=2 && b!=0); 
 				if(b==0) {
@@ -116,8 +118,20 @@ int main() {
     				printf("\t6: Moda \n");
     				printf("\t7: Salir de estadísticas.\n");
     				scanf("%d", &opcion);
+					//otro switch case dentro
+					switch(opcion){
+						case(5): {
+							//int NO2max = calculoNO2max(vectorMendezAlvaro, y);
+							printf("NO2 maximo: %i\n", NO2max );
+							break;
+						}
+						case (1): {
+							printf("hola\n");
+							break;
+						}
+					}
     			} while (opcion != 7);	
-					break;
+					break; 				
 			}
 			case(3): {
 				//Declaramos las variables.
@@ -193,5 +207,17 @@ int main() {
 	
     
     return 0;
+}
+
+
+int calculoNO2max(TMendezAlvaro vectorMendezAlvaro[], int pgeos){
+    int NO2max = 0; //vectorMendezAlvaro[0].NO2;
+    int i;
+    for (i = 0; i < pgeos; i++) {
+        if (vectorMendezAlvaro[i].NO2 > NO2max) {
+            NO2max = vectorMendezAlvaro[i].NO2;
+        }
+    }
+    return NO2max;
 }
 
