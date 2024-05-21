@@ -1,0 +1,46 @@
+Hora	NO2	PM2.5	PM10	Calidad_del_aire
+0	70	21.042	31.083	Regular 
+1	69	21.458	31.583	Regular 
+2	62	21.917	32.125	Regular 
+3	50	21.958	32.208	Regular 
+4	42	22.167	32.5	Regular 
+5	43	22.167	32.625	Regular 
+6	40	22.292	32.792	Regular 
+7	36	22.583	33.083	Regular 
+8	40	22.708	33.292	Regular 
+9	48	22.792	33.375	Regular 
+10	61	23.125	33.583	Regular 
+11	38	23.333	33.542	Regular 
+12	20	22.625	32.292	Regular 
+13	22	21.375	30.458	Regular 
+14	23	20.458	29.125	Regular 
+15	29	19.875	28.167	Razonablemente_buena
+16	27	19208	27	Razonablemente_buena
+17	21	18.458	25.875	Razonablemente_buena
+18	24	17.667	24.917	Razonablemente_buena
+19	31	16.625	23.583	Razonablemente_buena
+20	42	15.583	22.292	Razonablemente_buena
+21	29	14.5	20.833	Razonablemente_buena
+22	30	13	18.583	Razonablemente_buena
+23	18	11.375	16.292	Razonablemente_buena
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
