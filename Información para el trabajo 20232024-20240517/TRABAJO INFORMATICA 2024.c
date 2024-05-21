@@ -34,12 +34,11 @@ int main() {
         return 0;
     }
             
-    printf("Fichero de datos cargado exitosamente\n");
-      
-	  //hola  
+    //printf("Fichero de datos cargado exitosamente\n");
+    
     int y = 0;
     while (fscanf(fichero, "%d %d %f %f %s", &vectorMendezAlvaro[y].hora, &vectorMendezAlvaro[y].NO2, &vectorMendezAlvaro[y].PM25, &vectorMendezAlvaro[y].PM10, vectorMendezAlvaro[y].cal_aire) != EOF) {
-        printf("%d %d %.2f %.2f %s\n", vectorMendezAlvaro[y].hora, vectorMendezAlvaro[y].NO2, vectorMendezAlvaro[y].PM25, vectorMendezAlvaro[y].PM10, vectorMendezAlvaro[y].cal_aire);
+        //printf("%d %d %.2f %.2f %s\n", vectorMendezAlvaro[y].hora, vectorMendezAlvaro[y].NO2, vectorMendezAlvaro[y].PM25, vectorMendezAlvaro[y].PM10, vectorMendezAlvaro[y].cal_aire);
         y++;
         if (y >= TAM) break; 
     }
@@ -55,11 +54,11 @@ int main() {
         return 0;
     }
             
-    printf("Fichero de datos cargado exitosamente\n");
+    //printf("Fichero de datos cargado exitosamente\n");
     
     int i = 0;
     while (fscanf(fichero2, "%d %f %d", &vectorEscuelasAguirre[i].hora, &vectorEscuelasAguirre[i].T, &vectorEscuelasAguirre[i].HR) != EOF) {
-        printf("%d %.1f %d\n", vectorEscuelasAguirre[i].hora, vectorEscuelasAguirre[i].T, vectorEscuelasAguirre[i].HR);
+        //printf("%d %.1f %d\n", vectorEscuelasAguirre[i].hora, vectorEscuelasAguirre[i].T, vectorEscuelasAguirre[i].HR);
         i++;
         if (i >= TAM) break; 
     }
@@ -92,7 +91,8 @@ int main() {
 			}
 			case(2): {
 				//Declaramos las variables.
-				int n=0, k;
+				int n=0;
+				int opcion;
 				int x,b;
 				do {
 					n++;
@@ -106,6 +106,18 @@ int main() {
 				if(b==0) {
 					break;
 				}
+				do { 
+    				printf("Elige una opción que desee\n");
+    				printf("\t1: Ver todas las estadísticas\n");
+    				printf("\t2: Media \n");
+    				printf("\t3: Mediana \n");
+    				printf("\t4: Mínimo \n");
+    				printf("\t5: Máximo \n");
+    				printf("\t6: Moda \n");
+    				printf("\t7: Salir de estadísticas.\n");
+    				scanf("%d", &opcion);
+    			} while (opcion != 7);	
+					break;
 			}
 			case(3): {
 				//Declaramos las variables.
@@ -126,6 +138,7 @@ int main() {
 			}
 			case(4): {
 				//Declaramos las variables.
+				int opcion;
 				int n=0, k;
 				int x,b;
 				do {
@@ -133,13 +146,24 @@ int main() {
 					if(n>1) {
 						printf("El valor intoducido es incorrecto, por favor introdúzcalo de nuevo\n");
 					}
-					printf("Ha seleccionado \n\n");
+					printf("Ha seleccionado INFORMACIÓN\n\n");
 					printf("Si desea volver al menu principal, pulse 0\n");
 					scanf("%d", &b);
 				} while (b!=1 && b!=2 && b!=0); 
 				if(b==0) {
 					break;
 				}
+				do { 
+    				printf("Elige una opción que desee\n");
+    				printf("\t1: PM10\n");
+    				printf("\t2: PM2,5 \n");
+    				printf("\t3: Ozono Troposférico \n");
+    				printf("\t4: Dióxido de nitrógeno \n");
+    				printf("\t5: Dióxido de azufre \n");
+    				printf("\t6: Salir de estadísticas.\n");
+    				scanf("%d", &opcion);
+    			} while (opcion != 6);	
+					break;
 			}
 			case(5): {
 				//Declaramos las variables.
@@ -157,6 +181,10 @@ int main() {
 				if(b==0) {
 					break;
 				}
+			}
+			default: {
+				printf("El valor introducido es incorrecto, por favor vuelva a introducirlo: \n");
+				break;
 			}
 		}
 	}while(a!=6);
