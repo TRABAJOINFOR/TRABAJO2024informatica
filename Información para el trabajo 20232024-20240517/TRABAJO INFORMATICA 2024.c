@@ -2,13 +2,18 @@
 #include <math.h>
 #include <string.h>
 #include <locale.h>
-
+#define TAM 500
 typedef struct {
     int hora;
+    char Hora[5];
     int NO2;
+    char no2[5];
     float PM25;
+    char pm25[5];
     float PM10;
-    char cal_aire[20];
+    char pm10[5];
+    char cal_aire[30];
+    char calidades[20];
 } TMendezAlvaro;
 
 typedef struct {
@@ -21,52 +26,40 @@ int calculoNO2max(TMendezAlvaro vectorMendezAlvaro[], int y);
 
 
 int main() {
-	setlocale(LC_CTYPE, "spanish"); // para que el compilador reconozca las ñ y tildes 
-    int TAM = 30;
+    setlocale(LC_CTYPE, "spanish"); // para que el compilador reconozca las ñ y tildes 
+    
+	int contador;
     TMendezAlvaro vectorMendezAlvaro[TAM];
-    TEscuelasAguirre vectorEscuelasAguirre[TAM];
     
     FILE *fichero;
     
     fichero = fopen("20122023_MendezAlvaro.txt", "r");
-    
     if (fichero == NULL) {
-        printf("\nError al abrir el archivo\n");
+        printf("\nError al abrir el archivo 20122023_MendezAlvaro.txt\n");
         return 0;
-    }
-            
-    //printf("Fichero de datos cargado exitosamente\n");
+    } else{	       
+   	 printf("Fichero de datos 20122023_MendezAlvaro.txt cargado exitosamente\n");
+	}
     
-    int y = 0;
-    while (fscanf(fichero, "%d %d %f %f %s", &vectorMendezAlvaro[y].hora, &vectorMendezAlvaro[y].NO2, &vectorMendezAlvaro[y].PM25, &vectorMendezAlvaro[y].PM10, vectorMendezAlvaro[y].cal_aire) != EOF) {
-        //printf("%d %d %.2f %.2f %s\n", vectorMendezAlvaro[y].hora, vectorMendezAlvaro[y].NO2, vectorMendezAlvaro[y].PM25, vectorMendezAlvaro[y].PM10, vectorMendezAlvaro[y].cal_aire);
-        y++;
-        if (y >= TAM) break; 
-    }
-    
-    fclose(fichero);
-    
-    FILE *fichero2;
-    
-    fichero2 = fopen("20122023_EscuelasAguirre.txt", "r");
-    
-    if (fichero2 == NULL) {
-        printf("\nError al abrir el archivo\n");
-        return 0;
-    }
-            
-    //printf("Fichero de datos cargado exitosamente\n");
-    
-    int i = 0;
-    while (fscanf(fichero2, "%d %f %d", &vectorEscuelasAguirre[i].hora, &vectorEscuelasAguirre[i].T, &vectorEscuelasAguirre[i].HR) != EOF) {
-        //printf("%d %.1f %d\n", vectorEscuelasAguirre[i].hora, vectorEscuelasAguirre[i].T, vectorEscuelasAguirre[i].HR);
-        i++;
-        if (i >= TAM) break; 
-    }
-    
-    fclose(fichero2);
+    	int y = 0;
+	while(fscanf(fichero, "%s %s %s %s %s", vectorMendezAlvaro[y].Hora, vectorMendezAlvaro[y].no2, vectorMendezAlvaro[y].pm25, vectorMendezAlvaro[y].pm10, vectorMendezAlvaro[y].calidades) != '\n'){
+		printf("%s\t %s\t %s\t %s\t %s\n", vectorMendezAlvaro[y].Hora, vectorMendezAlvaro[y].no2, vectorMendezAlvaro[y].pm25, vectorMendezAlvaro[y].pm10, vectorMendezAlvaro[y].calidades);
+		y++;
+		break;
+	}
+			
+	int i = 0;
+	while (fscanf(fichero, "%d %d %f %f %s", &vectorMendezAlvaro[i].hora, &vectorMendezAlvaro[i].NO2, &vectorMendezAlvaro[i].PM25, &vectorMendezAlvaro[i].PM10, vectorMendezAlvaro[i].cal_aire) != EOF) {
+		printf("%d\t %d\t %.3f\t %.3f\t %s\n", vectorMendezAlvaro[i].hora, vectorMendezAlvaro[i].NO2, vectorMendezAlvaro[i].PM25, vectorMendezAlvaro[i].PM10, vectorMendezAlvaro[i].cal_aire);
+		i++;
+	//	contador++;
+	}
+	
+	contador = i;
+	printf("%d", contador);
+	fclose(fichero);
     //COMIENZA EL PROGRAMA:
-	int a, contador=0; 
+	int a; 
 	do{
 		printf("           MENÚ PRINCIPAL           \n");
 		printf("Seleccione una opcion:\n \t\t\t1-Búsqueda de datos\n \t\t\t2-Estadísticas\n \t\t\t3-Comparación\n \t\t\t4-Información\n \t\t\t5-Imprimir todos los datos por pantalla\n \t\t\t6-Salir\n\n");
@@ -220,4 +213,7 @@ int calculoNO2max(TMendezAlvaro vectorMendezAlvaro[], int pgeos){
     }
     return NO2max;
 }
+
+
+
 
