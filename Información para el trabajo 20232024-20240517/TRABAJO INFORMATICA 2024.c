@@ -113,6 +113,10 @@ int main() {
     				scanf("%d", &opcion);
 					//otro switch case dentro
 					switch(opcion){
+						case(2): {
+							calculomedias( vectorMendezAlvaro, i);
+							break;
+						}
 						case(5): {
 							//int NO2max = calculoNO2max(vectorMendezAlvaro, y);
 							printf("NO2 maximo: %i\n", NO2max );
@@ -214,6 +218,25 @@ int calculoNO2max(TMendezAlvaro vectorMendezAlvaro[], int pgeos){
     return NO2max;
 }
 
+int calculomedias(TMendezAlvaro vectorMendezAlvaro[], int contador){
+    float mediaNO2, mediaPM25, mediaPM10;
+	
+	int m;
+	for (m = 0; m < contador; m++) {
+		mediaNO2 += vectorMendezAlvaro[m].NO2;
+		mediaPM25 += vectorMendezAlvaro[m].PM25;
+		mediaPM10 += vectorMendezAlvaro[m].PM10;
+	}
+	mediaNO2 /= (float) contador;
+	mediaPM25 /=  (float) contador;
+	mediaPM10 /= (float) contador;
+					
+	printf("Concentración media de NO2 en el aire: %.3f\n", mediaNO2);
+	printf("Concentración media de PM 2.5 en el aire: %.3f\n", mediaPM25);
+	printf("Concentración media de PM 10 en el aire: %.3f\n", mediaPM10);
+
+	return;
+}
 
 
 
