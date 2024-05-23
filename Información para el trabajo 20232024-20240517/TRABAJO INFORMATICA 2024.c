@@ -2,7 +2,7 @@
 #include <math.h>
 #include <string.h>
 #include <locale.h>
-#define TAM 500
+
 
 typedef struct {
     int hora;
@@ -15,7 +15,7 @@ typedef struct {
     char pm10[5];
     char cal_aire[30];
     char calidades[20];
-} TMendezAlvaro;
+}TMendezAlvaro;
 
 typedef struct {
     int hora;
@@ -24,25 +24,42 @@ typedef struct {
     char temperatura[15];
     int HR;
     char humedad[10];
-} TEscuelasAguirre;
+}TEscuelasAguirre;
 
-int calculoNO2max(TMendezAlvaro vectorMendezAlvaro[], int contador);
-float calculoPM25max(TMendezAlvaro vectorMendezAlvaro[], int contador);
-float calculoPM10max(TMendezAlvaro vectorMendezAlvaro[], int contador);
-void calculomediasMA(TMendezAlvaro vectorMendezAlvaro[], int i);
-int mostrarArchivo1(TMendezAlvaro vectorMendezAlvaro[]);
-void mostrarMenuMA(TMendezAlvaro vectorMendezAlvaro[], int size);
 
+//FUNCIONES MOSTRAR FICHEROS Y MENUS
+int mostrarArchivo1(TMendezAlvaro vectorMA[]);
+int mostrarArchivo2(TMendezAlvaro vectorMA[]);
+int mostrarArchivo3(TMendezAlvaro vectorMA[]);
+int mostrarArchivo4(TEscuelasAguirre vectorEA[]);
+int mostrarArchivo5(TEscuelasAguirre vectorEA[]);
+int mostrarArchivo6(TEscuelasAguirre vectorEA[]);
+void mostrarMenuMA(TMendezAlvaro vectorMA[], int size);
+
+//FUNCIONES ESTADÍSTICAS
+void calculomediasMA(TMendezAlvaro vectorMA[], int i);
+void calculoNO2max(TMendezAlvaro vectorMA[], int contador);
+void calculoPM25max(TMendezAlvaro vectorMA[], int contador);
+void calculoPM10max(TMendezAlvaro vectorMA[], int contador);
+void calculoNO2min(TMendezAlvaro vectorMA[], int contador);
+void calculoPM25min(TMendezAlvaro vectorMA[], int contador);
+void calculoPM10min(TMendezAlvaro vectorMA[], int contador);
+
+void calculomediasEA(TEscuelasAguirre vectorEA[], int i);
+void calculoTmax(TEscuelasAguirre vectroEA[], int contador);
+void calculoHRmax(TEscuelasAguirre vectorEA[], int contador);
+void calculoTmin(TEscuelasAguirre vectorEA[], int contador);
+void calculoHRmin(TEscuelasAguirre vectorEA[], int contador);
 
 int main() {
     setlocale(LC_CTYPE, "spanish"); // para que el compilador reconozca las ñ y tildes 
-    int archivo, opcion, contador = 0;
-    TMendezAlvaro vectorMendezAlvaro[TAM];
-    TEscuelasAguirre vectorEscuelasAguirre[TAM];
+    int archivo, opcion, contador = 0, TAM = 25;
+    TMendezAlvaro vectorMA[TAM];
+    TEscuelasAguirre vectorEA[TAM];
     
     while (1) {
 		
-		printf ("\nIndique el archivo con el que quiera trabajar:\n 1.\tMendez Álvaro 20-12-2023\n 2.\tMendez Álvaro 31-01-2024\n 3.\tMendez Álvaro 21-02-2024\n 4.\tEscuelas Aguirre 20-12-2023\n 5.\tEscuelas Aguirre 31-01-2024\n 6.\tEscuelas Aguirre 21-02-2024\n");
+		printf ("\nIndique el archivo con el que quiera trabajar:\n \t1.Mendez Álvaro 20-12-2023\n \t2.Mendez Álvaro 31-01-2024\n \t3.Mendez Álvaro 21-02-2024\n \t4.Escuelas Aguirre 20-12-2023\n \t5.Escuelas Aguirre 31-01-2024\n \t6.Escuelas Aguirre 21-02-2024\n");
 		scanf ("%d", &archivo);
 		
 		if (archivo < 1 || archivo > 6) {
@@ -56,45 +73,51 @@ int main() {
 		//archivo1
 		case (1):{
 			int i;
-			contador = mostrarArchivo1(vectorMendezAlvaro);
+			contador = mostrarArchivo1(vectorMA);
 			
 			do{
-				mostrarMenuMA(vectorMendezAlvaro, TAM);
+				mostrarMenuMA(vectorMA, TAM);
 				scanf("%d", &opcion);
 				
 				if (opcion == 1){
 				
 				} else if (opcion == 2){
-					int NO2max = calculoNO2max(vectorMendezAlvaro, contador);
-					float PM25max = calculoPM25max(vectorMendezAlvaro, contador);
-					float PM10max = calculoPM10max(vectorMendezAlvaro, contador);
 					int Opcion;
 				
 					do { 
-    				printf("Elige una opción que desee\n");
+    				printf("\nElige una opción que desee\n");
     				printf("\t1: Media \n");
     				printf("\t2: Mediana \n");
     				printf("\t3: Mínimos valores \n");
     				printf("\t4: Máximos valores \n");
-    				printf("\t5: Moda \n");
-    				printf("\t6: Salir de estadísticas.\n");
+    				printf("\t5: Salir de estadísticas.\n");
     				scanf("%d", &Opcion);
 					//otro switch case dentro
 					switch(Opcion){
 						case(1): {
-						calculomediasMA(vectorMendezAlvaro, contador);
+						calculomediasMA(vectorMA, contador);
 					
+							break;
+						}
+						case(2):{
+							//MEDIANA
+							break;
+						}
+						case(3):{
+							calculoNO2min(vectorMA, contador);
+							calculoPM25min(vectorMA, contador);
+							calculoPM10min(vectorMA, contador);
 							break;
 						}
 						case(4): {
 							
-							printf("NO2 máximo: %i\n", NO2max );
-							printf("PM25 máximo: %.3f\n", PM25max);
-							printf("PM10 máximo: %.3f\n", PM10max);
+							calculoNO2max(vectorMA, contador);
+							calculoPM25max(vectorMA, contador);
+							calculoPM10max(vectorMA, contador);
 							break;
 						}
 					}
-    				} while (Opcion != 6);
+    				} while (Opcion != 5);
     		
 				} else if (opcion == 3){
 					//FUNCION 3
@@ -115,45 +138,51 @@ int main() {
 		
 		case (2):{
 			int i;
-			contador = mostrarArchivo2(vectorMendezAlvaro);
+			contador = mostrarArchivo2(vectorMA);
 			
 			do{
-				mostrarMenuMA(vectorMendezAlvaro, TAM);
+				mostrarMenuMA(vectorMA, TAM);
 				scanf("%d", &opcion);
 				
 				if (opcion == 1){
 					//FUNCION 1
 				} else if (opcion == 2){
-					int NO2max = calculoNO2max(vectorMendezAlvaro, contador);
-					float PM25max = calculoPM25max(vectorMendezAlvaro, contador);
-					float PM10max = calculoPM10max(vectorMendezAlvaro, contador);
 					int Opcion;
 				
 					do { 
-    				printf("Elige una opción que desee\n");
+    				printf("\nElige una opción que desee\n");
     				printf("\t1: Media \n");
     				printf("\t2: Mediana \n");
     				printf("\t3: Mínimos valores \n");
     				printf("\t4: Máximos valores \n");
-    				printf("\t5: Moda \n");
-    				printf("\t6: Salir de estadísticas.\n");
+    				printf("\t5: Salir de estadísticas.\n");
     				scanf("%d", &Opcion);
 					//otro switch case dentro
 					switch(Opcion){
 						case(1): {
-						calculomediasMA(vectorMendezAlvaro, contador);
+						calculomediasMA(vectorMA, contador);
 					
 							break;
 						}
+						case(2):{
+							//MEDIANA
+							break;
+						}
+						case(3):{
+							calculoNO2min(vectorMA, contador);
+							calculoPM25min(vectorMA, contador);
+							calculoPM10min(vectorMA, contador);
+
+							break;
+						}
 						case(4): {
-							
-							printf("NO2 máximo: %i\n", NO2max );
-							printf("PM25 máximo: %.3f\n", PM25max);
-							printf("PM10 máximo: %.3f\n", PM10max);
+							calculoNO2max(vectorMA, contador);
+							calculoPM25max(vectorMA, contador);
+							calculoPM10max(vectorMA, contador);
 							break;
 						}
 					}
-    				} while (Opcion != 6);
+    				} while (Opcion != 5);
 				} else if (opcion == 3){
 					//FUNCION 3
 				} else if (opcion == 4){
@@ -172,16 +201,52 @@ int main() {
 		
 		case (3):{
 			int i;
-			contador = mostrarArchivo3(vectorMendezAlvaro);
+			contador = mostrarArchivo3(vectorMA);
 			
 			do{
-				mostrarMenuMA(vectorMendezAlvaro, TAM);
+				mostrarMenuMA(vectorMA, TAM);
 				scanf("%d", &opcion);
 				
 				if (opcion == 1){
 					//FUNCION 1
 				} else if (opcion == 2){
-					//FUNCION2
+					int Opcion;
+				
+					do { 
+    				printf("\nElige una opción que desee\n");
+    				printf("\t1: Media \n");
+    				printf("\t2: Mediana \n");
+    				printf("\t3: Mínimos valores \n");
+    				printf("\t4: Máximos valores \n");
+    				printf("\t5: Salir de estadísticas.\n");
+    				scanf("%d", &Opcion);
+					//otro switch case dentro
+					switch(Opcion){
+						case(1): {
+						calculomediasMA(vectorMA, contador);
+					
+							break;
+						}
+						case(2): {
+							//MEDIANA
+							break;
+						}
+						case(3):{
+							calculoNO2min(vectorMA, contador);
+							calculoPM25min(vectorMA, contador);
+							calculoPM10min(vectorMA, contador);
+
+							break;
+						}
+						case(4): {
+							calculoNO2max(vectorMA, contador);
+							calculoPM25max(vectorMA, contador);
+							calculoPM10max(vectorMA, contador);
+							
+							break;
+						}
+					}
+    				} while (Opcion != 5);
 				} else if (opcion == 3){
 					//FUNCION 3
 				} else if (opcion == 4){
@@ -200,16 +265,49 @@ int main() {
 		
 		case (4):{
 			int i;
-			contador = mostrarArchivo4(vectorEscuelasAguirre);
+			contador = mostrarArchivo4(vectorEA);
 			
 			do{
-				mostrarMenuMA(vectorMendezAlvaro, TAM);
+				mostrarMenuMA(vectorMA, TAM);
 				scanf("%d", &opcion);
 				
 				if (opcion == 1){
 					//FUNCION 1
 				} else if (opcion == 2){
-					//FUNCION2
+					int Opcion;
+					do { 
+    				printf("\nElige una opción que desee\n");
+    				printf("\t1: Media \n");
+    				printf("\t2: Mediana \n");
+    				printf("\t3: Mínimos valores \n");
+    				printf("\t4: Máximos valores \n");
+    				printf("\t5: Salir de estadísticas.\n");
+    				scanf("%d", &Opcion);
+					//otro switch case dentro
+					switch(Opcion){
+						case(1): {
+						calculomediasEA(vectorEA, contador);
+					
+							break;
+						}
+						case(2): {
+							//MEDIANA
+							break;
+						}
+						case(3):{
+							calculoTmin(vectorEA, contador);
+							calculoHRmin(vectorEA, contador);
+
+							break;
+						}
+						case(4): {
+							calculoTmax(vectorEA, contador);
+							calculoHRmax(vectorEA, contador);						
+							
+							break;
+						}
+					}
+    				} while (Opcion != 5);
 				} else if (opcion == 3){
 					//FUNCION 3
 				} else if (opcion == 4){
@@ -228,16 +326,49 @@ int main() {
 		
 		case (5):{
 			int i;
-			contador = mostrarArchivo5(vectorMendezAlvaro);
+			contador = mostrarArchivo5(vectorEA);
 			
 			do{
-				mostrarMenuMA(vectorMendezAlvaro, TAM);
+				mostrarMenuMA(vectorMA, TAM);
 				scanf("%d", &opcion);
 				
 				if (opcion == 1){
 					//FUNCION 1
 				} else if (opcion == 2){
-					//FUNCION2
+					int Opcion;
+					do { 
+    				printf("\nElige una opción que desee\n");
+    				printf("\t1: Media \n");
+    				printf("\t2: Mediana \n");
+    				printf("\t3: Mínimos valores \n");
+    				printf("\t4: Máximos valores \n");
+    				printf("\t5: Salir de estadísticas.\n");
+    				scanf("%d", &Opcion);
+					//otro switch case dentro
+					switch(Opcion){
+						case(1): {
+						calculomediasEA(vectorEA, contador);
+					
+							break;
+						}
+						case(2): {
+							//MEDIANA
+							break;
+						}
+						case(3):{
+							calculoTmin(vectorEA, contador);
+							calculoHRmin(vectorEA, contador);
+
+							break;
+						}
+						case(4): {
+							calculoTmax(vectorEA, contador);
+							calculoHRmax(vectorEA, contador);						
+							
+							break;
+						}
+					}
+    				} while (Opcion != 5);
 				} else if (opcion == 3){
 					//FUNCION 3
 				} else if (opcion == 4){
@@ -256,16 +387,49 @@ int main() {
 		
 		case (6):{
 			int i;
-			contador = mostrarArchivo6(vectorMendezAlvaro);
+			contador = mostrarArchivo6(vectorEA);
 			
 			do{
-				mostrarMenuMA(vectorMendezAlvaro, TAM);
+				mostrarMenuMA(vectorMA, TAM);
 				scanf("%d", &opcion);
 				
 				if (opcion == 1){
 					//FUNCION 1
 				} else if (opcion == 2){
-					//FUNCION2
+					int Opcion;
+					do { 
+    				printf("\nElige una opción que desee\n");
+    				printf("\t1: Media \n");
+    				printf("\t2: Mediana \n");
+    				printf("\t3: Mínimos valores \n");
+    				printf("\t4: Máximos valores \n");
+    				printf("\t5: Salir de estadísticas.\n");
+    				scanf("%d", &Opcion);
+					//otro switch case dentro
+					switch(Opcion){
+						case(1): {
+						calculomediasEA(vectorEA, contador);
+					
+							break;
+						}
+						case(2): {
+							//MEDIANA
+							break;
+						}
+						case(3):{
+							calculoTmin(vectorEA, contador);
+							calculoHRmin(vectorEA, contador);
+
+							break;
+						}
+						case(4): {
+							calculoTmax(vectorEA, contador);
+							calculoHRmax(vectorEA, contador);						
+							
+							break;
+						}
+					}
+    				} while (Opcion != 5);
 				} else if (opcion == 3){
 					//FUNCION 3
 				} else if (opcion == 4){
@@ -282,151 +446,7 @@ int main() {
 			break;
 		}
 	}
-		
-	
-    
-   
-    //COMIENZA EL PROGRAMA:
-	/*int a; 
-	do{
-		printf("           MENÚ PRINCIPAL           \n");
-		printf("Seleccione una opcion:\n \t\t\t1-Ver informe\n \t\t\t2-Estadísticas\n \t\t\t3-Comparación\n \t\t\t4-Información\n \t\t\t5-Imprimir todos los datos por pantalla\n \t\t\t6-Salir\n\n");
-		scanf("%d", &a);
-		//desarrollamos los casos citados en el menú principal
-		switch (a) {
-			case(1): {
-				//Declaramos las variables.
-				int n=0, k;
-				int x,b;
-				do {
-					n++;
-					if(n>1) {
-						printf("El valor intoducido es incorrecto, por favor introdúzcalo de nuevo\n");
-					}
-					printf("Ha seleccionado \n\n");
-					printf("Si desea volver al menu principal, pulse 0\n");
-					scanf("%d", &b);
-				} while (b!=1 && b!=2 && b!=0); 
-				if(b==0) {
-					break;
-				}
-			}
-			case(2): {
-				//Declaramos las variables.
-				int n=0;
-				int NO2max = calculoNO2max(vectorMendezAlvaro, pgeos);
-				int Opcion;
-				int x,b;
-				do {
-					n++;
-					if(n>1) {
-						printf("El valor intoducido es incorrecto, por favor introdúzcalo de nuevo\n");
-					}
-					printf("Ha seleccionado ESTADÍSTICAS \n\n");
-					printf("Si desea volver al menu principal, pulse 0, si no pulse 1\n");
-					scanf("%d", &b);
-				} while (b!=1 && b!=2 && b!=0); 
-				if(b==0) {
-					break;
-				}
-				do { 
-    				printf("Elige una opción que desee\n");
-    				printf("\t1: Ver todas las estadísticas\n");
-    				printf("\t2: Media \n");
-    				printf("\t3: Mediana \n");
-    				printf("\t4: Mínimo \n");
-    				printf("\t5: Máximo \n");
-    				printf("\t6: Moda \n");
-    				printf("\t7: Salir de estadísticas.\n");
-    				scanf("%d", &Opcion);
-					//otro switch case dentro
-					switch(opcion){
-						case(2): {
-							calculomediasMA( vectorMendezAlvaro, i);
-							break;
-						}
-						case(5): {
-							//int NO2max = calculoNO2max(vectorMendezAlvaro, y);
-							printf("NO2 maximo: %i\n", NO2max );
-							break;
-						}
-						case (1): {
-							printf("hola\n");
-							break;
-						}
-					}
-    			} while (Opcion != 7);	
-					break; 				
-			}
-			case(3): {
-				//Declaramos las variables.
-				int n=0, k;
-				int x,b;
-				do {
-					n++;
-					if(n>1) {
-						printf("El valor intoducido es incorrecto, por favor introdúzcalo de nuevo\n");
-					}
-					printf("Ha seleccionado \n\n");
-					printf("Si desea volver al menu principal, pulse 0\n");
-					scanf("%d", &b);
-				} while (b!=1 && b!=2 && b!=0); 
-				if(b==0) {
-					break;
-				}
-			}
-			case(4): {
-				//Declaramos las variables.
-				int opcion;
-				int n=0, k;
-				int x,b;
-				do {
-					n++;
-					if(n>1) {
-						printf("El valor intoducido es incorrecto, por favor introdúzcalo de nuevo\n");
-					}
-					printf("Ha seleccionado INFORMACIÓN\n\n");
-					printf("Si desea volver al menu principal, pulse 0\n");
-					scanf("%d", &b);
-				} while (b!=1 && b!=2 && b!=0); 
-				if(b==0) {
-					break;
-				}
-				do { 
-    				printf("Elige una opción que desee\n");
-    				printf("\t1: PM10\n");
-    				printf("\t2: PM2,5 \n");
-    				printf("\t3: Ozono Troposférico \n");
-    				printf("\t4: Dióxido de nitrógeno \n");
-    				printf("\t5: Dióxido de azufre \n");
-    				printf("\t6: Salir de estadísticas.\n");
-    				scanf("%d", &opcion);
-    			} while (opcion != 6);	
-					break;
-			}
-			case(5): {
-				//Declaramos las variables.
-				int n=0, k;
-				int x,b;
-				do {
-					n++;
-					if(n>1) {
-						printf("El valor intoducido es incorrecto, por favor introdúzcalo de nuevo\n");
-					}
-					printf("Ha seleccionado 1 \n\n");
-					printf("Si desea volver al menu principal, pulse 0\n");
-					scanf("%d", &b);
-				} while (b!=1 && b!=2 && b!=0); 
-				if(b==0) {
-					break;
-				}
-			}
-			default: {
-				printf("El valor introducido es incorrecto, por favor vuelva a introducirlo: \n");
-				break;
-			}
-		}
-	}while(a!=6);*/
+
 	printf("Hasta la próxima\n"); 
 	printf("FIN DEL PROGRAMA"); 
 	
@@ -439,7 +459,7 @@ int main() {
 
 
 
-int mostrarArchivo1(TMendezAlvaro vectorMendezAlvaro[]) {
+int mostrarArchivo1(TMendezAlvaro vectorMA[]) {
 	
 	FILE*fichero;
 	int contador = 0;
@@ -455,15 +475,15 @@ int mostrarArchivo1(TMendezAlvaro vectorMendezAlvaro[]) {
 	}
     
     	int y = 0;
-	while(fscanf(fichero, "%s %s %s %s %s", vectorMendezAlvaro[y].Hora, vectorMendezAlvaro[y].no2, vectorMendezAlvaro[y].pm25, vectorMendezAlvaro[y].pm10, vectorMendezAlvaro[y].calidades) != '\n'){
-		printf("%s\t %s\t %s\t %s\t %s\n", vectorMendezAlvaro[y].Hora, vectorMendezAlvaro[y].no2, vectorMendezAlvaro[y].pm25, vectorMendezAlvaro[y].pm10, vectorMendezAlvaro[y].calidades);
+	while(fscanf(fichero, "%s %s %s %s %s", vectorMA[y].Hora, vectorMA[y].no2, vectorMA[y].pm25, vectorMA[y].pm10, vectorMA[y].calidades) != '\n'){
+		printf("%s\t %s\t %s\t %s\t %s\n", vectorMA[y].Hora, vectorMA[y].no2, vectorMA[y].pm25, vectorMA[y].pm10, vectorMA[y].calidades);
 		y++;
 		break;
 	}
 			
 	int i = 0;
-	while (fscanf(fichero, "%d %d %f %f %s", &vectorMendezAlvaro[i].hora, &vectorMendezAlvaro[i].NO2, &vectorMendezAlvaro[i].PM25, &vectorMendezAlvaro[i].PM10, vectorMendezAlvaro[i].cal_aire) != EOF) {
-		printf("%d\t %d\t %.3f\t %.3f\t %s\n", vectorMendezAlvaro[i].hora, vectorMendezAlvaro[i].NO2, vectorMendezAlvaro[i].PM25, vectorMendezAlvaro[i].PM10, vectorMendezAlvaro[i].cal_aire);
+	while (fscanf(fichero, "%d %d %f %f %s", &vectorMA[i].hora, &vectorMA[i].NO2, &vectorMA[i].PM25, &vectorMA[i].PM10, vectorMA[i].cal_aire) != EOF) {
+		printf("%d\t %d\t %.3f\t %.3f\t %s\n", vectorMA[i].hora, vectorMA[i].NO2, vectorMA[i].PM25, vectorMA[i].PM10, vectorMA[i].cal_aire);
 		i++;
 	}
 	
@@ -474,7 +494,7 @@ int mostrarArchivo1(TMendezAlvaro vectorMendezAlvaro[]) {
 	return contador;
 }
 
-int mostrarArchivo2(TMendezAlvaro vectorMendezAlvaro[]) {
+int mostrarArchivo2(TMendezAlvaro vectorMA[]) {
 	
 	FILE*fichero;
 	int contador = 0;
@@ -490,15 +510,15 @@ int mostrarArchivo2(TMendezAlvaro vectorMendezAlvaro[]) {
 	}
     
     	int y = 0;
-	while(fscanf(fichero, "%s %s %s %s %s", vectorMendezAlvaro[y].Hora, vectorMendezAlvaro[y].no2, vectorMendezAlvaro[y].pm25, vectorMendezAlvaro[y].pm10, vectorMendezAlvaro[y].calidades) != '\n'){
-		printf("%s\t %s\t %s\t %s\t %s\n", vectorMendezAlvaro[y].Hora, vectorMendezAlvaro[y].no2, vectorMendezAlvaro[y].pm25, vectorMendezAlvaro[y].pm10, vectorMendezAlvaro[y].calidades);
+	while(fscanf(fichero, "%s %s %s %s %s", vectorMA[y].Hora, vectorMA[y].no2, vectorMA[y].pm25, vectorMA[y].pm10, vectorMA[y].calidades) != '\n'){
+		printf("%s\t %s\t %s\t %s\t %s\n", vectorMA[y].Hora, vectorMA[y].no2, vectorMA[y].pm25, vectorMA[y].pm10, vectorMA[y].calidades);
 		y++;
 		break;
 	}
 			
 	int i = 0;
-	while (fscanf(fichero, "%d %d %f %f %s", &vectorMendezAlvaro[i].hora, &vectorMendezAlvaro[i].NO2, &vectorMendezAlvaro[i].PM25, &vectorMendezAlvaro[i].PM10, vectorMendezAlvaro[i].cal_aire) != EOF) {
-		printf("%d\t %d\t %.3f\t %.3f\t %s\n", vectorMendezAlvaro[i].hora, vectorMendezAlvaro[i].NO2, vectorMendezAlvaro[i].PM25, vectorMendezAlvaro[i].PM10, vectorMendezAlvaro[i].cal_aire);
+	while (fscanf(fichero, "%d %d %f %f %s", &vectorMA[i].hora, &vectorMA[i].NO2, &vectorMA[i].PM25, &vectorMA[i].PM10, vectorMA[i].cal_aire) != EOF) {
+		printf("%d\t %d\t %.3f\t %.3f\t %s\n", vectorMA[i].hora, vectorMA[i].NO2, vectorMA[i].PM25, vectorMA[i].PM10, vectorMA[i].cal_aire);
 		i++;
 	}
 	
@@ -508,7 +528,7 @@ int mostrarArchivo2(TMendezAlvaro vectorMendezAlvaro[]) {
 	return contador;
 }
 
-int mostrarArchivo3(TMendezAlvaro vectorMendezAlvaro[]) {
+int mostrarArchivo3(TMendezAlvaro vectorMA[]) {
 	
 	FILE*fichero;
 	int contador = 0;
@@ -524,15 +544,15 @@ int mostrarArchivo3(TMendezAlvaro vectorMendezAlvaro[]) {
 	}
     
     	int y = 0;
-	while(fscanf(fichero, "%s %s %s %s %s", vectorMendezAlvaro[y].Hora, vectorMendezAlvaro[y].no2, vectorMendezAlvaro[y].pm25, vectorMendezAlvaro[y].pm10, vectorMendezAlvaro[y].calidades) != '\n'){
-		printf("%s\t %s\t %s\t %s\t %s\n", vectorMendezAlvaro[y].Hora, vectorMendezAlvaro[y].no2, vectorMendezAlvaro[y].pm25, vectorMendezAlvaro[y].pm10, vectorMendezAlvaro[y].calidades);
+	while(fscanf(fichero, "%s %s %s %s %s", vectorMA[y].Hora, vectorMA[y].no2, vectorMA[y].pm25, vectorMA[y].pm10, vectorMA[y].calidades) != '\n'){
+		printf("%s\t %s\t %s\t %s\t %s\n", vectorMA[y].Hora, vectorMA[y].no2, vectorMA[y].pm25, vectorMA[y].pm10, vectorMA[y].calidades);
 		y++;
 		break;
 	}
 			
 	int i = 0;
-	while (fscanf(fichero, "%d %d %f %f %s", &vectorMendezAlvaro[i].hora, &vectorMendezAlvaro[i].NO2, &vectorMendezAlvaro[i].PM25, &vectorMendezAlvaro[i].PM10, vectorMendezAlvaro[i].cal_aire) != EOF) {
-		printf("%d\t %d\t %.3f\t %.3f\t %s\n", vectorMendezAlvaro[i].hora, vectorMendezAlvaro[i].NO2, vectorMendezAlvaro[i].PM25, vectorMendezAlvaro[i].PM10, vectorMendezAlvaro[i].cal_aire);
+	while (fscanf(fichero, "%d %d %f %f %s", &vectorMA[i].hora, &vectorMA[i].NO2, &vectorMA[i].PM25, &vectorMA[i].PM10, vectorMA[i].cal_aire) != EOF) {
+		printf("%d\t %d\t %.3f\t %.3f\t %s\n", vectorMA[i].hora, vectorMA[i].NO2, vectorMA[i].PM25, vectorMA[i].PM10, vectorMA[i].cal_aire);
 		i++;
 	}
 	
@@ -542,7 +562,7 @@ int mostrarArchivo3(TMendezAlvaro vectorMendezAlvaro[]) {
 	return contador;
 }
 
-int mostrarArchivo4(TEscuelasAguirre vectorEscuelasAguirre[]) {
+int mostrarArchivo4(TEscuelasAguirre vectorEA[]) {
 	
 	FILE*fichero;
 	int contador = 0;
@@ -558,15 +578,15 @@ int mostrarArchivo4(TEscuelasAguirre vectorEscuelasAguirre[]) {
 	}
     
     	int y = 0;
-	while(fscanf(fichero, "%s %s %s", vectorEscuelasAguirre[y].Hora, vectorEscuelasAguirre[y].temperatura, vectorEscuelasAguirre[y].humedad) != '\n'){
-		printf("%s\t %s\t %s\n", vectorEscuelasAguirre[y].Hora, vectorEscuelasAguirre[y].temperatura, vectorEscuelasAguirre[y].humedad);
+	while(fscanf(fichero, "%s %s %s", vectorEA[y].Hora, vectorEA[y].temperatura, vectorEA[y].humedad) != '\n'){
+		printf("%s\t %s\t %s\n", vectorEA[y].Hora, vectorEA[y].temperatura, vectorEA[y].humedad);
 		y++;
 		break;
 	}
 			
 	int i = 0;
-	while (fscanf(fichero, "%d %f %d", &vectorEscuelasAguirre[i].hora, &vectorEscuelasAguirre[i].T, &vectorEscuelasAguirre[i].HR) != EOF) {
-		printf("%d\t %.1f\t %d\n", vectorEscuelasAguirre[i].hora, vectorEscuelasAguirre[i].T, vectorEscuelasAguirre[i].HR);
+	while (fscanf(fichero, "%d %f %d", &vectorEA[i].hora, &vectorEA[i].T, &vectorEA[i].HR) != EOF) {
+		printf("%d\t %.1f\t %d\n", vectorEA[i].hora, vectorEA[i].T, vectorEA[i].HR);
 		i++;
 	}
 	
@@ -576,7 +596,7 @@ int mostrarArchivo4(TEscuelasAguirre vectorEscuelasAguirre[]) {
 	return contador;
 }
 
-int mostrarArchivo5(TEscuelasAguirre vectorEscuelasAguirre[]) {
+int mostrarArchivo5(TEscuelasAguirre vectorEA[]) {
 	
 	FILE*fichero;
 	int contador = 0;
@@ -592,15 +612,15 @@ int mostrarArchivo5(TEscuelasAguirre vectorEscuelasAguirre[]) {
 	}
     
     	int y = 0;
-	while(fscanf(fichero, "%s %s %s", vectorEscuelasAguirre[y].Hora, vectorEscuelasAguirre[y].temperatura, vectorEscuelasAguirre[y].humedad) != '\n'){
-		printf("%s\t %s\t %s\n", vectorEscuelasAguirre[y].Hora, vectorEscuelasAguirre[y].temperatura, vectorEscuelasAguirre[y].humedad);
+	while(fscanf(fichero, "%s %s %s", vectorEA[y].Hora, vectorEA[y].temperatura, vectorEA[y].humedad) != '\n'){
+		printf("%s\t %s\t %s\n", vectorEA[y].Hora, vectorEA[y].temperatura, vectorEA[y].humedad);
 		y++;
 		break;
 	}
 			
 	int i = 0;
-	while (fscanf(fichero, "%d %f %d", &vectorEscuelasAguirre[i].hora, &vectorEscuelasAguirre[i].T, &vectorEscuelasAguirre[i].HR) != EOF) {
-		printf("%d\t %.1f\t %d\n", vectorEscuelasAguirre[i].hora, vectorEscuelasAguirre[i].T, vectorEscuelasAguirre[i].HR);
+	while (fscanf(fichero, "%d %f %d", &vectorEA[i].hora, &vectorEA[i].T, &vectorEA[i].HR) != EOF) {
+		printf("%d\t %.1f\t %d\n", vectorEA[i].hora, vectorEA[i].T, vectorEA[i].HR);
 		i++;
 	}
 	
@@ -610,7 +630,7 @@ int mostrarArchivo5(TEscuelasAguirre vectorEscuelasAguirre[]) {
 	return contador;
 }
 
-int mostrarArchivo6(TEscuelasAguirre vectorEscuelasAguirre[]) {
+int mostrarArchivo6(TEscuelasAguirre vectorEA[]) {
 	
 	FILE*fichero;
 	int contador = 0;
@@ -626,15 +646,15 @@ int mostrarArchivo6(TEscuelasAguirre vectorEscuelasAguirre[]) {
 	}
     
     	int y = 0;
-	while(fscanf(fichero, "%s %s %s", vectorEscuelasAguirre[y].Hora, vectorEscuelasAguirre[y].temperatura, vectorEscuelasAguirre[y].humedad) != '\n'){
-		printf("%s\t %s\t %s\n", vectorEscuelasAguirre[y].Hora, vectorEscuelasAguirre[y].temperatura, vectorEscuelasAguirre[y].humedad);
+	while(fscanf(fichero, "%s %s %s", vectorEA[y].Hora, vectorEA[y].temperatura, vectorEA[y].humedad) != '\n'){
+		printf("%s\t %s\t %s\n", vectorEA[y].Hora, vectorEA[y].temperatura, vectorEA[y].humedad);
 		y++;
 		break;
 	}
 			
 	int i = 0;
-	while (fscanf(fichero, "%d %f %d", &vectorEscuelasAguirre[i].hora, &vectorEscuelasAguirre[i].T, &vectorEscuelasAguirre[i].HR) != EOF) {
-		printf("%d\t %.1f\t %d\n", vectorEscuelasAguirre[i].hora, vectorEscuelasAguirre[i].T, vectorEscuelasAguirre[i].HR);
+	while (fscanf(fichero, "%d %f %d", &vectorEA[i].hora, &vectorEA[i].T, &vectorEA[i].HR) != EOF) {
+		printf("%d\t %.1f\t %d\n", vectorEA[i].hora, vectorEA[i].T, vectorEA[i].HR);
 		i++;
 	}
 	
@@ -644,54 +664,21 @@ int mostrarArchivo6(TEscuelasAguirre vectorEscuelasAguirre[]) {
 	return contador;
 }
 
-void mostrarMenuMA(TMendezAlvaro vectorMendezAlvaro[], int size){
+void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 	printf("\n           MENÚ PRINCIPAL           \n");
 		printf("Seleccione una opcion:\n \t\t\t1-Ver informe\n \t\t\t2-Estadísticas\n \t\t\t3-Comparación\n \t\t\t4-Información\n \t\t\t5-Imprimir todos los datos por pantalla\n \t\t\t6-Salir\n\n");
 		
 	return;
 }
 
-int calculoNO2max(TMendezAlvaro vectorMendezAlvaro[], int contador){
-    int NO2max = 0;
-    int i;
-    for (i = 0; i < contador; i++) {
-        if (vectorMendezAlvaro[i].NO2 > NO2max) {
-            NO2max = vectorMendezAlvaro[i].NO2;
-        }
-    }
-    return NO2max;
-}
-
-float calculoPM25max(TMendezAlvaro vectorMendezAlvaro[], int contador){
-    float PM25max = 0.0;
-    int i;
-    for (i = 0; i < contador; i++) {
-        if (vectorMendezAlvaro[i].PM25 > PM25max) {
-            PM25max = vectorMendezAlvaro[i].PM25;
-        }
-    }
-    return PM25max;
-}
-
-float calculoPM10max(TMendezAlvaro vectorMendezAlvaro[], int contador){
-    float PM10max = 0.0;
-    int i;
-    for (i = 0; i < contador; i++) {
-        if (vectorMendezAlvaro[i].PM10 > PM10max) {
-            PM10max = vectorMendezAlvaro[i].PM10;
-        }
-    }
-    return PM10max;
-}
-
-void calculomediasMA(TMendezAlvaro vectorMendezAlvaro[], int contador){
+void calculomediasMA(TMendezAlvaro vectorMA[], int contador){
     float mediaNO2 = 0.0, mediaPM25 = 0.0, mediaPM10 = 0.0;
 	
 	int m;
-	for (m = 0; m <= contador; m++) {
-		mediaNO2 += vectorMendezAlvaro[m].NO2;
-		mediaPM25 += vectorMendezAlvaro[m].PM25;
-		mediaPM10 += vectorMendezAlvaro[m].PM10;
+	for (m = 0; m < contador; m++) {
+		mediaNO2 += vectorMA[m].NO2;
+		mediaPM25 += vectorMA[m].PM25;
+		mediaPM10 += vectorMA[m].PM10;
 	}
 	mediaNO2 /=  contador;
 	mediaPM25 /=  contador;
@@ -704,4 +691,191 @@ void calculomediasMA(TMendezAlvaro vectorMendezAlvaro[], int contador){
 	return;
 }
 
+void calculoNO2max(TMendezAlvaro vectorMA[], int i) {
+	int maximoNO2= vectorMA[0].NO2;
+	int masNO2 = 0;
+	
+	int h;
+	for(h=1; h<i; h++){
+		if(vectorMA[h].NO2 > maximoNO2){
+			maximoNO2 = vectorMA[h].NO2;
+			masNO2 = h;
+		}
+	}
+	
+	printf("La concentración máxima de NO2 es de %d a las %d horas\n", vectorMA[masNO2].NO2, vectorMA[masNO2].hora);
+	
+	return;
+}
 
+void calculoPM25max(TMendezAlvaro vectorMA[], int i) {
+	float maximoPM25= vectorMA[0].PM25;
+	int masPM25 = 0;
+	
+	int t;
+	for(t=1; t<i; t++){
+		if(vectorMA[t].PM25 > maximoPM25){
+			maximoPM25 = vectorMA[t].PM25;
+			masPM25 = t;
+		}
+	}
+	
+	printf("La concentración máxima de PM 2,5 es de %.3f a las %d horas\n", vectorMA[masPM25].PM25, vectorMA[masPM25].hora);
+	
+	return;
+}
+
+void calculoPM10max(TMendezAlvaro vectorMA[], int i) {
+	float maximoPM10 = vectorMA[0].PM10;
+	int masPM10 = 0;
+	
+	int m;
+	for(m=1; m<i; m++){
+		if(vectorMA[m].PM10 > maximoPM10){
+			maximoPM10 = vectorMA[m].PM10;
+			masPM10 = m;
+		}
+	}
+	
+	printf("La concentración máxima de PM 10 es de %.3f a las %d horas\n", vectorMA[masPM10].PM10, vectorMA[masPM10].hora);
+	
+	return;
+}
+
+void calculoNO2min(TMendezAlvaro vectorMA[], int i) {
+	int minimoNO2= vectorMA[0].NO2;
+	int menosNO2 = 0;
+	
+	int r;
+	for(r=1; r<i; r++){
+		if(vectorMA[r].NO2 < minimoNO2){
+			minimoNO2 = vectorMA[r].NO2;
+			menosNO2 = r;
+		}
+	}
+	
+	printf("La concentración mínima de NO2 es de %d a las %d horas\n", vectorMA[menosNO2].NO2, vectorMA[menosNO2].hora);
+	
+	return;
+}
+
+void calculoPM25min(TMendezAlvaro vectorMA[], int i) {
+	float minimoPM25= vectorMA[0].PM25;
+	int menosPM25 = 0;
+	
+	int x;
+	for(x=1; x<i; x++){
+		if(vectorMA[x].PM25 < minimoPM25){
+			minimoPM25 = vectorMA[x].PM25;
+			menosPM25 = x;
+		}
+	}
+	
+	printf("La concentración mínima de PM 2,5 es de %.3f a las %d horas\n", vectorMA[menosPM25].PM25, vectorMA[menosPM25].hora);
+	
+	return;
+}
+
+void calculoPM10min(TMendezAlvaro vectorMA[], int i) {
+	float minimoPM10= vectorMA[0].PM10;
+	int menosPM10 = 0;
+	
+	int d;
+	for(d=1; d<i; d++){
+		if(vectorMA[d].PM10 < minimoPM10){
+			minimoPM10 = vectorMA[d].PM10;
+			menosPM10 = d;
+		}
+	}
+	
+	printf("La concentración mínima de PM 10 es de %.3f a las %d horas\n", vectorMA[menosPM10].PM10, vectorMA[menosPM10].hora);
+	
+	return;
+}
+
+void calculomediasEA(TEscuelasAguirre vectorEA[], int contador){
+    float mediaT = 0.0, mediaHR = 0.0;
+	
+	int n;
+	for (n = 0; n < contador; n++) {
+		mediaT += vectorEA[n].T;
+		mediaHR += vectorEA[n].HR;
+	}
+	
+	mediaT /=  contador;
+	mediaHR /=  contador;
+	
+	
+	printf("Temperatura media en las Escuelas Aguirre: %.2f\n", mediaT);
+	printf("Humedad media en las Escuelas Aguirre: %.2f\n", mediaHR);
+	
+	return;
+}
+
+void calculoTmax(TEscuelasAguirre vectorEA[], int i) {
+	float maximoT= vectorEA[0].T;
+	int masT = 0;
+	
+	int w;
+	for(w=1; w<i; w++){
+		if(vectorEA[w].T > maximoT){
+			maximoT = vectorEA[w].T;
+			masT = w;
+		}
+	}
+	
+	printf("La temperatura máxima en las Escuelas Aguirre es de %.2f a las %d horas\n", vectorEA[masT].T, vectorEA[masT].hora);
+	
+	return;
+}
+
+void calculoHRmax(TEscuelasAguirre vectorEA[], int i) {
+	int maximoHR= vectorEA[0].HR;
+	int masHR = 0;
+	
+	int p;
+	for(p=1; p<i; p++){
+		if(vectorEA[p].HR > maximoHR){
+			maximoHR = vectorEA[p].HR;
+			masHR = p;
+		}
+	}
+	
+	printf("La humedad relativa máxima en las Escuelas Aguirre es de %d a las %d horas\n", vectorEA[masHR].HR, vectorEA[masHR].hora);
+	
+	return;
+}
+
+void calculoTmin(TEscuelasAguirre vectorEA[], int i) {
+	float minimoT= vectorEA[0].T;
+	int menosT = 0;
+	
+	int n;
+	for(n=1; n<i; n++){
+		if(vectorEA[n].T < minimoT){
+			minimoT = vectorEA[n].T;
+			menosT = n;
+		}
+	}
+	
+	printf("La temperatura mínima en las Escuelas Aguirre es de %.1f a las %d horas\n", vectorEA[menosT].T, vectorEA[menosT].hora);
+	
+	return;
+}
+
+void calculoHRmin(TEscuelasAguirre vectorEA[], int i) {
+	int minimoHR= vectorEA[0].HR;
+	int menosHR = 0;
+	
+	int f;
+	for(f=1; f<i; f++){
+		if(vectorEA[f].HR < minimoHR){
+			minimoHR = vectorEA[f].HR;
+			menosHR = f;
+		}
+	}
+	
+	printf("La humedad relativa mínima en las Escuelas Aguirre es de %d a las %d horas\n", vectorEA[menosHR].HR, vectorEA[menosHR].hora);
+	
+	return;
+}
