@@ -51,6 +51,12 @@ void calculoHRmax(TEscuelasAguirre vectorEA[], int contador);
 void calculoTmin(TEscuelasAguirre vectorEA[], int contador);
 void calculoHRmin(TEscuelasAguirre vectorEA[], int contador);
 
+//FUNCIONES COMPARACIÓN
+void fordTEA(TEscuelasAguirre vectorEA[], int contador);
+void fordT2EA(TEscuelasAguirre vectorEA[], int contador);
+void fordHR2EA(TEscuelasAguirre vectorEA[], int contador);
+void fordHREA(TEscuelasAguirre vectorEA[], int contador);
+
 int main() {
     setlocale(LC_CTYPE, "spanish"); // para que el compilador reconozca las ñ y tildes 
     int archivo, opcion, contador = 0, TAM = 25;
@@ -264,7 +270,7 @@ int main() {
 		}
 		
 		case (4):{
-			int i;
+			int i, a;
 			contador = mostrarArchivo4(vectorEA);
 			
 			do{
@@ -310,6 +316,48 @@ int main() {
     				} while (Opcion != 5);
 				} else if (opcion == 3){
 					//FUNCION 3
+					int Opcion3;
+					do { 
+    				printf("\nElige una opción que desee\n");
+    				printf("\t1: Valor máximo entre ficheros \n");
+    				printf("\t2: Valor mínimo entre ficheros\n");
+    				printf("\t3: Ordenar de menor a mayor \n");
+    				printf("\t4: Ordenar de mayor a menor \n");
+    				printf("\t5: Salir de comparaciones.\n");
+    				scanf("%d", &Opcion3);
+    				switch(Opcion3){
+						case(1): {
+						
+							break;
+						}
+						case(2): {
+						
+							break;
+						}
+						case(3):{
+							printf("Temperatura 1 , humedad 2\n");
+							scanf("%i",&a);
+							if(a==1){
+								fordTEA(vectorEA, contador);
+							} else if (a==2) {
+								fordHREA(vectorEA, contador);
+							}
+
+							break;
+						}
+						case(4): {
+							printf("Temperatura 1 , humedad 2\n");
+							scanf("%i",&a);
+							if(a==1){
+								fordT2EA(vectorEA, contador);
+							} else if (a==2) {
+								fordHR2EA(vectorEA, contador);
+							}						
+							
+							break;
+						}
+					}
+    				} while (Opcion3 != 5);
 				} else if (opcion == 4){
 					//FUNCION 4
 				} else if (opcion == 5){
@@ -325,7 +373,7 @@ int main() {
 		}
 		
 		case (5):{
-			int i;
+			int i, a;
 			contador = mostrarArchivo5(vectorEA);
 			
 			do{
@@ -371,6 +419,48 @@ int main() {
     				} while (Opcion != 5);
 				} else if (opcion == 3){
 					//FUNCION 3
+					int Opcion3;
+					do { 
+    				printf("\nElige una opción que desee\n");
+    				printf("\t1: Valor máximo entre ficheros \n");
+    				printf("\t2: Valor mínimo entre ficheros\n");
+    				printf("\t3: Ordenar de menor a mayor \n");
+    				printf("\t4: Ordenar de mayor a menor \n");
+    				printf("\t5: Salir de comparaciones.\n");
+    				scanf("%d", &Opcion3);
+    				switch(Opcion3){
+						case(1): {
+						
+							break;
+						}
+						case(2): {
+						
+							break;
+						}
+						case(3):{
+							printf("Temperatura 1 , humedad 2\n");
+							scanf("%i",&a);
+							if(a==1){
+								fordTEA(vectorEA, contador);
+							} else if (a==2) {
+								fordHREA(vectorEA, contador);
+							}
+
+							break;
+						}
+						case(4): {
+							printf("Temperatura 1 , humedad 2\n");
+							scanf("%i",&a);
+							if(a==1){
+								fordT2EA(vectorEA, contador);
+							} else if (a==2) {
+								fordHR2EA(vectorEA, contador);
+							}
+							
+							break;
+						}
+					}
+    				} while (Opcion3 != 5);
 				} else if (opcion == 4){
 					//FUNCION 4
 				} else if (opcion == 5){
@@ -386,7 +476,7 @@ int main() {
 		}
 		
 		case (6):{
-			int i;
+			int i,a;
 			contador = mostrarArchivo6(vectorEA);
 			
 			do{
@@ -432,6 +522,47 @@ int main() {
     				} while (Opcion != 5);
 				} else if (opcion == 3){
 					//FUNCION 3
+					int Opcion3;
+					do { 
+    				printf("\nElige una opción que desee\n");
+    				printf("\t1: Valor máximo entre ficheros \n");
+    				printf("\t2: Valor mínimo entre ficheros\n");
+    				printf("\t3: Ordenar de menor a mayor \n");
+    				printf("\t4: Ordenar de mayor a menor \n");
+    				printf("\t5: Salir de comparaciones.\n");
+    				scanf("%d", &Opcion3);
+    				switch(Opcion3){
+						case(1): {
+						
+							break;
+						}
+						case(2): {
+						
+							break;
+						}
+						case(3):{
+							printf("Temperatura 1 , humedad 2\n");
+							scanf("%i",&a);
+							if(a==1){
+								fordTEA(vectorEA, contador);
+							} else if (a==2) {
+								fordHREA(vectorEA, contador);
+							}
+							break;
+						}
+						case(4): {
+							printf("Temperatura 1 , humedad 2\n");
+							scanf("%i",&a);
+							if(a==1){
+								fordT2EA(vectorEA, contador);
+							} else if (a==2) {
+								fordHR2EA(vectorEA, contador);
+							}						
+							
+							break;
+						}
+					}
+    				} while (Opcion3 != 5);
 				} else if (opcion == 4){
 					//FUNCION 4
 				} else if (opcion == 5){
@@ -877,5 +1008,105 @@ void calculoHRmin(TEscuelasAguirre vectorEA[], int i) {
 	
 	printf("La humedad relativa mínima en las Escuelas Aguirre es de %d a las %d horas\n", vectorEA[menosHR].HR, vectorEA[menosHR].hora);
 	
+	return;
+}
+
+void fordTEA(TEscuelasAguirre vectorEA[], int contador){
+	int i, j, z; 
+	float aux1, aux2, aux3; 
+	printf("Los datos de temperatura ordenados de menor a mayor son:\n" ); 
+	for (i=0; i<contador; i++){
+		for(j=i+1; j<contador; j++){
+			if(vectorEA[i].T>vectorEA[j].T){
+				aux1=vectorEA[i].T;
+				aux2=vectorEA[i].HR;
+				aux3=vectorEA[i].hora;
+				vectorEA[i].T=vectorEA[j].T; 
+				vectorEA[i].HR=vectorEA[j].HR;
+				vectorEA[i].hora=vectorEA[j].hora;
+				vectorEA[j].T=aux1; 
+				vectorEA[j].HR=aux2;
+				vectorEA[j].hora=aux3;
+			}
+		}
+	} 
+	for(z=0; z<contador; z++) {
+		printf("Hora %d, Temperatura %.2f\n", vectorEA[z].hora, vectorEA[z].T);
+	}
+	return;
+}
+
+void fordT2EA(TEscuelasAguirre vectorEA[], int contador){
+	int i, j, z; 
+	float aux1, aux2, aux3; 
+	printf("Los datos de temperatura ordenados de mayor a menor son:\n" ); 
+	for (i=0; i<contador; i++){
+		for(j=i+1; j<contador; j++){
+			if(vectorEA[i].T<vectorEA[j].T){
+				aux1=vectorEA[i].T;
+				aux2=vectorEA[i].HR;
+				aux3=vectorEA[i].hora;
+				vectorEA[i].T=vectorEA[j].T; 
+				vectorEA[i].HR=vectorEA[j].HR;
+				vectorEA[i].hora=vectorEA[j].hora;
+				vectorEA[j].T=aux1; 
+				vectorEA[j].HR=aux2;
+				vectorEA[j].hora=aux3;
+			}
+		}
+	} 
+	for(z=0; z<contador; z++) {
+		printf("Hora %d, Temperatura %.2f\n", vectorEA[z].hora, vectorEA[z].T);
+	}
+	return;
+}
+
+void fordHREA(TEscuelasAguirre vectorEA[], int contador){
+	int i, j, z; 
+	float aux1, aux2, aux3; 
+	printf("Los datos de humedad ordenados de menor a mayor son:\n" ); 
+	for (i=0; i<contador; i++){
+		for(j=i+1; j<contador; j++){
+			if(vectorEA[i].HR>vectorEA[j].HR){
+				aux1=vectorEA[i].T;
+				aux2=vectorEA[i].HR;
+				aux3=vectorEA[i].hora;
+				vectorEA[i].T=vectorEA[j].T; 
+				vectorEA[i].HR=vectorEA[j].HR;
+				vectorEA[i].hora=vectorEA[j].hora;
+				vectorEA[j].T=aux1; 
+				vectorEA[j].HR=aux2;
+				vectorEA[j].hora=aux3;
+			}
+		}
+	} 
+	for(z=0; z<contador; z++) {
+		printf("Hora %d, Humedad %i\n", vectorEA[z].hora, vectorEA[z].HR);
+	}
+	return;
+}
+
+void fordHR2EA(TEscuelasAguirre vectorEA[], int contador){
+	int i, j, z; 
+	float aux1, aux2, aux3; 
+	printf("Los datos de humedad ordenados de mayor a menor son:\n" ); 
+	for (i=0; i<contador; i++){
+		for(j=i+1; j<contador; j++){
+			if(vectorEA[i].HR<vectorEA[j].HR){
+				aux1=vectorEA[i].T;
+				aux2=vectorEA[i].HR;
+				aux3=vectorEA[i].hora;
+				vectorEA[i].T=vectorEA[j].T; 
+				vectorEA[i].HR=vectorEA[j].HR;
+				vectorEA[i].hora=vectorEA[j].hora;
+				vectorEA[j].T=aux1; 
+				vectorEA[j].HR=aux2;
+				vectorEA[j].hora=aux3;
+			}
+		}
+	} 
+	for(z=0; z<contador; z++) {
+		printf("Hora %d, Humedad %.2f\n", vectorEA[z].hora, vectorEA[z].HR);
+	}
 	return;
 }
