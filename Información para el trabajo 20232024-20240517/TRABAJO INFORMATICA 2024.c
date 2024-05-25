@@ -56,6 +56,8 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador);
 void fordT2EA(TEscuelasAguirre vectorEA[], int contador);
 void fordHR2EA(TEscuelasAguirre vectorEA[], int contador);
 void fordHREA(TEscuelasAguirre vectorEA[], int contador);
+void fordMA(TMendezAlvaro vectorMA[], int contador);
+void ford2MA(TMendezAlvaro vectorMA[], int contador);
 
 int main() {
     setlocale(LC_CTYPE, "spanish"); // para que el compilador reconozca las ñ y tildes 
@@ -127,6 +129,36 @@ int main() {
     		
 				} else if (opcion == 3){
 					//FUNCION 3
+					int Opcion3;
+					do { 
+    				printf("\nElige una opción que desee\n");
+    				printf("\t1: Valor máximo entre ficheros \n");
+    				printf("\t2: Valor mínimo entre ficheros\n");
+    				printf("\t3: Ordenar de menor a mayor \n");
+    				printf("\t4: Ordenar de mayor a menor \n");
+    				printf("\t5: Salir de comparaciones.\n");
+    				scanf("%d", &Opcion3);
+    				switch(Opcion3){
+						case(1): {
+						
+							break;
+						}
+						case(2): {
+						
+							break;
+						}
+						case(3):{
+							fordMA(vectorMA, contador);
+
+							break;
+						}
+						case(4): {
+							ford2MA(vectorMA, contador);
+							
+							break;
+						}
+					}
+    				} while (Opcion3 != 5);
 				} else if (opcion == 4){
 					//FUNCION 4
 				} else if (opcion == 5){
@@ -191,6 +223,36 @@ int main() {
     				} while (Opcion != 5);
 				} else if (opcion == 3){
 					//FUNCION 3
+					int Opcion3;
+					do { 
+    				printf("\nElige una opción que desee\n");
+    				printf("\t1: Valor máximo entre ficheros \n");
+    				printf("\t2: Valor mínimo entre ficheros\n");
+    				printf("\t3: Ordenar de menor a mayor \n");
+    				printf("\t4: Ordenar de mayor a menor \n");
+    				printf("\t5: Salir de comparaciones.\n");
+    				scanf("%d", &Opcion3);
+    				switch(Opcion3){
+						case(1): {
+						
+							break;
+						}
+						case(2): {
+						
+							break;
+						}
+						case(3):{
+							fordMA(vectorMA, contador);
+
+							break;
+						}
+						case(4): {
+							ford2MA(vectorMA, contador);
+							
+							break;
+						}
+					}
+    				} while (Opcion3 != 5);
 				} else if (opcion == 4){
 					//FUNCION 4
 				} else if (opcion == 5){
@@ -255,6 +317,36 @@ int main() {
     				} while (Opcion != 5);
 				} else if (opcion == 3){
 					//FUNCION 3
+					int Opcion3;
+					do { 
+    				printf("\nElige una opción que desee\n");
+    				printf("\t1: Valor máximo entre ficheros \n");
+    				printf("\t2: Valor mínimo entre ficheros\n");
+    				printf("\t3: Ordenar de menor a mayor \n");
+    				printf("\t4: Ordenar de mayor a menor \n");
+    				printf("\t5: Salir de comparaciones.\n");
+    				scanf("%d", &Opcion3);
+    				switch(Opcion3){
+						case(1): {
+						
+							break;
+						}
+						case(2): {
+						
+							break;
+						}
+						case(3):{
+							fordMA(vectorMA, contador);
+
+							break;
+						}
+						case(4): {
+							ford2MA(vectorMA, contador);
+							
+							break;
+						}
+					}
+    				} while (Opcion3 != 5);
 				} else if (opcion == 4){
 					//FUNCION 4
 				} else if (opcion == 5){
@@ -1107,6 +1199,154 @@ void fordHR2EA(TEscuelasAguirre vectorEA[], int contador){
 	} 
 	for(z=0; z<contador; z++) {
 		printf("Hora %d, Humedad %.2f\n", vectorEA[z].hora, vectorEA[z].HR);
+	}
+	return;
+}
+
+void fordMA(TMendezAlvaro vectorMA[], int contador){
+	int i, j, z; 
+	float aux1, aux2, aux3, aux4; 
+	char aux5;
+	printf("Los datos de NO2 ordenados de menor a mayor son:\n" ); 
+	for (i=0; i<contador; i++){
+		for(j=i+1; j<contador; j++){
+			if(vectorMA[i].NO2>vectorMA[j].NO2){
+				aux1=vectorMA[i].NO2;
+				aux2=vectorMA[i].PM25;
+				aux3=vectorMA[i].hora;
+				aux4=vectorMA[i].PM10;
+				vectorMA[i].NO2=vectorMA[j].NO2; 
+				vectorMA[i].PM25=vectorMA[j].PM25;
+				vectorMA[i].hora=vectorMA[j].hora;
+				vectorMA[i].PM10=vectorMA[j].PM10;
+				vectorMA[j].NO2=aux1; 
+				vectorMA[j].PM25=aux2;
+				vectorMA[j].hora=aux3;
+				vectorMA[j].PM10=aux4;
+			}
+		}
+	}
+	for(z=0; z<contador; z++) {
+		printf("Hora %i, NO2 %i\n", vectorMA[z].hora, vectorMA[z].NO2);
+	}
+	printf("Los datos de PM2.5 ordenados de menor a mayor son:\n" ); 
+	for (i=0; i<contador; i++){
+		for(j=i+1; j<contador; j++){
+			if(vectorMA[i].PM25>vectorMA[j].PM25){
+				aux1=vectorMA[i].NO2;
+				aux2=vectorMA[i].PM25;
+				aux3=vectorMA[i].hora;
+				aux4=vectorMA[i].PM10;
+				vectorMA[i].NO2=vectorMA[j].NO2; 
+				vectorMA[i].PM25=vectorMA[j].PM25;
+				vectorMA[i].hora=vectorMA[j].hora;
+				vectorMA[i].PM10=vectorMA[j].PM10;
+				vectorMA[j].NO2=aux1; 
+				vectorMA[j].PM25=aux2;
+				vectorMA[j].hora=aux3;
+				vectorMA[j].PM10=aux4;
+			}
+		}
+	}
+	for(z=0; z<contador; z++) {
+		printf("Hora %i, PM2.5 %.2f\n", vectorMA[z].hora, vectorMA[z].PM10);
+	}
+	printf("Los datos de PM10 ordenados de menor a mayor son:\n" ); 
+	for (i=0; i<contador; i++){
+		for(j=i+1; j<contador; j++){
+			if(vectorMA[i].PM10>vectorMA[j].PM10){
+				aux1=vectorMA[i].NO2;
+				aux2=vectorMA[i].PM25;
+				aux3=vectorMA[i].hora;
+				aux4=vectorMA[i].PM10;
+				vectorMA[i].NO2=vectorMA[j].NO2; 
+				vectorMA[i].PM25=vectorMA[j].PM25;
+				vectorMA[i].hora=vectorMA[j].hora;
+				vectorMA[i].PM10=vectorMA[j].PM10;
+				vectorMA[j].NO2=aux1; 
+				vectorMA[j].PM25=aux2;
+				vectorMA[j].hora=aux3;
+				vectorMA[j].PM10=aux4;
+			}
+		}
+	}
+	
+	for(z=0; z<contador; z++) {
+		printf("Hora %i, PM10 %.2f\n", vectorMA[z].hora, vectorMA[z].PM10);
+	}
+	return;
+}
+
+void ford2MA(TMendezAlvaro vectorMA[], int contador){
+	int i, j, z; 
+	float aux1, aux2, aux3, aux4; 
+	char aux5;
+	printf("Los datos de NO2 ordenados de mayor a menor son:\n" ); 
+	for (i=0; i<contador; i++){
+		for(j=i+1; j<contador; j++){
+			if(vectorMA[i].NO2<vectorMA[j].NO2){
+				aux1=vectorMA[i].NO2;
+				aux2=vectorMA[i].PM25;
+				aux3=vectorMA[i].hora;
+				aux4=vectorMA[i].PM10;
+				vectorMA[i].NO2=vectorMA[j].NO2; 
+				vectorMA[i].PM25=vectorMA[j].PM25;
+				vectorMA[i].hora=vectorMA[j].hora;
+				vectorMA[i].PM10=vectorMA[j].PM10;
+				vectorMA[j].NO2=aux1; 
+				vectorMA[j].PM25=aux2;
+				vectorMA[j].hora=aux3;
+				vectorMA[j].PM10=aux4;
+			}
+		}
+	}
+	for(z=0; z<contador; z++) {
+		printf("Hora %i, NO2 %i\n", vectorMA[z].hora, vectorMA[z].NO2);
+	}
+	printf("Los datos de PM2.5 ordenados de mayor a menor son:\n" ); 
+	for (i=0; i<contador; i++){
+		for(j=i+1; j<contador; j++){
+			if(vectorMA[i].PM25<vectorMA[j].PM25){
+				aux1=vectorMA[i].NO2;
+				aux2=vectorMA[i].PM25;
+				aux3=vectorMA[i].hora;
+				aux4=vectorMA[i].PM10;
+				vectorMA[i].NO2=vectorMA[j].NO2; 
+				vectorMA[i].PM25=vectorMA[j].PM25;
+				vectorMA[i].hora=vectorMA[j].hora;
+				vectorMA[i].PM10=vectorMA[j].PM10;
+				vectorMA[j].NO2=aux1; 
+				vectorMA[j].PM25=aux2;
+				vectorMA[j].hora=aux3;
+				vectorMA[j].PM10=aux4;
+			}
+		}
+	}
+	for(z=0; z<contador; z++) {
+		printf("Hora %i, PM2.5 %.2f\n", vectorMA[z].hora, vectorMA[z].PM10);
+	}
+	printf("Los datos de PM10 ordenados de mayor a menor son:\n" ); 
+	for (i=0; i<contador; i++){
+		for(j=i+1; j<contador; j++){
+			if(vectorMA[i].PM10<vectorMA[j].PM10){
+				aux1=vectorMA[i].NO2;
+				aux2=vectorMA[i].PM25;
+				aux3=vectorMA[i].hora;
+				aux4=vectorMA[i].PM10;
+				vectorMA[i].NO2=vectorMA[j].NO2; 
+				vectorMA[i].PM25=vectorMA[j].PM25;
+				vectorMA[i].hora=vectorMA[j].hora;
+				vectorMA[i].PM10=vectorMA[j].PM10;
+				vectorMA[j].NO2=aux1; 
+				vectorMA[j].PM25=aux2;
+				vectorMA[j].hora=aux3;
+				vectorMA[j].PM10=aux4;
+			}
+		}
+	}
+	
+	for(z=0; z<contador; z++) {
+		printf("Hora %i, PM10 %.2f\n", vectorMA[z].hora, vectorMA[z].PM10);
 	}
 	return;
 }
