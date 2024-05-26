@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <math.h>
-#include <string.h>
 #include <locale.h>
 
 
@@ -51,6 +50,8 @@ void calculoHRmax(TEscuelasAguirre vectorEA[], int contador);
 void calculoTmin(TEscuelasAguirre vectorEA[], int contador);
 void calculoHRmin(TEscuelasAguirre vectorEA[], int contador);
 
+int ModaArchivo1( TMendezAlvaro vectorMA[], int contador);
+
 //FUNCIONES COMPARACIÓN
 void fordTEA(TEscuelasAguirre vectorEA[], int contador);
 void fordT2EA(TEscuelasAguirre vectorEA[], int contador);
@@ -96,9 +97,10 @@ int main() {
     				printf("\nElige una opción que desee\n");
     				printf("\t1: Media \n");
     				printf("\t2: Mediana \n");
-    				printf("\t3: Mínimos valores \n");
-    				printf("\t4: Máximos valores \n");
-    				printf("\t5: Salir de estadísticas.\n");
+    				printf("\t3: Moda \n");
+    				printf("\t4: Mínimos valores \n");
+    				printf("\t5: Máximos valores \n");
+    				printf("\t6: Salir de estadísticas.\n");
     				scanf("%d", &Opcion);
 					//otro switch case dentro
 					switch(Opcion){
@@ -112,12 +114,17 @@ int main() {
 							break;
 						}
 						case(3):{
+							int valor_repetidoNO21 = ModaArchivo1(vectorMA, contador);
+							printf("El valor más repetido de NO2 es: %i", valor_repetidoNO21);
+							break;
+						}
+						case(4):{
 							calculoNO2min(vectorMA, contador);
 							calculoPM25min(vectorMA, contador);
 							calculoPM10min(vectorMA, contador);
 							break;
 						}
-						case(4): {
+						case(5): {
 							
 							calculoNO2max(vectorMA, contador);
 							calculoPM25max(vectorMA, contador);
@@ -745,7 +752,7 @@ int mostrarArchivo2(TMendezAlvaro vectorMA[]) {
 		i++;
 	}
 	
-	contador = 1;
+	contador = i;
 	fclose(fichero);
 	
 	return contador;
@@ -894,459 +901,481 @@ void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 	return;
 }
 
-void calculomediasMA(TMendezAlvaro vectorMA[], int contador){
-    float mediaNO2 = 0.0, mediaPM25 = 0.0, mediaPM10 = 0.0;
-	
-	int m;
-	for (m = 0; m < contador; m++) {
-		mediaNO2 += vectorMA[m].NO2;
-		mediaPM25 += vectorMA[m].PM25;
-		mediaPM10 += vectorMA[m].PM10;
-	}
-	mediaNO2 /=  contador;
-	mediaPM25 /=  contador;
-	mediaPM10 /= contador;
-	
-	printf("Concentración media de NO2 en el aire: %.3f\n", mediaNO2);
-	printf("Concentración media de PM 2.5 en el aire: %.3f\n", mediaPM25);
-	printf("Concentración media de PM 10 en el aire: %.3f\n", mediaPM10);			
-	
-	return;
-}
-
-void calculoNO2max(TMendezAlvaro vectorMA[], int i) {
-	int maximoNO2= vectorMA[0].NO2;
-	int masNO2 = 0;
-	
-	int h;
-	for(h=1; h<i; h++){
-		if(vectorMA[h].NO2 > maximoNO2){
-			maximoNO2 = vectorMA[h].NO2;
-			masNO2 = h;
+//ESTADISTICAS
+		void calculomediasMA(TMendezAlvaro vectorMA[], int contador){
+		    float mediaNO2 = 0.0, mediaPM25 = 0.0, mediaPM10 = 0.0;
+			
+			int m;
+			for (m = 0; m < contador; m++) {
+				mediaNO2 += vectorMA[m].NO2;
+				mediaPM25 += vectorMA[m].PM25;
+				mediaPM10 += vectorMA[m].PM10;
+			}
+			mediaNO2 /=  contador;
+			mediaPM25 /=  contador;
+			mediaPM10 /= contador;
+			
+			printf("Concentración media de NO2 en el aire: %.3f\n", mediaNO2);
+			printf("Concentración media de PM 2.5 en el aire: %.3f\n", mediaPM25);
+			printf("Concentración media de PM 10 en el aire: %.3f\n", mediaPM10);			
+			
+			return;
 		}
-	}
-	
-	printf("La concentración máxima de NO2 es de %d a las %d horas\n", vectorMA[masNO2].NO2, vectorMA[masNO2].hora);
-	
-	return;
-}
-
-void calculoPM25max(TMendezAlvaro vectorMA[], int i) {
-	float maximoPM25= vectorMA[0].PM25;
-	int masPM25 = 0;
-	
-	int t;
-	for(t=1; t<i; t++){
-		if(vectorMA[t].PM25 > maximoPM25){
-			maximoPM25 = vectorMA[t].PM25;
-			masPM25 = t;
+		
+		void calculoNO2max(TMendezAlvaro vectorMA[], int i) {
+			int maximoNO2= vectorMA[0].NO2;
+			int masNO2 = 0;
+			
+			int h;
+			for(h=1; h<i; h++){
+				if(vectorMA[h].NO2 > maximoNO2){
+					maximoNO2 = vectorMA[h].NO2;
+					masNO2 = h;
+				}
+			}
+			
+			printf("La concentración máxima de NO2 es de %d a las %d horas\n", vectorMA[masNO2].NO2, vectorMA[masNO2].hora);
+			
+			return;
 		}
-	}
-	
-	printf("La concentración máxima de PM 2,5 es de %.3f a las %d horas\n", vectorMA[masPM25].PM25, vectorMA[masPM25].hora);
-	
-	return;
-}
-
-void calculoPM10max(TMendezAlvaro vectorMA[], int i) {
-	float maximoPM10 = vectorMA[0].PM10;
-	int masPM10 = 0;
-	
-	int m;
-	for(m=1; m<i; m++){
-		if(vectorMA[m].PM10 > maximoPM10){
-			maximoPM10 = vectorMA[m].PM10;
-			masPM10 = m;
+		
+		void calculoPM25max(TMendezAlvaro vectorMA[], int i) {
+			float maximoPM25= vectorMA[0].PM25;
+			int masPM25 = 0;
+			
+			int t;
+			for(t=1; t<i; t++){
+				if(vectorMA[t].PM25 > maximoPM25){
+					maximoPM25 = vectorMA[t].PM25;
+					masPM25 = t;
+				}
+			}
+			
+			printf("La concentración máxima de PM 2,5 es de %.3f a las %d horas\n", vectorMA[masPM25].PM25, vectorMA[masPM25].hora);
+			
+			return;
 		}
-	}
-	
-	printf("La concentración máxima de PM 10 es de %.3f a las %d horas\n", vectorMA[masPM10].PM10, vectorMA[masPM10].hora);
-	
-	return;
-}
-
-void calculoNO2min(TMendezAlvaro vectorMA[], int i) {
-	int minimoNO2= vectorMA[0].NO2;
-	int menosNO2 = 0;
-	
-	int r;
-	for(r=1; r<i; r++){
-		if(vectorMA[r].NO2 < minimoNO2){
-			minimoNO2 = vectorMA[r].NO2;
-			menosNO2 = r;
+		
+		void calculoPM10max(TMendezAlvaro vectorMA[], int i) {
+			float maximoPM10 = vectorMA[0].PM10;
+			int masPM10 = 0;
+			
+			int m;
+			for(m=1; m<i; m++){
+				if(vectorMA[m].PM10 > maximoPM10){
+					maximoPM10 = vectorMA[m].PM10;
+					masPM10 = m;
+				}
+			}
+			
+			printf("La concentración máxima de PM 10 es de %.3f a las %d horas\n", vectorMA[masPM10].PM10, vectorMA[masPM10].hora);
+			
+			return;
 		}
-	}
-	
-	printf("La concentración mínima de NO2 es de %d a las %d horas\n", vectorMA[menosNO2].NO2, vectorMA[menosNO2].hora);
-	
-	return;
-}
-
-void calculoPM25min(TMendezAlvaro vectorMA[], int i) {
-	float minimoPM25= vectorMA[0].PM25;
-	int menosPM25 = 0;
-	
-	int x;
-	for(x=1; x<i; x++){
-		if(vectorMA[x].PM25 < minimoPM25){
-			minimoPM25 = vectorMA[x].PM25;
-			menosPM25 = x;
+		
+		void calculoNO2min(TMendezAlvaro vectorMA[], int i) {
+			int minimoNO2= vectorMA[0].NO2;
+			int menosNO2 = 0;
+			
+			int r;
+			for(r=1; r<i; r++){
+				if(vectorMA[r].NO2 < minimoNO2){
+					minimoNO2 = vectorMA[r].NO2;
+					menosNO2 = r;
+				}
+			}
+			
+			printf("La concentración mínima de NO2 es de %d a las %d horas\n", vectorMA[menosNO2].NO2, vectorMA[menosNO2].hora);
+			
+			return;
 		}
-	}
-	
-	printf("La concentración mínima de PM 2,5 es de %.3f a las %d horas\n", vectorMA[menosPM25].PM25, vectorMA[menosPM25].hora);
-	
-	return;
-}
-
-void calculoPM10min(TMendezAlvaro vectorMA[], int i) {
-	float minimoPM10= vectorMA[0].PM10;
-	int menosPM10 = 0;
-	
-	int d;
-	for(d=1; d<i; d++){
-		if(vectorMA[d].PM10 < minimoPM10){
-			minimoPM10 = vectorMA[d].PM10;
-			menosPM10 = d;
+		
+		void calculoPM25min(TMendezAlvaro vectorMA[], int i) {
+			float minimoPM25= vectorMA[0].PM25;
+			int menosPM25 = 0;
+			
+			int x;
+			for(x=1; x<i; x++){
+				if(vectorMA[x].PM25 < minimoPM25){
+					minimoPM25 = vectorMA[x].PM25;
+					menosPM25 = x;
+				}
+			}
+			
+			printf("La concentración mínima de PM 2,5 es de %.3f a las %d horas\n", vectorMA[menosPM25].PM25, vectorMA[menosPM25].hora);
+			
+			return;
 		}
-	}
-	
-	printf("La concentración mínima de PM 10 es de %.3f a las %d horas\n", vectorMA[menosPM10].PM10, vectorMA[menosPM10].hora);
-	
-	return;
-}
-
-void calculomediasEA(TEscuelasAguirre vectorEA[], int contador){
-    float mediaT = 0.0, mediaHR = 0.0;
-	
-	int n;
-	for (n = 0; n < contador; n++) {
-		mediaT += vectorEA[n].T;
-		mediaHR += vectorEA[n].HR;
-	}
-	
-	mediaT /=  contador;
-	mediaHR /=  contador;
-	
-	
-	printf("Temperatura media en las Escuelas Aguirre: %.2f\n", mediaT);
-	printf("Humedad media en las Escuelas Aguirre: %.2f\n", mediaHR);
-	
-	return;
-}
-
-void calculoTmax(TEscuelasAguirre vectorEA[], int i) {
-	float maximoT= vectorEA[0].T;
-	int masT = 0;
-	
-	int w;
-	for(w=1; w<i; w++){
-		if(vectorEA[w].T > maximoT){
-			maximoT = vectorEA[w].T;
-			masT = w;
+		
+		void calculoPM10min(TMendezAlvaro vectorMA[], int i) {
+			float minimoPM10= vectorMA[0].PM10;
+			int menosPM10 = 0;
+			
+			int d;
+			for(d=1; d<i; d++){
+				if(vectorMA[d].PM10 < minimoPM10){
+					minimoPM10 = vectorMA[d].PM10;
+					menosPM10 = d;
+				}
+			}
+			
+			printf("La concentración mínima de PM 10 es de %.3f a las %d horas\n", vectorMA[menosPM10].PM10, vectorMA[menosPM10].hora);
+			
+			return;
 		}
-	}
-	
-	printf("La temperatura máxima en las Escuelas Aguirre es de %.2f a las %d horas\n", vectorEA[masT].T, vectorEA[masT].hora);
-	
-	return;
-}
-
-void calculoHRmax(TEscuelasAguirre vectorEA[], int i) {
-	int maximoHR= vectorEA[0].HR;
-	int masHR = 0;
-	
-	int p;
-	for(p=1; p<i; p++){
-		if(vectorEA[p].HR > maximoHR){
-			maximoHR = vectorEA[p].HR;
-			masHR = p;
+		
+		void calculomediasEA(TEscuelasAguirre vectorEA[], int contador){
+		    float mediaT = 0.0, mediaHR = 0.0;
+			
+			int n;
+			for (n = 0; n < contador; n++) {
+				mediaT += vectorEA[n].T;
+				mediaHR += vectorEA[n].HR;
+			}
+			
+			mediaT /=  contador;
+			mediaHR /=  contador;
+			
+			
+			printf("Temperatura media en las Escuelas Aguirre: %.2f\n", mediaT);
+			printf("Humedad media en las Escuelas Aguirre: %.2f\n", mediaHR);
+			
+			return;
 		}
-	}
-	
-	printf("La humedad relativa máxima en las Escuelas Aguirre es de %d a las %d horas\n", vectorEA[masHR].HR, vectorEA[masHR].hora);
-	
-	return;
-}
-
-void calculoTmin(TEscuelasAguirre vectorEA[], int i) {
-	float minimoT= vectorEA[0].T;
-	int menosT = 0;
-	
-	int n;
-	for(n=1; n<i; n++){
-		if(vectorEA[n].T < minimoT){
-			minimoT = vectorEA[n].T;
-			menosT = n;
+		
+		void calculoTmax(TEscuelasAguirre vectorEA[], int i) {
+			float maximoT= vectorEA[0].T;
+			int masT = 0;
+			
+			int w;
+			for(w=1; w<i; w++){
+				if(vectorEA[w].T > maximoT){
+					maximoT = vectorEA[w].T;
+					masT = w;
+				}
+			}
+			
+			printf("La temperatura máxima en las Escuelas Aguirre es de %.2f a las %d horas\n", vectorEA[masT].T, vectorEA[masT].hora);
+			
+			return;
 		}
-	}
-	
-	printf("La temperatura mínima en las Escuelas Aguirre es de %.1f a las %d horas\n", vectorEA[menosT].T, vectorEA[menosT].hora);
-	
-	return;
-}
-
-void calculoHRmin(TEscuelasAguirre vectorEA[], int i) {
-	int minimoHR= vectorEA[0].HR;
-	int menosHR = 0;
-	
-	int f;
-	for(f=1; f<i; f++){
-		if(vectorEA[f].HR < minimoHR){
-			minimoHR = vectorEA[f].HR;
-			menosHR = f;
+		
+		void calculoHRmax(TEscuelasAguirre vectorEA[], int i) {
+			int maximoHR= vectorEA[0].HR;
+			int masHR = 0;
+			
+			int p;
+			for(p=1; p<i; p++){
+				if(vectorEA[p].HR > maximoHR){
+					maximoHR = vectorEA[p].HR;
+					masHR = p;
+				}
+			}
+			
+			printf("La humedad relativa máxima en las Escuelas Aguirre es de %d a las %d horas\n", vectorEA[masHR].HR, vectorEA[masHR].hora);
+			
+			return;
 		}
-	}
-	
-	printf("La humedad relativa mínima en las Escuelas Aguirre es de %d a las %d horas\n", vectorEA[menosHR].HR, vectorEA[menosHR].hora);
-	
-	return;
-}
-
+		
+		void calculoTmin(TEscuelasAguirre vectorEA[], int i) {
+			float minimoT= vectorEA[0].T;
+			int menosT = 0;
+			
+			int n;
+			for(n=1; n<i; n++){
+				if(vectorEA[n].T < minimoT){
+					minimoT = vectorEA[n].T;
+					menosT = n;
+				}
+			}
+			
+			printf("La temperatura mínima en las Escuelas Aguirre es de %.1f a las %d horas\n", vectorEA[menosT].T, vectorEA[menosT].hora);
+			
+			return;
+		}
+		
+		void calculoHRmin(TEscuelasAguirre vectorEA[], int i) {
+			int minimoHR= vectorEA[0].HR;
+			int menosHR = 0;
+			
+			int f;
+			for(f=1; f<i; f++){
+				if(vectorEA[f].HR < minimoHR){
+					minimoHR = vectorEA[f].HR;
+					menosHR = f;
+				}
+			}
+			
+			printf("La humedad relativa mínima en las Escuelas Aguirre es de %d a las %d horas\n", vectorEA[menosHR].HR, vectorEA[menosHR].hora);
+			
+			return;
+		}
+		
+		int ModaArchivo1(TMendezAlvaro vectorMA[], int contador) {
+				    int i, j, cont1, cont2 = 0;
+				   	int aux=0;
+					
+				    for (i = 0; i < contador; i++) {
+				    	cont1 = 0;
+				        for (j = 0; j < contador; j++) {
+				            if (vectorMA[i].NO2 == vectorMA[j].NO2 && i != j) {
+				                cont1++;
+				            }
+				        }
+				
+				        if (cont1 > cont2) {
+				            cont2 = cont1;
+				            aux = vectorMA[i].NO2;
+				        }
+				    }
+				    return aux;  
+				}
+				
+//COMPARACION
 void fordTEA(TEscuelasAguirre vectorEA[], int contador){
-	int i, j, z; 
-	float aux1, aux2, aux3; 
-	printf("Los datos de temperatura ordenados de menor a mayor son:\n" ); 
-	for (i=0; i<contador; i++){
-		for(j=i+1; j<contador; j++){
-			if(vectorEA[i].T>vectorEA[j].T){
-				aux1=vectorEA[i].T;
-				aux2=vectorEA[i].HR;
-				aux3=vectorEA[i].hora;
-				vectorEA[i].T=vectorEA[j].T; 
-				vectorEA[i].HR=vectorEA[j].HR;
-				vectorEA[i].hora=vectorEA[j].hora;
-				vectorEA[j].T=aux1; 
-				vectorEA[j].HR=aux2;
-				vectorEA[j].hora=aux3;
+			int i, j, z; 
+			float aux1, aux2, aux3; 
+			printf("Los datos de temperatura ordenados de menor a mayor son:\n" ); 
+			for (i=0; i<contador; i++){
+				for(j=i+1; j<contador; j++){
+					if(vectorEA[i].T>vectorEA[j].T){
+						aux1=vectorEA[i].T;
+						aux2=vectorEA[i].HR;
+						aux3=vectorEA[i].hora;
+						vectorEA[i].T=vectorEA[j].T; 
+						vectorEA[i].HR=vectorEA[j].HR;
+						vectorEA[i].hora=vectorEA[j].hora;
+						vectorEA[j].T=aux1; 
+						vectorEA[j].HR=aux2;
+						vectorEA[j].hora=aux3;
+					}
+				}
+			} 
+			for(z=0; z<contador; z++) {
+				printf("Hora %d, Temperatura %.2f\n", vectorEA[z].hora, vectorEA[z].T);
 			}
+			return;
 		}
-	} 
-	for(z=0; z<contador; z++) {
-		printf("Hora %d, Temperatura %.2f\n", vectorEA[z].hora, vectorEA[z].T);
-	}
-	return;
-}
-
-void fordT2EA(TEscuelasAguirre vectorEA[], int contador){
-	int i, j, z; 
-	float aux1, aux2, aux3; 
-	printf("Los datos de temperatura ordenados de mayor a menor son:\n" ); 
-	for (i=0; i<contador; i++){
-		for(j=i+1; j<contador; j++){
-			if(vectorEA[i].T<vectorEA[j].T){
-				aux1=vectorEA[i].T;
-				aux2=vectorEA[i].HR;
-				aux3=vectorEA[i].hora;
-				vectorEA[i].T=vectorEA[j].T; 
-				vectorEA[i].HR=vectorEA[j].HR;
-				vectorEA[i].hora=vectorEA[j].hora;
-				vectorEA[j].T=aux1; 
-				vectorEA[j].HR=aux2;
-				vectorEA[j].hora=aux3;
+		
+		void fordT2EA(TEscuelasAguirre vectorEA[], int contador){
+			int i, j, z; 
+			float aux1, aux2, aux3; 
+			printf("Los datos de temperatura ordenados de mayor a menor son:\n" ); 
+			for (i=0; i<contador; i++){
+				for(j=i+1; j<contador; j++){
+					if(vectorEA[i].T<vectorEA[j].T){
+						aux1=vectorEA[i].T;
+						aux2=vectorEA[i].HR;
+						aux3=vectorEA[i].hora;
+						vectorEA[i].T=vectorEA[j].T; 
+						vectorEA[i].HR=vectorEA[j].HR;
+						vectorEA[i].hora=vectorEA[j].hora;
+						vectorEA[j].T=aux1; 
+						vectorEA[j].HR=aux2;
+						vectorEA[j].hora=aux3;
+					}
+				}
+			} 
+			for(z=0; z<contador; z++) {
+				printf("Hora %d, Temperatura %.2f\n", vectorEA[z].hora, vectorEA[z].T);
 			}
+			return;
 		}
-	} 
-	for(z=0; z<contador; z++) {
-		printf("Hora %d, Temperatura %.2f\n", vectorEA[z].hora, vectorEA[z].T);
-	}
-	return;
-}
-
-void fordHREA(TEscuelasAguirre vectorEA[], int contador){
-	int i, j, z; 
-	float aux1, aux2, aux3; 
-	printf("Los datos de humedad ordenados de menor a mayor son:\n" ); 
-	for (i=0; i<contador; i++){
-		for(j=i+1; j<contador; j++){
-			if(vectorEA[i].HR>vectorEA[j].HR){
-				aux1=vectorEA[i].T;
-				aux2=vectorEA[i].HR;
-				aux3=vectorEA[i].hora;
-				vectorEA[i].T=vectorEA[j].T; 
-				vectorEA[i].HR=vectorEA[j].HR;
-				vectorEA[i].hora=vectorEA[j].hora;
-				vectorEA[j].T=aux1; 
-				vectorEA[j].HR=aux2;
-				vectorEA[j].hora=aux3;
+		
+		void fordHREA(TEscuelasAguirre vectorEA[], int contador){
+			int i, j, z; 
+			float aux1, aux2, aux3; 
+			printf("Los datos de humedad ordenados de menor a mayor son:\n" ); 
+			for (i=0; i<contador; i++){
+				for(j=i+1; j<contador; j++){
+					if(vectorEA[i].HR>vectorEA[j].HR){
+						aux1=vectorEA[i].T;
+						aux2=vectorEA[i].HR;
+						aux3=vectorEA[i].hora;
+						vectorEA[i].T=vectorEA[j].T; 
+						vectorEA[i].HR=vectorEA[j].HR;
+						vectorEA[i].hora=vectorEA[j].hora;
+						vectorEA[j].T=aux1; 
+						vectorEA[j].HR=aux2;
+						vectorEA[j].hora=aux3;
+					}
+				}
+			} 
+			for(z=0; z<contador; z++) {
+				printf("Hora %d, Humedad %i\n", vectorEA[z].hora, vectorEA[z].HR);
 			}
+			return;
 		}
-	} 
-	for(z=0; z<contador; z++) {
-		printf("Hora %d, Humedad %i\n", vectorEA[z].hora, vectorEA[z].HR);
-	}
-	return;
-}
-
-void fordHR2EA(TEscuelasAguirre vectorEA[], int contador){
-	int i, j, z; 
-	float aux1, aux2, aux3; 
-	printf("Los datos de humedad ordenados de mayor a menor son:\n" ); 
-	for (i=0; i<contador; i++){
-		for(j=i+1; j<contador; j++){
-			if(vectorEA[i].HR<vectorEA[j].HR){
-				aux1=vectorEA[i].T;
-				aux2=vectorEA[i].HR;
-				aux3=vectorEA[i].hora;
-				vectorEA[i].T=vectorEA[j].T; 
-				vectorEA[i].HR=vectorEA[j].HR;
-				vectorEA[i].hora=vectorEA[j].hora;
-				vectorEA[j].T=aux1; 
-				vectorEA[j].HR=aux2;
-				vectorEA[j].hora=aux3;
+		
+		void fordHR2EA(TEscuelasAguirre vectorEA[], int contador){
+			int i, j, z; 
+			float aux1, aux2, aux3; 
+			printf("Los datos de humedad ordenados de mayor a menor son:\n" ); 
+			for (i=0; i<contador; i++){
+				for(j=i+1; j<contador; j++){
+					if(vectorEA[i].HR<vectorEA[j].HR){
+						aux1=vectorEA[i].T;
+						aux2=vectorEA[i].HR;
+						aux3=vectorEA[i].hora;
+						vectorEA[i].T=vectorEA[j].T; 
+						vectorEA[i].HR=vectorEA[j].HR;
+						vectorEA[i].hora=vectorEA[j].hora;
+						vectorEA[j].T=aux1; 
+						vectorEA[j].HR=aux2;
+						vectorEA[j].hora=aux3;
+					}
+				}
+			} 
+			for(z=0; z<contador; z++) {
+				printf("Hora %d, Humedad %.2f\n", vectorEA[z].hora, vectorEA[z].HR);
 			}
+			return;
 		}
-	} 
-	for(z=0; z<contador; z++) {
-		printf("Hora %d, Humedad %.2f\n", vectorEA[z].hora, vectorEA[z].HR);
-	}
-	return;
-}
-
-void fordMA(TMendezAlvaro vectorMA[], int contador){
-	int i, j, z; 
-	float aux1, aux2, aux3, aux4; 
-	char aux5;
-	printf("Los datos de NO2 ordenados de menor a mayor son:\n" ); 
-	for (i=0; i<contador; i++){
-		for(j=i+1; j<contador; j++){
-			if(vectorMA[i].NO2>vectorMA[j].NO2){
-				aux1=vectorMA[i].NO2;
-				aux2=vectorMA[i].PM25;
-				aux3=vectorMA[i].hora;
-				aux4=vectorMA[i].PM10;
-				vectorMA[i].NO2=vectorMA[j].NO2; 
-				vectorMA[i].PM25=vectorMA[j].PM25;
-				vectorMA[i].hora=vectorMA[j].hora;
-				vectorMA[i].PM10=vectorMA[j].PM10;
-				vectorMA[j].NO2=aux1; 
-				vectorMA[j].PM25=aux2;
-				vectorMA[j].hora=aux3;
-				vectorMA[j].PM10=aux4;
+		
+		void fordMA(TMendezAlvaro vectorMA[], int contador){
+			int i, j, z; 
+			float aux1, aux2, aux3, aux4; 
+			char aux5;
+			printf("Los datos de NO2 ordenados de menor a mayor son:\n" ); 
+			for (i=0; i<contador; i++){
+				for(j=i+1; j<contador; j++){
+					if(vectorMA[i].NO2>vectorMA[j].NO2){
+						aux1=vectorMA[i].NO2;
+						aux2=vectorMA[i].PM25;
+						aux3=vectorMA[i].hora;
+						aux4=vectorMA[i].PM10;
+						vectorMA[i].NO2=vectorMA[j].NO2; 
+						vectorMA[i].PM25=vectorMA[j].PM25;
+						vectorMA[i].hora=vectorMA[j].hora;
+						vectorMA[i].PM10=vectorMA[j].PM10;
+						vectorMA[j].NO2=aux1; 
+						vectorMA[j].PM25=aux2;
+						vectorMA[j].hora=aux3;
+						vectorMA[j].PM10=aux4;
+					}
+				}
 			}
-		}
-	}
-	for(z=0; z<contador; z++) {
-		printf("Hora %i, NO2 %i\n", vectorMA[z].hora, vectorMA[z].NO2);
-	}
-	printf("Los datos de PM2.5 ordenados de menor a mayor son:\n" ); 
-	for (i=0; i<contador; i++){
-		for(j=i+1; j<contador; j++){
-			if(vectorMA[i].PM25>vectorMA[j].PM25){
-				aux1=vectorMA[i].NO2;
-				aux2=vectorMA[i].PM25;
-				aux3=vectorMA[i].hora;
-				aux4=vectorMA[i].PM10;
-				vectorMA[i].NO2=vectorMA[j].NO2; 
-				vectorMA[i].PM25=vectorMA[j].PM25;
-				vectorMA[i].hora=vectorMA[j].hora;
-				vectorMA[i].PM10=vectorMA[j].PM10;
-				vectorMA[j].NO2=aux1; 
-				vectorMA[j].PM25=aux2;
-				vectorMA[j].hora=aux3;
-				vectorMA[j].PM10=aux4;
+			for(z=0; z<contador; z++) {
+				printf("Hora %i, NO2 %i\n", vectorMA[z].hora, vectorMA[z].NO2);
 			}
-		}
-	}
-	for(z=0; z<contador; z++) {
-		printf("Hora %i, PM2.5 %.2f\n", vectorMA[z].hora, vectorMA[z].PM10);
-	}
-	printf("Los datos de PM10 ordenados de menor a mayor son:\n" ); 
-	for (i=0; i<contador; i++){
-		for(j=i+1; j<contador; j++){
-			if(vectorMA[i].PM10>vectorMA[j].PM10){
-				aux1=vectorMA[i].NO2;
-				aux2=vectorMA[i].PM25;
-				aux3=vectorMA[i].hora;
-				aux4=vectorMA[i].PM10;
-				vectorMA[i].NO2=vectorMA[j].NO2; 
-				vectorMA[i].PM25=vectorMA[j].PM25;
-				vectorMA[i].hora=vectorMA[j].hora;
-				vectorMA[i].PM10=vectorMA[j].PM10;
-				vectorMA[j].NO2=aux1; 
-				vectorMA[j].PM25=aux2;
-				vectorMA[j].hora=aux3;
-				vectorMA[j].PM10=aux4;
+			printf("Los datos de PM2.5 ordenados de menor a mayor son:\n" ); 
+			for (i=0; i<contador; i++){
+				for(j=i+1; j<contador; j++){
+					if(vectorMA[i].PM25>vectorMA[j].PM25){
+						aux1=vectorMA[i].NO2;
+						aux2=vectorMA[i].PM25;
+						aux3=vectorMA[i].hora;
+						aux4=vectorMA[i].PM10;
+						vectorMA[i].NO2=vectorMA[j].NO2; 
+						vectorMA[i].PM25=vectorMA[j].PM25;
+						vectorMA[i].hora=vectorMA[j].hora;
+						vectorMA[i].PM10=vectorMA[j].PM10;
+						vectorMA[j].NO2=aux1; 
+						vectorMA[j].PM25=aux2;
+						vectorMA[j].hora=aux3;
+						vectorMA[j].PM10=aux4;
+					}
+				}
 			}
-		}
-	}
-	
-	for(z=0; z<contador; z++) {
-		printf("Hora %i, PM10 %.2f\n", vectorMA[z].hora, vectorMA[z].PM10);
-	}
-	return;
-}
-
-void ford2MA(TMendezAlvaro vectorMA[], int contador){
-	int i, j, z; 
-	float aux1, aux2, aux3, aux4; 
-	char aux5;
-	printf("Los datos de NO2 ordenados de mayor a menor son:\n" ); 
-	for (i=0; i<contador; i++){
-		for(j=i+1; j<contador; j++){
-			if(vectorMA[i].NO2<vectorMA[j].NO2){
-				aux1=vectorMA[i].NO2;
-				aux2=vectorMA[i].PM25;
-				aux3=vectorMA[i].hora;
-				aux4=vectorMA[i].PM10;
-				vectorMA[i].NO2=vectorMA[j].NO2; 
-				vectorMA[i].PM25=vectorMA[j].PM25;
-				vectorMA[i].hora=vectorMA[j].hora;
-				vectorMA[i].PM10=vectorMA[j].PM10;
-				vectorMA[j].NO2=aux1; 
-				vectorMA[j].PM25=aux2;
-				vectorMA[j].hora=aux3;
-				vectorMA[j].PM10=aux4;
+			for(z=0; z<contador; z++) {
+				printf("Hora %i, PM2.5 %.2f\n", vectorMA[z].hora, vectorMA[z].PM10);
 			}
-		}
-	}
-	for(z=0; z<contador; z++) {
-		printf("Hora %i, NO2 %i\n", vectorMA[z].hora, vectorMA[z].NO2);
-	}
-	printf("Los datos de PM2.5 ordenados de mayor a menor son:\n" ); 
-	for (i=0; i<contador; i++){
-		for(j=i+1; j<contador; j++){
-			if(vectorMA[i].PM25<vectorMA[j].PM25){
-				aux1=vectorMA[i].NO2;
-				aux2=vectorMA[i].PM25;
-				aux3=vectorMA[i].hora;
-				aux4=vectorMA[i].PM10;
-				vectorMA[i].NO2=vectorMA[j].NO2; 
-				vectorMA[i].PM25=vectorMA[j].PM25;
-				vectorMA[i].hora=vectorMA[j].hora;
-				vectorMA[i].PM10=vectorMA[j].PM10;
-				vectorMA[j].NO2=aux1; 
-				vectorMA[j].PM25=aux2;
-				vectorMA[j].hora=aux3;
-				vectorMA[j].PM10=aux4;
+			printf("Los datos de PM10 ordenados de menor a mayor son:\n" ); 
+			for (i=0; i<contador; i++){
+				for(j=i+1; j<contador; j++){
+					if(vectorMA[i].PM10>vectorMA[j].PM10){
+						aux1=vectorMA[i].NO2;
+						aux2=vectorMA[i].PM25;
+						aux3=vectorMA[i].hora;
+						aux4=vectorMA[i].PM10;
+						vectorMA[i].NO2=vectorMA[j].NO2; 
+						vectorMA[i].PM25=vectorMA[j].PM25;
+						vectorMA[i].hora=vectorMA[j].hora;
+						vectorMA[i].PM10=vectorMA[j].PM10;
+						vectorMA[j].NO2=aux1; 
+						vectorMA[j].PM25=aux2;
+						vectorMA[j].hora=aux3;
+						vectorMA[j].PM10=aux4;
+					}
+				}
 			}
-		}
-	}
-	for(z=0; z<contador; z++) {
-		printf("Hora %i, PM2.5 %.2f\n", vectorMA[z].hora, vectorMA[z].PM10);
-	}
-	printf("Los datos de PM10 ordenados de mayor a menor son:\n" ); 
-	for (i=0; i<contador; i++){
-		for(j=i+1; j<contador; j++){
-			if(vectorMA[i].PM10<vectorMA[j].PM10){
-				aux1=vectorMA[i].NO2;
-				aux2=vectorMA[i].PM25;
-				aux3=vectorMA[i].hora;
-				aux4=vectorMA[i].PM10;
-				vectorMA[i].NO2=vectorMA[j].NO2; 
-				vectorMA[i].PM25=vectorMA[j].PM25;
-				vectorMA[i].hora=vectorMA[j].hora;
-				vectorMA[i].PM10=vectorMA[j].PM10;
-				vectorMA[j].NO2=aux1; 
-				vectorMA[j].PM25=aux2;
-				vectorMA[j].hora=aux3;
-				vectorMA[j].PM10=aux4;
+			
+			for(z=0; z<contador; z++) {
+				printf("Hora %i, PM10 %.2f\n", vectorMA[z].hora, vectorMA[z].PM10);
 			}
+			return;
 		}
-	}
-	
-	for(z=0; z<contador; z++) {
-		printf("Hora %i, PM10 %.2f\n", vectorMA[z].hora, vectorMA[z].PM10);
-	}
-	return;
-}
+		
+		void ford2MA(TMendezAlvaro vectorMA[], int contador){
+			int i, j, z; 
+			float aux1, aux2, aux3, aux4; 
+			char aux5;
+			printf("Los datos de NO2 ordenados de mayor a menor son:\n" ); 
+			for (i=0; i<contador; i++){
+				for(j=i+1; j<contador; j++){
+					if(vectorMA[i].NO2<vectorMA[j].NO2){
+						aux1=vectorMA[i].NO2;
+						aux2=vectorMA[i].PM25;
+						aux3=vectorMA[i].hora;
+						aux4=vectorMA[i].PM10;
+						vectorMA[i].NO2=vectorMA[j].NO2; 
+						vectorMA[i].PM25=vectorMA[j].PM25;
+						vectorMA[i].hora=vectorMA[j].hora;
+						vectorMA[i].PM10=vectorMA[j].PM10;
+						vectorMA[j].NO2=aux1; 
+						vectorMA[j].PM25=aux2;
+						vectorMA[j].hora=aux3;
+						vectorMA[j].PM10=aux4;
+					}
+				}
+			}
+			for(z=0; z<contador; z++) {
+				printf("Hora %i, NO2 %i\n", vectorMA[z].hora, vectorMA[z].NO2);
+			}
+			printf("Los datos de PM2.5 ordenados de mayor a menor son:\n" ); 
+			for (i=0; i<contador; i++){
+				for(j=i+1; j<contador; j++){
+					if(vectorMA[i].PM25<vectorMA[j].PM25){
+						aux1=vectorMA[i].NO2;
+						aux2=vectorMA[i].PM25;
+						aux3=vectorMA[i].hora;
+						aux4=vectorMA[i].PM10;
+						vectorMA[i].NO2=vectorMA[j].NO2; 
+						vectorMA[i].PM25=vectorMA[j].PM25;
+						vectorMA[i].hora=vectorMA[j].hora;
+						vectorMA[i].PM10=vectorMA[j].PM10;
+						vectorMA[j].NO2=aux1; 
+						vectorMA[j].PM25=aux2;
+						vectorMA[j].hora=aux3;
+						vectorMA[j].PM10=aux4;
+					}
+				}
+			}
+			for(z=0; z<contador; z++) {
+				printf("Hora %i, PM2.5 %.2f\n", vectorMA[z].hora, vectorMA[z].PM10);
+			}
+			printf("Los datos de PM10 ordenados de mayor a menor son:\n" ); 
+			for (i=0; i<contador; i++){
+				for(j=i+1; j<contador; j++){
+					if(vectorMA[i].PM10<vectorMA[j].PM10){
+						aux1=vectorMA[i].NO2;
+						aux2=vectorMA[i].PM25;
+						aux3=vectorMA[i].hora;
+						aux4=vectorMA[i].PM10;
+						vectorMA[i].NO2=vectorMA[j].NO2; 
+						vectorMA[i].PM25=vectorMA[j].PM25;
+						vectorMA[i].hora=vectorMA[j].hora;
+						vectorMA[i].PM10=vectorMA[j].PM10;
+						vectorMA[j].NO2=aux1; 
+						vectorMA[j].PM25=aux2;
+						vectorMA[j].hora=aux3;
+						vectorMA[j].PM10=aux4;
+					}
+				}
+			}
+			
+			for(z=0; z<contador; z++) {
+				printf("Hora %i, PM10 %.2f\n", vectorMA[z].hora, vectorMA[z].PM10);
+			}
+			return;
+		}
