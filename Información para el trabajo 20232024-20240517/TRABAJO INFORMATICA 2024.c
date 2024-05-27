@@ -26,6 +26,9 @@ typedef struct {
     char humedad[10];
 }TEscuelasAguirre;
 
+//FUNCIONES PARA LA MEDIANA 
+
+
 
 //FUNCIONES MOSTRAR FICHEROS Y MENUS
 int mostrarArchivo1(TMendezAlvaro vectorMA[]);
@@ -109,6 +112,7 @@ int main() {
 						}
 						case(2):{
 							//MEDIANA
+				
 							break;
 						}
 						case(3):{
@@ -173,7 +177,7 @@ int main() {
 				
 			break;
 		}
-		
+		//archivo 2
 		case (2):{
 			int i;
 			contador = mostrarArchivo2(vectorMA);
@@ -266,7 +270,7 @@ int main() {
 				}
 			break;
 		}
-		
+		//archivo 3
 		case (3):{
 			int i;
 			contador = mostrarArchivo3(vectorMA);
@@ -360,7 +364,7 @@ int main() {
 				}
 			break;
 		}
-		
+		//archivo 4
 		case (4):{
 			int i, a;
 			contador = mostrarArchivo4(vectorEA);
@@ -463,7 +467,7 @@ int main() {
 				}
 			break;
 		}
-		
+		//archivo 5
 		case (5):{
 			int i, a;
 			contador = mostrarArchivo5(vectorEA);
@@ -566,7 +570,7 @@ int main() {
 				}
 			break;
 		}
-		
+		//arvhivo 6
 		case (6):{
 			int i,a;
 			contador = mostrarArchivo6(vectorEA);
@@ -1350,3 +1354,7 @@ void ford2MA(TMendezAlvaro vectorMA[], int contador){
 	}
 	return;
 }
+
+//FUNCIONES PARA LA MEDIANA 
+
+
