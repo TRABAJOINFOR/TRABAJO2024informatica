@@ -53,7 +53,8 @@ void calculoHRmin(TEscuelasAguirre vectorEA[], int contador);
 void Modano2( TMendezAlvaro vectorMA[], int contador);
 void ModaPM25(TMendezAlvaro vectorMA[], int contador);
 void ModaPM10(TMendezAlvaro vectorMA[], int contador);
-
+void ModaT(TEscuelasAguirre vectorEA[], int contador);
+void ModaHR(TEscuelasAguirre vectorEA[], int contador);
 //FUNCIONES COMPARACIÓN
 void fordTEA(TEscuelasAguirre vectorEA[], int contador);
 void fordT2EA(TEscuelasAguirre vectorEA[], int contador);
@@ -420,13 +421,19 @@ int main() {
 							//MEDIANA
 							break;
 						}
-						case(3):{
+						case(3): {
+							//MODA
+							ModaT(vectorEA, contador);
+							ModaHR(vectorEA, contador);
+							break;
+						}
+						case(4):{
 							calculoTmin(vectorEA, contador);
 							calculoHRmin(vectorEA, contador);
 
 							break;
 						}
-						case(4): {
+						case(5): {
 							calculoTmax(vectorEA, contador);
 							calculoHRmax(vectorEA, contador);						
 							
@@ -523,13 +530,19 @@ int main() {
 							//MEDIANA
 							break;
 						}
-						case(3):{
+						case(3): {
+							//MODA
+							ModaT(vectorEA, contador);
+							ModaHR(vectorEA, contador);
+							break;
+						}
+						case(4):{
 							calculoTmin(vectorEA, contador);
 							calculoHRmin(vectorEA, contador);
 
 							break;
 						}
-						case(4): {
+						case(5): {
 							calculoTmax(vectorEA, contador);
 							calculoHRmax(vectorEA, contador);						
 							
@@ -627,18 +640,25 @@ int main() {
 							//MEDIANA
 							break;
 						}
-						case(3):{
+						case(3): {
+							//MODA
+							ModaT(vectorEA, contador);
+							ModaHR(vectorEA, contador);
+							break;
+						}
+						case(4):{
 							calculoTmin(vectorEA, contador);
 							calculoHRmin(vectorEA, contador);
 
 							break;
 						}
-						case(4): {
+						case(5): {
 							calculoTmax(vectorEA, contador);
 							calculoHRmax(vectorEA, contador);						
 							
 							break;
 						}
+					break;
 					}
     				} while (Opcion != 5);
 				} else if (opcion == 3){
@@ -1133,7 +1153,7 @@ void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 			return;
 		}
 		
-		//Mendez Alvaro - Modas
+		//Modas - Mendez Alvaro
 		void Modano2(TMendezAlvaro vectorMA[], int contador) {
 				    int i, j, cont1, cont2 = 0;
 				   	int aux=0, repeticiones = 0;
@@ -1158,7 +1178,7 @@ void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 		       			printf("\nNo se repite ningun valor de NO2\n");
 						}
 					else{
-						printf("\nEl valor más repetido de NO2 es: %i. Se repite %i veces", aux, cont2 );
+						printf("\nEl valor más repetido de NO2 es: %i. Se repite %i veces", aux, cont2+1);
 						}
 				
 				    return;
@@ -1187,7 +1207,7 @@ void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 		       			printf("\nNo se repite ningun valor de PM2.5\n");
 						}
 					else{
-						printf("\nEl valor más repetido de PM2.5 es: %.3f. Se repite %i veces", aux, cont2);
+						printf("\nEl valor más repetido de PM2.5 es: %.3f. Se repite %i veces", aux, cont2+1);
 						}	
 				
 				    return;
@@ -1215,12 +1235,72 @@ void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 		       			printf("\nNo se repite ningun valor de PM10\n");
 						}
 					else{
-						printf("\nEl valor más repetido de PM10 es: %.3f. Se repite %i veces", aux, cont2);
+						printf("\nEl valor más repetido de PM10 es: %.3f. Se repite %i veces", aux, cont2+1);
 						}	
 				
 				    return;
 				}	
-
+	//Moda - Escueleas Aguirre
+		void ModaT(TEscuelasAguirre vectorEA[], int contador) {
+				    int i, j, cont1, cont2 = 0;
+				   	float aux=0, repeticiones = 0;
+					
+				    for (i = 0; i < contador; i++) {
+				    	cont1 = 0;
+				        for (j = 0; j < contador; j++) {
+				            if (vectorEA[i].T == vectorEA[j].T && i != j) {
+				                cont1++;
+				            }
+				        }
+				
+				        if (cont1 > cont2) {
+				            cont2 = cont1;
+				            aux = vectorEA[i].T;
+				            repeticiones = 1;
+				        }
+				    }
+					
+					if (repeticiones == 0) {
+		       			printf("\nNo se repite ningun valor de temperatura\n");
+						}
+					else{
+						printf("\nEl valor más repetido de temperatura es: %.1f. Se repite %i veces", aux, cont2+1);
+						}	
+				
+				    return;
+				}		
+		
+		void ModaHR(TEscuelasAguirre vectorEA[], int contador) {
+				    int i, j, cont1, cont2 = 0;
+				   	int aux=0, repeticiones = 0;
+					
+				    for (i = 0; i < contador; i++) {
+				    	cont1 = 0;
+				        for (j = 0; j < contador; j++) {
+				            if (vectorEA[i].HR == vectorEA[j].HR && i != j) {
+				                cont1++;
+				            }
+				        }
+				
+				        if (cont1 > cont2) {
+				            cont2 = cont1;
+				            aux = vectorEA[i].HR;
+				            repeticiones = 1;
+				            
+				        }
+				    }
+					
+					if (repeticiones == 0) {
+		       			printf("\nNo se repite ningun valor de HR\n");
+						}
+					else{
+						printf("\nEl valor más repetido de HR es: %i. Se repite %i veces", aux, cont2+1);
+						}
+				
+				    return;
+				}	
+		
+		
 //COMPARACION
 void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 			int i, j, z; 
