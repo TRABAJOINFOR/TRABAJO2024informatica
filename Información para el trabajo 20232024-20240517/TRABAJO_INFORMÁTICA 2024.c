@@ -50,7 +50,9 @@ void calculoHRmax(TEscuelasAguirre vectorEA[], int contador);
 void calculoTmin(TEscuelasAguirre vectorEA[], int contador);
 void calculoHRmin(TEscuelasAguirre vectorEA[], int contador);
 
-int ModaArchivo1( TMendezAlvaro vectorMA[], int contador);
+void Modano2( TMendezAlvaro vectorMA[], int contador);
+void ModaPM25(TMendezAlvaro vectorMA[], int contador);
+void ModaPM10(TMendezAlvaro vectorMA[], int contador);
 
 //FUNCIONES COMPARACIÓN
 void fordTEA(TEscuelasAguirre vectorEA[], int contador);
@@ -114,8 +116,10 @@ int main() {
 							break;
 						}
 						case(3):{
-							int valor_repetidoNO21 = ModaArchivo1(vectorMA, contador);
-							printf("El valor más repetido de NO2 es: %i", valor_repetidoNO21);
+							//MODA
+							Modano2(vectorMA, contador);
+							ModaPM25(vectorMA, contador);
+							ModaPM10(vectorMA, contador);
 							break;
 						}
 						case(4):{
@@ -198,9 +202,10 @@ int main() {
     				printf("\nElige una opción que desee\n");
     				printf("\t1: Media \n");
     				printf("\t2: Mediana \n");
-    				printf("\t3: Mínimos valores \n");
-    				printf("\t4: Máximos valores \n");
-    				printf("\t5: Salir de estadísticas.\n");
+    				printf("\t3: Moda \n");
+    				printf("\t4: Mínimos valores \n");
+    				printf("\t5: Máximos valores \n");
+    				printf("\t6: Salir de estadísticas.\n");
     				scanf("%d", &Opcion);
 					//otro switch case dentro
 					switch(Opcion){
@@ -214,13 +219,20 @@ int main() {
 							break;
 						}
 						case(3):{
+							//MODA
+							Modano2(vectorMA, contador);
+							ModaPM25(vectorMA, contador);
+							ModaPM10(vectorMA, contador);
+							break;
+						}
+						case(4):{
 							calculoNO2min(vectorMA, contador);
 							calculoPM25min(vectorMA, contador);
 							calculoPM10min(vectorMA, contador);
 
 							break;
 						}
-						case(4): {
+						case(5): {
 							calculoNO2max(vectorMA, contador);
 							calculoPM25max(vectorMA, contador);
 							calculoPM10max(vectorMA, contador);
@@ -291,9 +303,10 @@ int main() {
     				printf("\nElige una opción que desee\n");
     				printf("\t1: Media \n");
     				printf("\t2: Mediana \n");
-    				printf("\t3: Mínimos valores \n");
-    				printf("\t4: Máximos valores \n");
-    				printf("\t5: Salir de estadísticas.\n");
+    				printf("\t3: Moda \n");
+    				printf("\t4: Mínimos valores \n");
+    				printf("\t5: Máximos valores \n");
+    				printf("\t6: Salir de estadísticas.\n");
     				scanf("%d", &Opcion);
 					//otro switch case dentro
 					switch(Opcion){
@@ -307,13 +320,20 @@ int main() {
 							break;
 						}
 						case(3):{
+							Modano2(vectorMA, contador);
+							ModaPM25(vectorMA, contador);
+							ModaPM10(vectorMA, contador);
+							break;
+						}
+						case(4):{
 							calculoNO2min(vectorMA, contador);
 							calculoPM25min(vectorMA, contador);
 							calculoPM10min(vectorMA, contador);
+							
 
 							break;
 						}
-						case(4): {
+						case(5): {
 							calculoNO2max(vectorMA, contador);
 							calculoPM25max(vectorMA, contador);
 							calculoPM10max(vectorMA, contador);
@@ -384,9 +404,10 @@ int main() {
     				printf("\nElige una opción que desee\n");
     				printf("\t1: Media \n");
     				printf("\t2: Mediana \n");
-    				printf("\t3: Mínimos valores \n");
-    				printf("\t4: Máximos valores \n");
-    				printf("\t5: Salir de estadísticas.\n");
+    				printf("\t3: Moda \n");
+    				printf("\t4: Mínimos valores \n");
+    				printf("\t5: Máximos valores \n");
+    				printf("\t6: Salir de estadísticas.\n");
     				scanf("%d", &Opcion);
 					//otro switch case dentro
 					switch(Opcion){
@@ -487,10 +508,10 @@ int main() {
     				printf("\nElige una opción que desee\n");
     				printf("\t1: Media \n");
     				printf("\t2: Mediana \n");
-    				printf("\t3: Mínimos valores \n");
-    				printf("\t4: Máximos valores \n");
-    				printf("\t5: Salir de estadísticas.\n");
-    				scanf("%d", &Opcion);
+    				printf("\t3: Moda \n");
+    				printf("\t4: Mínimos valores \n");
+    				printf("\t5: Máximos valores \n");
+    				printf("\t6: Salir de estadísticas.\n");
 					//otro switch case dentro
 					switch(Opcion){
 						case(1): {
@@ -590,9 +611,10 @@ int main() {
     				printf("\nElige una opción que desee\n");
     				printf("\t1: Media \n");
     				printf("\t2: Mediana \n");
-    				printf("\t3: Mínimos valores \n");
-    				printf("\t4: Máximos valores \n");
-    				printf("\t5: Salir de estadísticas.\n");
+    				printf("\t3: Moda \n");
+    				printf("\t4: Mínimos valores \n");
+    				printf("\t5: Máximos valores \n");
+    				printf("\t6: Salir de estadísticas.\n");
     				scanf("%d", &Opcion);
 					//otro switch case dentro
 					switch(Opcion){
@@ -1111,9 +1133,10 @@ void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 			return;
 		}
 		
-		int ModaArchivo1(TMendezAlvaro vectorMA[], int contador) {
+		//Mendez Alvaro - Modas
+		void Modano2(TMendezAlvaro vectorMA[], int contador) {
 				    int i, j, cont1, cont2 = 0;
-				   	int aux=0;
+				   	int aux=0, repeticiones = 0;
 					
 				    for (i = 0; i < contador; i++) {
 				    	cont1 = 0;
@@ -1126,11 +1149,78 @@ void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 				        if (cont1 > cont2) {
 				            cont2 = cont1;
 				            aux = vectorMA[i].NO2;
+				            repeticiones = 1;
+				            
 				        }
 				    }
-				    return aux;  
+					
+					if (repeticiones == 0) {
+		       			printf("\nNo se repite ningun valor de NO2\n");
+						}
+					else{
+						printf("\nEl valor más repetido de NO2 es: %i. Se repite %i veces", aux, cont2 );
+						}
+				
+				    return;
 				}
 				
+		void ModaPM25(TMendezAlvaro vectorMA[], int contador) {
+				    int i, j, cont1, cont2 = 0;
+				   	float aux=0, repeticiones = 0;
+					
+				    for (i = 0; i < contador; i++) {
+				    	cont1 = 0;
+				        for (j = 0; j < contador; j++) {
+				            if (vectorMA[i].PM25 == vectorMA[j].PM25 && i != j) {
+				                cont1++;
+				            }
+				        }
+				
+				        if (cont1 > cont2) {
+				            cont2 = cont1;
+				            aux = vectorMA[i].PM25;
+				            repeticiones = 1;
+				        }
+				    }
+					
+					if (repeticiones == 0) {
+		       			printf("\nNo se repite ningun valor de PM2.5\n");
+						}
+					else{
+						printf("\nEl valor más repetido de PM2.5 es: %.3f. Se repite %i veces", aux, cont2);
+						}	
+				
+				    return;
+				}
+		void ModaPM10(TMendezAlvaro vectorMA[], int contador) {
+				    int i, j, cont1, cont2 = 0;
+				   	float aux=0, repeticiones = 0;
+					
+				    for (i = 0; i < contador; i++) {
+				    	cont1 = 0;
+				        for (j = 0; j < contador; j++) {
+				            if (vectorMA[i].PM10 == vectorMA[j].PM10 && i != j) {
+				                cont1++;
+				            }
+				        }
+				
+				        if (cont1 > cont2) {
+				            cont2 = cont1;
+				            aux = vectorMA[i].PM10;
+				            repeticiones = 1;
+				        }
+				    }
+					
+					if (repeticiones == 0) {
+		       			printf("\nNo se repite ningun valor de PM10\n");
+						}
+					else{
+						printf("\nEl valor más repetido de PM10 es: %.3f. Se repite %i veces", aux, cont2);
+						}	
+				
+				    return;
+				}	
+
 //COMPARACION
 void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 			int i, j, z; 
