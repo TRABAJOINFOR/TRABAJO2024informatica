@@ -519,6 +519,7 @@ int main() {
     				printf("\t4: Mínimos valores \n");
     				printf("\t5: Máximos valores \n");
     				printf("\t6: Salir de estadísticas.\n");
+    				scanf("%d", &Opcion);
 					//otro switch case dentro
 					switch(Opcion){
 						case(1): {
@@ -1175,10 +1176,10 @@ void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 				    }
 					
 					if (repeticiones == 0) {
-		       			printf("\nNo se repite ningun valor de NO2\n");
+		       			printf("No se repite ningun valor de NO2\n");
 						}
 					else{
-						printf("\nEl valor más repetido de NO2 es: %i. Se repite %i veces", aux, cont2+1);
+						printf("El valor más repetido de NO2 es: %i. Se repite %i veces\n", aux, cont2+1);
 						}
 				
 				    return;
@@ -1204,10 +1205,10 @@ void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 				    }
 					
 					if (repeticiones == 0) {
-		       			printf("\nNo se repite ningun valor de PM2.5\n");
+		       			printf("No se repite ningun valor de PM2\n");
 						}
 					else{
-						printf("\nEl valor más repetido de PM2.5 es: %.3f. Se repite %i veces", aux, cont2+1);
+						printf("El valor más repetido de PM2.5 es: %.3f. Se repite %i veces\n", aux, cont2+1);
 						}	
 				
 				    return;
@@ -1232,10 +1233,10 @@ void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 				    }
 					
 					if (repeticiones == 0) {
-		       			printf("\nNo se repite ningun valor de PM10\n");
+		       			printf("No se repite ningun valor de PM10\n");
 						}
 					else{
-						printf("\nEl valor más repetido de PM10 es: %.3f. Se repite %i veces", aux, cont2+1);
+						printf("El valor más repetido de PM10 es: %.3f. Se repite %i veces\n", aux, cont2+1);
 						}	
 				
 				    return;
@@ -1261,10 +1262,10 @@ void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 				    }
 					
 					if (repeticiones == 0) {
-		       			printf("\nNo se repite ningun valor de temperatura\n");
+		       			printf("No se repite ningun valor de temperatura\n");
 						}
 					else{
-						printf("\nEl valor más repetido de temperatura es: %.1f. Se repite %i veces", aux, cont2+1);
+						printf("El valor más repetido de temperatura es: %.1f. Se repite %i veces\n", aux, cont2+1);
 						}	
 				
 				    return;
@@ -1291,10 +1292,10 @@ void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 				    }
 					
 					if (repeticiones == 0) {
-		       			printf("\nNo se repite ningun valor de HR\n");
+		       			printf("No se repite ningun valor de HR\n");
 						}
 					else{
-						printf("\nEl valor más repetido de HR es: %i. Se repite %i veces", aux, cont2+1);
+						printf("El valor más repetido de HR es: %i. Se repite %i veces\n", aux, cont2+1);
 						}
 				
 				    return;
