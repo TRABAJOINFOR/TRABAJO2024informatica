@@ -43,6 +43,8 @@ void calculoPM10max(TMendezAlvaro vectorMA[], int contador);
 void calculoNO2min(TMendezAlvaro vectorMA[], int contador);
 void calculoPM25min(TMendezAlvaro vectorMA[], int contador);
 void calculoPM10min(TMendezAlvaro vectorMA[], int contador);
+void calculoMedianaMA(TMendezAlvaro vectorMA[], int contador);
+void calculoMedianaEA(TEscuelasAguirre vectorMA[], int contador);
 
 void calculomediasEA(TEscuelasAguirre vectorEA[], int i);
 void calculoTmax(TEscuelasAguirre vectroEA[], int contador);
@@ -108,12 +110,14 @@ int main() {
 					//otro switch case dentro
 					switch(Opcion){
 						case(1): {
+							//MEDIA
 						calculomediasMA(vectorMA, contador);
 					
 							break;
 						}
 						case(2):{
 							//MEDIANA
+						calculoMedianaMA(vectorMA, contador);
 							break;
 						}
 						case(3):{
@@ -211,12 +215,15 @@ int main() {
 					//otro switch case dentro
 					switch(Opcion){
 						case(1): {
+							//MEDIA
 						calculomediasMA(vectorMA, contador);
 					
 							break;
 						}
 						case(2):{
 							//MEDIANA
+							calculoMedianaMA(vectorMA, contador);
+
 							break;
 						}
 						case(3):{
@@ -312,12 +319,15 @@ int main() {
 					//otro switch case dentro
 					switch(Opcion){
 						case(1): {
+							//MEDIA
 						calculomediasMA(vectorMA, contador);
 					
 							break;
 						}
 						case(2): {
 							//MEDIANA
+						calculoMedianaMA(vectorMA, contador);
+
 							break;
 						}
 						case(3):{
@@ -413,12 +423,14 @@ int main() {
 					//otro switch case dentro
 					switch(Opcion){
 						case(1): {
+							//MEDIA
 						calculomediasEA(vectorEA, contador);
 					
 							break;
 						}
 						case(2): {
 							//MEDIANA
+						calculoMedianaEA(vectorEA, contador);
 							break;
 						}
 						case(3): {
@@ -523,12 +535,15 @@ int main() {
 					//otro switch case dentro
 					switch(Opcion){
 						case(1): {
+							//MEDIA
 						calculomediasEA(vectorEA, contador);
 					
 							break;
 						}
 						case(2): {
 							//MEDIANA
+						calculoMedianaEA(vectorEA, contador);
+
 							break;
 						}
 						case(3): {
@@ -633,12 +648,15 @@ int main() {
 					//otro switch case dentro
 					switch(Opcion){
 						case(1): {
+							//MEDIA
 						calculomediasEA(vectorEA, contador);
 					
 							break;
 						}
 						case(2): {
 							//MEDIANA
+						calculoMedianaEA(vectorEA, contador);
+
 							break;
 						}
 						case(3): {
@@ -1306,7 +1324,7 @@ void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 			int i, j, z; 
 			float aux1, aux2, aux3; 
-			printf("Los datos de temperatura ordenados de menor a mayor son:\n" ); 
+			printf("\nLos datos de temperatura ordenados de menor a mayor son:\n" ); 
 			for (i=0; i<contador; i++){
 				for(j=i+1; j<contador; j++){
 					if(vectorEA[i].T>vectorEA[j].T){
@@ -1331,7 +1349,7 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 		void fordT2EA(TEscuelasAguirre vectorEA[], int contador){
 			int i, j, z; 
 			float aux1, aux2, aux3; 
-			printf("Los datos de temperatura ordenados de mayor a menor son:\n" ); 
+			printf("\nLos datos de temperatura ordenados de mayor a menor son:\n" ); 
 			for (i=0; i<contador; i++){
 				for(j=i+1; j<contador; j++){
 					if(vectorEA[i].T<vectorEA[j].T){
@@ -1356,7 +1374,7 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 		void fordHREA(TEscuelasAguirre vectorEA[], int contador){
 			int i, j, z; 
 			float aux1, aux2, aux3; 
-			printf("Los datos de humedad ordenados de menor a mayor son:\n" ); 
+			printf("\nLos datos de humedad ordenados de menor a mayor son:\n" ); 
 			for (i=0; i<contador; i++){
 				for(j=i+1; j<contador; j++){
 					if(vectorEA[i].HR>vectorEA[j].HR){
@@ -1381,7 +1399,7 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 		void fordHR2EA(TEscuelasAguirre vectorEA[], int contador){
 			int i, j, z; 
 			float aux1, aux2, aux3; 
-			printf("Los datos de humedad ordenados de mayor a menor son:\n" ); 
+			printf("\nLos datos de humedad ordenados de mayor a menor son:\n" ); 
 			for (i=0; i<contador; i++){
 				for(j=i+1; j<contador; j++){
 					if(vectorEA[i].HR<vectorEA[j].HR){
@@ -1407,7 +1425,7 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 			int i, j, z; 
 			float aux1, aux2, aux3, aux4; 
 			char aux5;
-			printf("Los datos de NO2 ordenados de menor a mayor son:\n" ); 
+			printf("\nLos datos de NO2 ordenados de menor a mayor son:\n" ); 
 			for (i=0; i<contador; i++){
 				for(j=i+1; j<contador; j++){
 					if(vectorMA[i].NO2>vectorMA[j].NO2){
@@ -1429,7 +1447,7 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 			for(z=0; z<contador; z++) {
 				printf("Hora %i, NO2 %i\n", vectorMA[z].hora, vectorMA[z].NO2);
 			}
-			printf("Los datos de PM2.5 ordenados de menor a mayor son:\n" ); 
+			printf("\nLos datos de PM2.5 ordenados de menor a mayor son:\n" ); 
 			for (i=0; i<contador; i++){
 				for(j=i+1; j<contador; j++){
 					if(vectorMA[i].PM25>vectorMA[j].PM25){
@@ -1451,7 +1469,7 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 			for(z=0; z<contador; z++) {
 				printf("Hora %i, PM2.5 %.2f\n", vectorMA[z].hora, vectorMA[z].PM10);
 			}
-			printf("Los datos de PM10 ordenados de menor a mayor son:\n" ); 
+			printf("\nLos datos de PM10 ordenados de menor a mayor son:\n" ); 
 			for (i=0; i<contador; i++){
 				for(j=i+1; j<contador; j++){
 					if(vectorMA[i].PM10>vectorMA[j].PM10){
@@ -1481,7 +1499,7 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 			int i, j, z; 
 			float aux1, aux2, aux3, aux4; 
 			char aux5;
-			printf("Los datos de NO2 ordenados de mayor a menor son:\n" ); 
+			printf("\nLos datos de NO2 ordenados de mayor a menor son:\n" ); 
 			for (i=0; i<contador; i++){
 				for(j=i+1; j<contador; j++){
 					if(vectorMA[i].NO2<vectorMA[j].NO2){
@@ -1503,7 +1521,7 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 			for(z=0; z<contador; z++) {
 				printf("Hora %i, NO2 %i\n", vectorMA[z].hora, vectorMA[z].NO2);
 			}
-			printf("Los datos de PM2.5 ordenados de mayor a menor son:\n" ); 
+			printf("\nLos datos de PM2.5 ordenados de mayor a menor son:\n" ); 
 			for (i=0; i<contador; i++){
 				for(j=i+1; j<contador; j++){
 					if(vectorMA[i].PM25<vectorMA[j].PM25){
@@ -1525,7 +1543,7 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 			for(z=0; z<contador; z++) {
 				printf("Hora %i, PM2.5 %.2f\n", vectorMA[z].hora, vectorMA[z].PM10);
 			}
-			printf("Los datos de PM10 ordenados de mayor a menor son:\n" ); 
+			printf("\nLos datos de PM10 ordenados de mayor a menor son:\n" ); 
 			for (i=0; i<contador; i++){
 				for(j=i+1; j<contador; j++){
 					if(vectorMA[i].PM10<vectorMA[j].PM10){
@@ -1550,3 +1568,110 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 			}
 			return;
 		}
+		
+	void calculoMedianaMA(TMendezAlvaro vectorMA[], int contador){
+		int i, j; 
+		float medianaNO2, medianaPM25, medianaPM10;
+		int aux1;
+		float aux2, aux3;
+		
+		for(i = 0; i < contador; i++){
+			for(j = i+1; j < contador; j++){
+				if(vectorMA[i].NO2 > vectorMA[j].NO2){
+					aux1 = vectorMA[i].NO2;
+				
+					vectorMA[i].NO2 = vectorMA[j].NO2;
+					
+					vectorMA[j].NO2 = aux1;
+				}
+			}
+		}
+		
+		for(i = 0; i < contador; i++){
+			for(j = i+1; j < contador; j++){
+				if(vectorMA[i].PM25 > vectorMA[j].PM25){
+					aux2 = vectorMA[i].PM25;
+
+					vectorMA[i].PM25 = vectorMA[j].PM25;
+					
+					vectorMA[j].PM25 = aux2;
+				}
+			}
+		}
+		
+		for(i = 0; i < contador; i++){
+			for(j = i+1; j < contador; j++){
+				if(vectorMA[i].PM10 > vectorMA[j].PM10){
+					aux3 = vectorMA[i].PM10;
+
+					vectorMA[i].PM10 = vectorMA[j].PM10;
+					
+					vectorMA[j].PM10 = aux3;
+				}
+			}
+		}
+		
+		if(i % 2== 0){
+			medianaNO2 = (vectorMA[(i/2)- 1].NO2 + vectorMA[i/2].NO2) / 2.0;
+			medianaPM25 = (vectorMA[(i/2) - 1].PM25 + vectorMA[i/2].PM25) / 2.0;
+			medianaPM10 = (vectorMA[(i/2) - 1].PM10 + vectorMA[i/2].PM10) / 2.0;
+		
+		} else{
+			medianaNO2 = vectorMA[i/2].NO2;
+			medianaPM25 = vectorMA[i/2].PM25;
+			medianaPM10 = vectorMA[i/2].PM10;
+		}		
+		
+		printf("\nMediana NO2: %.3f\n", medianaNO2);
+    	printf("\nMediana PM2.5: %.3f\n", medianaPM25);
+    	printf("\nMediana PM10: %.3f\n", medianaPM10);
+		
+		return;
+		}
+		
+		void calculoMedianaEA(TEscuelasAguirre vectorEA[], int contador){
+		int i, j; 
+		float medianaT, medianaHR;
+		int aux1;
+		float aux2;
+		
+		for(i = 0; i < contador; i++){
+			for(j = i+1; j < contador; j++){
+				if(vectorEA[i].T > vectorEA[j].T){
+					aux1 = vectorEA[i].T;
+				
+					vectorEA[i].T = vectorEA[j].T;
+					
+					vectorEA[j].T = aux1;
+				}
+			}
+		}
+		
+		for(i = 0; i < contador; i++){
+			for(j = i+1; j < contador; j++){
+				if(vectorEA[i].HR > vectorEA[j].HR){
+					aux2 = vectorEA[i].HR;
+
+					vectorEA[i].HR = vectorEA[j].HR;
+					
+					vectorEA[j].HR = aux2;
+				}
+			}
+		}
+		
+		if(i % 2== 0){
+			medianaT = (vectorEA[(i/2)- 1].T + vectorEA[i/2].T) / 2.0;
+			medianaHR = (vectorEA[(i/2) - 1].HR + vectorEA[i/2].HR) / 2.0;
+		
+		} else{
+			medianaT = vectorEA[i/2].T;
+			medianaHR = vectorEA[i/2].HR;
+		}		
+		
+		printf("\nMediana T: %.3f\n", medianaT);
+    	printf("\nMediana HR: %.3f\n", medianaHR);
+		
+		return;
+		}
+		
+	
