@@ -67,6 +67,7 @@ void fordMA(TMendezAlvaro vectorMA[], int contador);
 void ford2MA(TMendezAlvaro vectorMA[], int contador);
 
 void fcompararME(TMendezAlvaro vectorMA[], int contador);
+
 int main() {
     setlocale(LC_CTYPE, "spanish"); // para que el compilador reconozca las ñ y tildes 
     int archivo, opcion, contador = 0, TAM = 25;
@@ -374,7 +375,7 @@ int main() {
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
     				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Comparar valores de 2 horas");
+    				printf("\t5: Comparar valores de 2 horas\n");
     				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
