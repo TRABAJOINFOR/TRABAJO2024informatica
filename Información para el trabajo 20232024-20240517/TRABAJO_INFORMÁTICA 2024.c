@@ -35,6 +35,11 @@ int mostrarArchivo5(TEscuelasAguirre vectorEA[]);
 int mostrarArchivo6(TEscuelasAguirre vectorEA[]);
 void mostrarMenuMA(TMendezAlvaro vectorMA[], int size);
 
+//FUNCIONES INFORMACIÓN
+void mostrarBOE_1(char *BOE_calidaddeaire);
+void mostrarBOE_2(char *BOE_recomendaciones);
+void mostrarBOE_3(char *BOE_accesibilidad);
+
 //FUNCIONES ESTADÍSTICAS
 void calculomediasMA(TMendezAlvaro vectorMA[], int i);
 void calculoNO2max(TMendezAlvaro vectorMA[], int contador);
@@ -141,7 +146,7 @@ int main() {
 							break;
 						}
 					}
-    				} while (Opcion != 5);
+    				} while (Opcion != 6);
     		
 				} else if (opcion == 3){
 					//FUNCION 3
@@ -177,13 +182,40 @@ int main() {
     				} while (Opcion3 != 5);
 				} else if (opcion == 4){
 					//FUNCION 4
+					int Opcion4;
+					do { 
+    				printf("\nElige una opción que desee saber sobre la calidad del aire\n");
+    				printf("\t1: ¿Qué es el índice de calidad? \n");
+    				printf("\t2: Recomendaciones para la salud \n");
+    				printf("\t3: ¿Dónde encontrar más información? \n");
+    				printf("\t4: Salir de información.\n");
+    				scanf("%d", &Opcion4);
+    				switch(Opcion4){
+						case(1): {
+						//fichero BOE_calidaddeaire
+							mostrarBOE_1("BOE_calidaddeaire.txt");
+							break;
+						}
+						case(2): {
+						//fichero BOE_recomendaciones
+							mostrarBOE_2("BOE_recomendaciones.txt");	
+							break;
+						}
+						case(3):{
+						//fichero BOE_accesibilidad
+							mostrarBOE_3("BOE_accesibilidad.txt");
+							break;
+						}
+					}
+    				} while (Opcion4 != 4);
 				} else if (opcion == 5){
 					//FUNCION 5
 				}
-			} while (opcion <= 6);
+			} while (opcion < 6);
 			
-				if(opcion == 7){
-					printf("-HASTA PRONTO-\n");
+				if(opcion == 6){
+					printf("Hasta la próxima\n"); 
+					printf("FIN DEL PROGRAMA");
 					return 0;
 				}
 				
@@ -282,13 +314,40 @@ int main() {
     				} while (Opcion3 != 5);
 				} else if (opcion == 4){
 					//FUNCION 4
+					int Opcion4;
+					do { 
+    				printf("\nElige una opción que desee saber sobre la calidad del aire\n");
+    				printf("\t1: ¿Qué es el índice de calidad? \n");
+    				printf("\t2: Recomendaciones para la salud \n");
+    				printf("\t3: ¿Dónde encontrar más información? \n");
+    				printf("\t4: Salir de información.\n");
+    				scanf("%d", &Opcion4);
+    				switch(Opcion4){
+						case(1): {
+						//fichero BOE_calidaddeaire
+							mostrarBOE_1("BOE_calidaddeaire.txt");
+							break;
+						}
+						case(2): {
+						//fichero BOE_recomendaciones
+							mostrarBOE_2("BOE_recomendaciones.txt");	
+							break;
+						}
+						case(3):{
+						//fichero BOE_accesibilidad
+							mostrarBOE_3("BOE_accesibilidad.txt");
+							break;
+						}
+					}
+    				} while (Opcion4 != 4);
 				} else if (opcion == 5){
 					//FUNCION 5
 				}
-			} while (opcion <= 6);
+			} while (opcion < 6);
 			
-				if(opcion == 7){
-					printf("-HASTA PRONTO-\n");
+				if(opcion == 6){
+					printf("Hasta la próxima\n"); 
+					printf("FIN DEL PROGRAMA");
 					return 0;
 				}
 			break;
@@ -387,13 +446,40 @@ int main() {
     				} while (Opcion3 != 5);
 				} else if (opcion == 4){
 					//FUNCION 4
+					int Opcion4;
+					do { 
+    				printf("\nElige una opción que desee saber sobre la calidad del aire\n");
+    				printf("\t1: ¿Qué es el índice de calidad? \n");
+    				printf("\t2: Recomendaciones para la salud \n");
+    				printf("\t3: ¿Dónde encontrar más información? \n");
+    				printf("\t4: Salir de información.\n");
+    				scanf("%d", &Opcion4);
+    				switch(Opcion4){
+						case(1): {
+						//fichero BOE_calidaddeaire
+							mostrarBOE_1("BOE_calidaddeaire.txt");
+							break;
+						}
+						case(2): {
+						//fichero BOE_recomendaciones
+							mostrarBOE_2("BOE_recomendaciones.txt");	
+							break;
+						}
+						case(3):{
+						//fichero BOE_accesibilidad
+							mostrarBOE_3("BOE_accesibilidad.txt");
+							break;
+						}
+					}
+    				} while (Opcion4 != 4);
 				} else if (opcion == 5){
 					//FUNCION 5
 				}
-			} while (opcion <= 6);
+			} while (opcion < 6);
 			
-				if(opcion == 7){
-					printf("-HASTA PRONTO-\n");
+				if(opcion == 6){
+					printf("Hasta la próxima\n"); 
+					printf("FIN DEL PROGRAMA");
 					return 0;
 				}
 			break;
@@ -499,13 +585,40 @@ int main() {
     				} while (Opcion3 != 5);
 				} else if (opcion == 4){
 					//FUNCION 4
+					int Opcion4;
+					do { 
+    				printf("\nElige una opción que desee saber sobre la calidad del aire\n");
+    				printf("\t1: ¿Qué es el índice de calidad? \n");
+    				printf("\t2: Recomendaciones para la salud \n");
+    				printf("\t3: ¿Dónde encontrar más información? \n");
+    				printf("\t4: Salir de información.\n");
+    				scanf("%d", &Opcion4);
+    				switch(Opcion4){
+						case(1): {
+						//fichero BOE_calidaddeaire
+							mostrarBOE_1("BOE_calidaddeaire.txt");
+							break;
+						}
+						case(2): {
+						//fichero BOE_recomendaciones
+							mostrarBOE_2("BOE_recomendaciones.txt");	
+							break;
+						}
+						case(3):{
+						//fichero BOE_accesibilidad
+							mostrarBOE_3("BOE_accesibilidad.txt");
+							break;
+						}
+					}
+    				} while (Opcion4 != 4);
 				} else if (opcion == 5){
 					//FUNCION 5
 				}
-			} while (opcion <= 6);
+			} while (opcion < 6);
 			
-				if(opcion == 7){
-					printf("-HASTA PRONTO-\n");
+				if(opcion == 6){
+					printf("Hasta la próxima\n"); 
+					printf("FIN DEL PROGRAMA");
 					return 0;
 				}
 			break;
@@ -612,13 +725,40 @@ int main() {
     				} while (Opcion3 != 5);
 				} else if (opcion == 4){
 					//FUNCION 4
+					int Opcion4;
+					do { 
+    				printf("\nElige una opción que desee saber sobre la calidad del aire\n");
+    				printf("\t1: ¿Qué es el índice de calidad? \n");
+    				printf("\t2: Recomendaciones para la salud \n");
+    				printf("\t3: ¿Dónde encontrar más información? \n");
+    				printf("\t4: Salir de información.\n");
+    				scanf("%d", &Opcion4);
+    				switch(Opcion4){
+						case(1): {
+						//fichero BOE_calidaddeaire
+							mostrarBOE_1("BOE_calidaddeaire.txt");
+							break;
+						}
+						case(2): {
+						//fichero BOE_recomendaciones
+							mostrarBOE_2("BOE_recomendaciones.txt");	
+							break;
+						}
+						case(3):{
+						//fichero BOE_accesibilidad
+							mostrarBOE_3("BOE_accesibilidad.txt");
+							break;
+						}
+					}
+    				} while (Opcion4 != 4);
 				} else if (opcion == 5){
 					//FUNCION 5
 				}
-			} while (opcion <= 6);
+			} while (opcion < 6);
 			
-				if(opcion == 7){
-					printf("-HASTA PRONTO-\n");
+				if(opcion == 6){
+					printf("Hasta la próxima\n"); 
+					printf("FIN DEL PROGRAMA");
 					return 0;
 				}
 			break;
@@ -725,22 +865,45 @@ int main() {
     				} while (Opcion3 != 5);
 				} else if (opcion == 4){
 					//FUNCION 4
+					int Opcion4;
+					do { 
+    				printf("\nElige una opción que desee saber sobre la calidad del aire\n");
+    				printf("\t1: ¿Qué es el índice de calidad? \n");
+    				printf("\t2: Recomendaciones para la salud \n");
+    				printf("\t3: ¿Dónde encontrar más información? \n");
+    				printf("\t4: Salir de información.\n");
+    				scanf("%d", &Opcion4);
+    				switch(Opcion4){
+						case(1): {
+						//fichero BOE_calidaddeaire
+							mostrarBOE_1("BOE_calidaddeaire.txt");
+							break;
+						}
+						case(2): {
+						//fichero BOE_recomendaciones
+							mostrarBOE_2("BOE_recomendaciones.txt");	
+							break;
+						}
+						case(3):{
+						//fichero BOE_accesibilidad
+							mostrarBOE_3("BOE_accesibilidad.txt");
+							break;
+						}
+					}
+    				} while (Opcion4 != 4);
 				} else if (opcion == 5){
 					//FUNCION 5
 				}
-			} while (opcion <= 6);
+			} while (opcion < 6);
 			
-				if(opcion == 7){
-					printf("-HASTA PRONTO-\n");
+				if(opcion == 6){
+					printf("Hasta la próxima\n"); 
+					printf("FIN DEL PROGRAMA");
 					return 0;
 				}
 			break;
 		}
-	}
-
-	printf("Hasta la próxima\n"); 
-	printf("FIN DEL PROGRAMA"); 
-	
+	}	
 	
     return 0;
 }
@@ -962,6 +1125,75 @@ void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 	return;
 }
 
+//INFORMACIÓN
+void mostrarBOE_1(char *BOE_calidaddeaire) {
+	
+	FILE*fichero;
+	
+	//printf("\nHa seleccionado la opción CALAIRE\n");
+	fichero = fopen("BOE_calidaddeaire.txt", "r");
+   	
+    if (fichero == NULL) {
+        printf("\nError al abrir el archivo BOE_calidaddeaire.txt\n");
+        return;
+    } //else{	       
+	//	printf("Fichero de datos BOE_calidaddeaire.txt cargado exitosamente\n");
+	//}
+    
+    int c; 
+    while ((c = fgetc(fichero)) != EOF) {
+        putchar(c); 
+    }
+    printf("\n");
+
+	fclose(fichero);
+	
+	return;
+}
+
+void mostrarBOE_2(char *BOE_recomendaciones) {
+	
+	FILE*fichero;
+	
+	fichero = fopen("BOE_recomendaciones.txt", "r");
+   	
+    if (fichero == NULL) {
+        printf("\nError al abrir el archivo BOE_recomendaciones.txt\n");
+        return;
+    }
+	    
+    int c; 
+    while ((c = fgetc(fichero)) != EOF) {
+        putchar(c); 
+    }
+    printf("\n");
+
+	fclose(fichero);
+	
+	return;
+}
+
+void mostrarBOE_3(char *BOE_accesibilidad) {
+	
+	FILE*fichero;
+	
+	fichero = fopen("BOE_accesibilidad.txt", "r");
+   	
+    if (fichero == NULL) {
+        printf("\nError al abrir el archivo BOE_accesibilidad.txt\n");
+        return;
+    }
+	    
+    int c; 
+    while ((c = fgetc(fichero)) != EOF) {
+        putchar(c); 
+    }
+    printf("\n");
+
+	fclose(fichero);
+	
+	return;
+}
 //ESTADISTICAS
 		void calculomediasMA(TMendezAlvaro vectorMA[], int contador){
 		    float mediaNO2 = 0.0, mediaPM25 = 0.0, mediaPM10 = 0.0;
@@ -1674,4 +1906,6 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 		return;
 		}
 		
+		
+
 	
