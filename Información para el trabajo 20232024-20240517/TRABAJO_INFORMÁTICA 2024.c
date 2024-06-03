@@ -44,13 +44,13 @@ void calculoNO2min(TMendezAlvaro vectorMA[], int contador);
 void calculoPM25min(TMendezAlvaro vectorMA[], int contador);
 void calculoPM10min(TMendezAlvaro vectorMA[], int contador);
 void calculoMedianaMA(TMendezAlvaro vectorMA[], int contador);
-void calculoMedianaEA(TEscuelasAguirre vectorMA[], int contador);
 
 void calculomediasEA(TEscuelasAguirre vectorEA[], int i);
 void calculoTmax(TEscuelasAguirre vectroEA[], int contador);
 void calculoHRmax(TEscuelasAguirre vectorEA[], int contador);
 void calculoTmin(TEscuelasAguirre vectorEA[], int contador);
 void calculoHRmin(TEscuelasAguirre vectorEA[], int contador);
+void calculoMedianaEA(TEscuelasAguirre vectorMA[], int contador);
 
 void Modano2( TMendezAlvaro vectorMA[], int contador);
 void ModaPM25(TMendezAlvaro vectorMA[], int contador);
