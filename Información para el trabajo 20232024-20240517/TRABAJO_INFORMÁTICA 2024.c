@@ -57,6 +57,7 @@ void ModaPM25(TMendezAlvaro vectorMA[], int contador);
 void ModaPM10(TMendezAlvaro vectorMA[], int contador);
 void ModaT(TEscuelasAguirre vectorEA[], int contador);
 void ModaHR(TEscuelasAguirre vectorEA[], int contador);
+
 //FUNCIONES COMPARACIÓN
 void fordTEA(TEscuelasAguirre vectorEA[], int contador);
 void fordT2EA(TEscuelasAguirre vectorEA[], int contador);
@@ -65,6 +66,7 @@ void fordHREA(TEscuelasAguirre vectorEA[], int contador);
 void fordMA(TMendezAlvaro vectorMA[], int contador);
 void ford2MA(TMendezAlvaro vectorMA[], int contador);
 
+void fcompararME(TMendezAlvaro vectorMA[], int contador);
 int main() {
     setlocale(LC_CTYPE, "spanish"); // para que el compilador reconozca las ñ y tildes 
     int archivo, opcion, contador = 0, TAM = 25;
@@ -152,7 +154,8 @@ int main() {
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
     				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Salir de comparaciones.\n");
+    				printf("\t5: Comparar valores de 2 horas\n");
+    				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
 						case(1): {
@@ -173,8 +176,12 @@ int main() {
 							
 							break;
 						}
+						case(5): {
+							fcompararME(vectorMA, contador);
+							break;
+						}
 					}
-    				} while (Opcion3 != 5);
+    				} while (Opcion3 != 6);
 				} else if (opcion == 4){
 					//FUNCION 4
 				} else if (opcion == 5){
@@ -257,7 +264,8 @@ int main() {
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
     				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Salir de comparaciones.\n");
+    				printf("\t5: Comparar valores de 2 horas \n");
+    				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
 						case(1): {
@@ -278,8 +286,12 @@ int main() {
 							
 							break;
 						}
+						case(5): {
+							fcompararME(vectorMA, contador);
+							break;
+						}
 					}
-    				} while (Opcion3 != 5);
+    				} while (Opcion3 != 6);
 				} else if (opcion == 4){
 					//FUNCION 4
 				} else if (opcion == 5){
@@ -362,7 +374,8 @@ int main() {
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
     				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Salir de comparaciones.\n");
+    				printf("\t5: Comparar valores de 2 horas");
+    				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
 						case(1): {
@@ -383,8 +396,12 @@ int main() {
 							
 							break;
 						}
+						case(5): {
+							fcompararME(vectorMA, contador);
+							break;
+						}
 					}
-    				} while (Opcion3 != 5);
+    				} while (Opcion3 != 6);
 				} else if (opcion == 4){
 					//FUNCION 4
 				} else if (opcion == 5){
@@ -462,7 +479,8 @@ int main() {
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
     				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Salir de comparaciones.\n");
+    				printf("\t5: Comparar valores de 2 horas");
+    				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
 						case(1): {
@@ -495,8 +513,12 @@ int main() {
 							
 							break;
 						}
+						case(5): {
+							
+							break;
+						}
 					}
-    				} while (Opcion3 != 5);
+    				} while (Opcion3 != 6);
 				} else if (opcion == 4){
 					//FUNCION 4
 				} else if (opcion == 5){
@@ -575,7 +597,8 @@ int main() {
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
     				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Salir de comparaciones.\n");
+    				printf("\t5: Comparar valores de 2 horas");
+    				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
 						case(1): {
@@ -608,8 +631,12 @@ int main() {
 							
 							break;
 						}
+						case(5): {
+							
+							break;
+						}
 					}
-    				} while (Opcion3 != 5);
+    				} while (Opcion3 != 6);
 				} else if (opcion == 4){
 					//FUNCION 4
 				} else if (opcion == 5){
@@ -689,7 +716,8 @@ int main() {
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
     				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Salir de comparaciones.\n");
+    				printf("\t5: Comparar valores de 2 horas");
+    				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
 						case(1): {
@@ -721,8 +749,12 @@ int main() {
 							
 							break;
 						}
+						case(5): {
+							
+							break;
+						}
 					}
-    				} while (Opcion3 != 5);
+    				} while (Opcion3 != 6);
 				} else if (opcion == 4){
 					//FUNCION 4
 				} else if (opcion == 5){
@@ -1318,7 +1350,111 @@ void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 				
 				    return;
 				}	
-		
+		//MEDIANA
+		void calculoMedianaMA(TMendezAlvaro vectorMA[], int contador){
+			int i, j; 
+			float medianaNO2, medianaPM25, medianaPM10;
+			int aux1;
+			float aux2, aux3;
+			
+			for(i = 0; i < contador; i++){
+				for(j = i+1; j < contador; j++){
+					if(vectorMA[i].NO2 > vectorMA[j].NO2){
+						aux1 = vectorMA[i].NO2;
+					
+						vectorMA[i].NO2 = vectorMA[j].NO2;
+						
+						vectorMA[j].NO2 = aux1;
+					}
+				}
+			}
+			
+			for(i = 0; i < contador; i++){
+				for(j = i+1; j < contador; j++){
+					if(vectorMA[i].PM25 > vectorMA[j].PM25){
+						aux2 = vectorMA[i].PM25;
+	
+						vectorMA[i].PM25 = vectorMA[j].PM25;
+						
+						vectorMA[j].PM25 = aux2;
+					}
+				}
+			}
+			
+			for(i = 0; i < contador; i++){
+				for(j = i+1; j < contador; j++){
+					if(vectorMA[i].PM10 > vectorMA[j].PM10){
+						aux3 = vectorMA[i].PM10;
+	
+						vectorMA[i].PM10 = vectorMA[j].PM10;
+						
+						vectorMA[j].PM10 = aux3;
+					}
+				}
+			}
+			
+			if(i % 2== 0){
+				medianaNO2 = (vectorMA[(i/2)- 1].NO2 + vectorMA[i/2].NO2) / 2.0;
+				medianaPM25 = (vectorMA[(i/2) - 1].PM25 + vectorMA[i/2].PM25) / 2.0;
+				medianaPM10 = (vectorMA[(i/2) - 1].PM10 + vectorMA[i/2].PM10) / 2.0;
+			
+			} else{
+				medianaNO2 = vectorMA[i/2].NO2;
+				medianaPM25 = vectorMA[i/2].PM25;
+				medianaPM10 = vectorMA[i/2].PM10;
+			}		
+			
+			printf("\nMediana NO2: %.3f\n", medianaNO2);
+	    	printf("\nMediana PM2.5: %.3f\n", medianaPM25);
+	    	printf("\nMediana PM10: %.3f\n", medianaPM10);
+			
+			return;
+			}
+			
+		void calculoMedianaEA(TEscuelasAguirre vectorEA[], int contador){
+			int i, j; 
+			float medianaT, medianaHR;
+			int aux1;
+			float aux2;
+			
+			for(i = 0; i < contador; i++){
+				for(j = i+1; j < contador; j++){
+					if(vectorEA[i].T > vectorEA[j].T){
+						aux1 = vectorEA[i].T;
+					
+						vectorEA[i].T = vectorEA[j].T;
+						
+						vectorEA[j].T = aux1;
+					}
+				}
+			}
+			
+			for(i = 0; i < contador; i++){
+				for(j = i+1; j < contador; j++){
+					if(vectorEA[i].HR > vectorEA[j].HR){
+						aux2 = vectorEA[i].HR;
+	
+						vectorEA[i].HR = vectorEA[j].HR;
+						
+						vectorEA[j].HR = aux2;
+					}
+				}
+			}
+			
+			if(i % 2== 0){
+				medianaT = (vectorEA[(i/2)- 1].T + vectorEA[i/2].T) / 2.0;
+				medianaHR = (vectorEA[(i/2) - 1].HR + vectorEA[i/2].HR) / 2.0;
+			
+			} else{
+				medianaT = vectorEA[i/2].T;
+				medianaHR = vectorEA[i/2].HR;
+			}		
+			
+			printf("\nMediana T: %.3f\n", medianaT);
+	    	printf("\nMediana HR: %.3f\n", medianaHR);
+			
+			return;
+			}
 		
 //COMPARACION
 void fordTEA(TEscuelasAguirre vectorEA[], int contador){
@@ -1569,109 +1705,75 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 			return;
 		}
 		
-	void calculoMedianaMA(TMendezAlvaro vectorMA[], int contador){
-		int i, j; 
-		float medianaNO2, medianaPM25, medianaPM10;
-		int aux1;
-		float aux2, aux3;
+	//COMPARARCIÓN ENTRE DOS HORAS	
+		//MENDEZ ALVARO
 		
-		for(i = 0; i < contador; i++){
-			for(j = i+1; j < contador; j++){
-				if(vectorMA[i].NO2 > vectorMA[j].NO2){
-					aux1 = vectorMA[i].NO2;
+		void fcompararME(TMendezAlvaro vectorMA[], int contador) {
 				
-					vectorMA[i].NO2 = vectorMA[j].NO2;
+				int i, j; 
+				int hora1, hora2; 
+				int No21=0, No22=0;
+				float PM251=0, PM252=0;
+				float PM101=0, PM102=0;
+				 
+				do {
+					printf ("Introduce la primera hora que quiera comparar, del 0 al 23 \n");
+					scanf ("%i", &hora1);
+					printf ("Introduce la segunda hora que quiera comparar, del 0 al 23 \n");
+					scanf("%i", &hora2);	
 					
-					vectorMA[j].NO2 = aux1;
+				}while (hora1 < 0 || hora1 > 23 || hora2 < 0 || hora2 > 23);
+			
+				for (i=0; i<contador; i++) {
+					if (vectorMA[i].hora == hora1) {
+            		No21 = vectorMA[i].NO2;
+					}
+					if (vectorMA[i].hora == hora2) {
+           		 	No22 = vectorMA[i].NO2;
+        			}
 				}
-			}
-		}
-		
-		for(i = 0; i < contador; i++){
-			for(j = i+1; j < contador; j++){
-				if(vectorMA[i].PM25 > vectorMA[j].PM25){
-					aux2 = vectorMA[i].PM25;
-
-					vectorMA[i].PM25 = vectorMA[j].PM25;
-					
-					vectorMA[j].PM25 = aux2;
-				}
-			}
-		}
-		
-		for(i = 0; i < contador; i++){
-			for(j = i+1; j < contador; j++){
-				if(vectorMA[i].PM10 > vectorMA[j].PM10){
-					aux3 = vectorMA[i].PM10;
-
-					vectorMA[i].PM10 = vectorMA[j].PM10;
-					
-					vectorMA[j].PM10 = aux3;
-				}
-			}
-		}
-		
-		if(i % 2== 0){
-			medianaNO2 = (vectorMA[(i/2)- 1].NO2 + vectorMA[i/2].NO2) / 2.0;
-			medianaPM25 = (vectorMA[(i/2) - 1].PM25 + vectorMA[i/2].PM25) / 2.0;
-			medianaPM10 = (vectorMA[(i/2) - 1].PM10 + vectorMA[i/2].PM10) / 2.0;
-		
-		} else{
-			medianaNO2 = vectorMA[i/2].NO2;
-			medianaPM25 = vectorMA[i/2].PM25;
-			medianaPM10 = vectorMA[i/2].PM10;
-		}		
-		
-		printf("\nMediana NO2: %.3f\n", medianaNO2);
-    	printf("\nMediana PM2.5: %.3f\n", medianaPM25);
-    	printf("\nMediana PM10: %.3f\n", medianaPM10);
-		
-		return;
-		}
-		
-		void calculoMedianaEA(TEscuelasAguirre vectorEA[], int contador){
-		int i, j; 
-		float medianaT, medianaHR;
-		int aux1;
-		float aux2;
-		
-		for(i = 0; i < contador; i++){
-			for(j = i+1; j < contador; j++){
-				if(vectorEA[i].T > vectorEA[j].T){
-					aux1 = vectorEA[i].T;
 				
-					vectorEA[i].T = vectorEA[j].T;
-					
-					vectorEA[j].T = aux1;
+				if (No21<No22) {
+					printf("\nEl valor de NO2 = %i a la hora %i, es MENOR que el valor de NO2 = %i a la hora:%i\n", No21,hora1,No22,hora2);
+				} else if (No21>No22) {
+					printf ("\nEl valor de NO2 = %i a la hora %i, es MAYOR que el valor de NO2 = %i a la hora %i\n", No21,hora1,No22,hora2);
+				} else if (No21==No22) {
+					printf ("\nLas horas %i y %i tienen IGUAL valor de NO2 = %i \n",hora1,hora2, No21);
 				}
-			}
-		}
-		
-		for(i = 0; i < contador; i++){
-			for(j = i+1; j < contador; j++){
-				if(vectorEA[i].HR > vectorEA[j].HR){
-					aux2 = vectorEA[i].HR;
-
-					vectorEA[i].HR = vectorEA[j].HR;
-					
-					vectorEA[j].HR = aux2;
+				
+				for (i=0; i<contador; i++) {
+					if (vectorMA[i].hora == hora1) {
+            		PM251 = vectorMA[i].PM25;
+					}
+					if (vectorMA[i].hora == hora2) {
+           		 	PM252 = vectorMA[i].PM25;
+        			}
 				}
-			}
-		}
-		
-		if(i % 2== 0){
-			medianaT = (vectorEA[(i/2)- 1].T + vectorEA[i/2].T) / 2.0;
-			medianaHR = (vectorEA[(i/2) - 1].HR + vectorEA[i/2].HR) / 2.0;
-		
-		} else{
-			medianaT = vectorEA[i/2].T;
-			medianaHR = vectorEA[i/2].HR;
-		}		
-		
-		printf("\nMediana T: %.3f\n", medianaT);
-    	printf("\nMediana HR: %.3f\n", medianaHR);
-		
-		return;
-		}
-		
+				
+				if (PM251<PM252) {
+					printf("\nEl valor de PM2.5 = %.3f a la hora %i, es MENOR que el valor de PM2.5 = %.3f a la hora:%i\n", PM251,hora1,PM252,hora2);
+				} else if (PM251>PM252) {
+					printf ("\nEl valor de PM2.5 = %.3f a la hora %i, es MAYOR que el valor de PM2.5 = %.3f a la hora %i\n", PM251,hora1,PM252,hora2);
+				} else if (PM251==PM252) {
+					printf ("\nLas horas %i y %i tienen IGUAL valor de PM2.5 = %.3f \n",hora1,hora2, PM251);
+					}
+				
+				for (i=0; i<contador; i++) {
+					if (vectorMA[i].hora == hora1) {
+            		PM101 = vectorMA[i].PM10;
+					}
+					if (vectorMA[i].hora == hora2) {
+           		 	PM102 = vectorMA[i].PM10;
+        			}
+				}
+				
+				if (PM101<PM102) {
+					printf("\nEl valor de PM10 = %.3f a la hora %i, es MENOR que el valor de PM10 = %.3f a la hora:%i\n", PM101,hora1,PM102,hora2);
+				} else if (PM101>PM102) {
+					printf ("\nEl valor de PM10 = %.3f a la hora %i, es MAYOR que el valor de PM10 = %.3f a la hora %i\n", PM101,hora1,PM102,hora2);
+				} else if (PM101==PM102) {
+					printf ("\nLas horas %i y %i tienen IGUAL valor de PM1O = %.3f \n",hora1,hora2, PM101);
+					}
+		}	
+				
 	
