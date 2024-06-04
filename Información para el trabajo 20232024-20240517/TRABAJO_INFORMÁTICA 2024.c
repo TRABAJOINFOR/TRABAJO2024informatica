@@ -73,6 +73,7 @@ void ford2MA(TMendezAlvaro vectorMA[], int contador);
 
 
 void fcompararME(TMendezAlvaro vectorMA[], int contador);
+void fcompararEA(TEscuelasAguirre vectorEA[], int contador);
 
 int main() {
     setlocale(LC_CTYPE, "spanish"); // para que el compilador reconozca las ñ y tildes 
@@ -596,7 +597,7 @@ int main() {
 							break;
 							
 						}case(5): {
-							
+							fcompararEA(vectorEA, contador);
 							break;
 						}
 					}
@@ -739,7 +740,7 @@ int main() {
 							
 							break;
 						}case(5): {
-							
+							fcompararEA(vectorEA, contador);
 							break;
 						}
 					}
@@ -882,7 +883,7 @@ int main() {
 							
 							break;
 						}case(5): {
-							
+							fcompararEA(vectorEA, contador);
 							break;
 						}
 					}
@@ -1932,6 +1933,7 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 		}
 		
 	//COMPARARCIÓN ENTRE DOS HORAS	
+		
 		//MENDEZ ALVARO	
 		void fcompararME(TMendezAlvaro vectorMA[], int contador){
 			int i, j; 
@@ -1939,7 +1941,7 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 				int No21=0, No22=0;
 				float PM251=0, PM252=0;
 				float PM101=0, PM102=0;
-				 
+
 				do {
 					printf ("Introduce la primera hora que quiera comparar, del 0 al 23 \n");
 					scanf ("%i", &hora1);
@@ -1957,11 +1959,11 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 				}
 				
 				if (No21<No22) {
-					printf("\nEl valor de NO2 = %i a la hora %i, es MENOR que el valor de NO2 = %i a la hora %i\n", No21,hora1,No22,hora2);
+					printf("\nEl valor de NO2 = %i µg/m3 a la hora %i, es MENOR que el valor de NO2 = %i µg/m3 a la hora %i\n", No21,hora1,No22,hora2);
 				} else if (No21>No22) {
-					printf ("\nEl valor de NO2 = %i a la hora %i, es MAYOR que el valor de NO2 = %i a la hora %i\n", No21,hora1,No22,hora2);
+					printf ("\nEl valor de NO2 = %i µg/m3 a la hora %i, es MAYOR que el valor de NO2 = %i µg/m3 a la hora %i\n", No21,hora1,No22,hora2);
 				} else if (No21==No22) {
-					printf ("\nLas horas %i y %i tienen IGUAL valor de NO2 = %i \n",hora1,hora2, No21);
+					printf ("\nLas horas %i y %i tienen IGUAL valor de NO2 = %i µg/m3\n",hora1,hora2, No21);
 				}
 				
 				for (i=0; i<contador; i++) {
@@ -1974,11 +1976,11 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 				}
 				
 				if (PM251<PM252) {
-					printf("\nEl valor de PM2.5 = %.3f a la hora %i, es MENOR que el valor de PM2.5 = %.3f a la hora %i\n", PM251,hora1,PM252,hora2);
+					printf("\nEl valor de PM2.5 = %.3f µg/m3 a la hora %i, es MENOR que el valor de PM2.5 = %.3f µg/m3 a la hora %i\n", PM251,hora1,PM252,hora2);
 				} else if (PM251>PM252) {
-					printf ("\nEl valor de PM2.5 = %.3f a la hora %i, es MAYOR que el valor de PM2.5 = %.3f a la hora %i\n", PM251,hora1,PM252,hora2);
+					printf ("\nEl valor de PM2.5 = %.3f µg/m3 a la hora %i, es MAYOR que el valor de PM2.5 = %.3f µg/m3 a la hora %i\n", PM251,hora1,PM252,hora2);
 				} else if (PM251==PM252) {
-					printf ("\nLas horas %i y %i tienen IGUAL valor de PM2.5 = %.3f \n",hora1,hora2, PM251);
+					printf ("\nLas horas %i y %i tienen IGUAL valor de PM2.5 = %.3f µg/m3\n",hora1,hora2, PM251);
 					}
 				
 				for (i=0; i<contador; i++) {
@@ -1991,14 +1993,60 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 				}
 				
 				if (PM101<PM102) {
-					printf("\nEl valor de PM10 = %.3f a la hora %i, es MENOR que el valor de PM10 = %.3f a la hora %i\n", PM101,hora1,PM102,hora2);
+					printf("\nEl valor de PM10 = %.3f µg/m3 a la hora %i, es MENOR que el valor de PM10 = %.3f µg/m3 a la hora %i\n", PM101,hora1,PM102,hora2);
 				} else if (PM101>PM102) {
-					printf ("\nEl valor de PM10 = %.3f a la hora %i, es MAYOR que el valor de PM10 = %.3f a la hora %i\n", PM101,hora1,PM102,hora2);
+					printf ("\nEl valor de PM10 = %.3f µg/m3 a la hora %i, es MAYOR que el valor de PM10 = %.3f µg/m3 a la hora %i\n", PM101,hora1,PM102,hora2);
 				} else if (PM101==PM102) {
-					printf ("\nLas horas %i y %i tienen IGUAL valor de PM1O = %.3f \n",hora1,hora2, PM101);
+					printf ("\nLas horas %i y %i tienen IGUAL valor de PM1O = %.3f µg/m3 \n",hora1,hora2, PM101);
 					}
-					
-				
 		}	
+		//ESCUELAS AGUIRRE
+		void fcompararEA(TEscuelasAguirre vectorEA[], int contador){
+			int i, j; 
+				int hora1, hora2; 
+				int HR1=0, HR2=0;
+				float T1=0, T2=0;
+
+				do {
+					printf ("Introduce la primera hora que quiera comparar, del 0 al 23 \n");
+					scanf ("%i", &hora1);
+					printf ("Introduce la segunda hora que quiera comparar, del 0 al 23 \n");
+					scanf("%i", &hora2);	
+				}while (hora1 < 0 || hora1 > 23 || hora2 < 0 || hora2 > 23);
+			
+				for (i=0; i<contador; i++) {
+					if (vectorEA[i].hora == hora1) {
+            		T1 = vectorEA[i].T;
+					}
+					if (vectorEA[i].hora == hora2) {
+           		 	T2 = vectorEA[i].T;
+					}
+				}
 				
+				if (T1<T2) {
+					printf("\nLa temperatura = %.1f° a la hora %i, es MENOR que la temperatura = %.1f° a la hora %i\n", T1,hora1,T2,hora2);
+				} else if (T1>T2) {
+					printf("\nLa temperatura = %.1f° a la hora %i, es MAYOR que la temperatura = %.1f° a la hora %i\n", T1,hora1,T2,hora2);
+				} else if (T1==T2) {
+					printf ("\nLas horas %i y %i tienen IGUAL valor de temperatura = %.1f°\n",hora1,hora2, T1);
+				}
+				
+				for (i=0; i<contador; i++) {
+					if (vectorEA[i].hora == hora1) {
+            		HR1 = vectorEA[i].HR;
+					}
+					if (vectorEA[i].hora == hora2) {
+           		 	HR2 = vectorEA[i].HR;
+					}
+				}
+				
+				if (HR1<HR2) {
+					printf("\nEl valor de HR = %i a la hora %i, es MENOR que el valor de HR = %i a la hora %i\n", HR1,hora1,HR2,hora2);
+				} else if (HR1>HR2) {
+						printf("\nEl valor de HR = %i a la hora %i, es MAYOR que el valor de HR = %i a la hora %i\n", HR1,hora1,HR2,hora2);
+				} else if (HR1==HR2) {
+					printf ("\nLas horas %i y %i tienen IGUAL valor de HR = %i \n",hora1,hora2, HR1);
+				}
+		
+		}			
 	
