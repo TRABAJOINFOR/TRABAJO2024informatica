@@ -62,6 +62,7 @@ void ModaPM25(TMendezAlvaro vectorMA[], int contador);
 void ModaPM10(TMendezAlvaro vectorMA[], int contador);
 void ModaT(TEscuelasAguirre vectorEA[], int contador);
 void ModaHR(TEscuelasAguirre vectorEA[], int contador);
+
 //FUNCIONES COMPARACIÓN
 void fordTEA(TEscuelasAguirre vectorEA[], int contador);
 void fordT2EA(TEscuelasAguirre vectorEA[], int contador);
@@ -69,6 +70,9 @@ void fordHR2EA(TEscuelasAguirre vectorEA[], int contador);
 void fordHREA(TEscuelasAguirre vectorEA[], int contador);
 void fordMA(TMendezAlvaro vectorMA[], int contador);
 void ford2MA(TMendezAlvaro vectorMA[], int contador);
+
+
+void fcompararME(TMendezAlvaro vectorMA[], int contador);
 
 int main() {
     setlocale(LC_CTYPE, "spanish"); // para que el compilador reconozca las ñ y tildes 
@@ -156,8 +160,8 @@ int main() {
     				printf("\t1: Valor máximo entre ficheros \n");
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
-    				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Salir de comparaciones.\n");
+    				printf("\t5: Comparar valores de 2 horas\n");
+    				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
 						case(1): {
@@ -178,8 +182,12 @@ int main() {
 							
 							break;
 						}
+						case(5): {
+								fcompararME(vectorMA, contador);
+							break;
+						}
 					}
-    				} while (Opcion3 != 5);
+    				} while (Opcion3 != 6);
 				} else if (opcion == 4){
 					//FUNCION 4
 					int Opcion4;
@@ -288,8 +296,8 @@ int main() {
     				printf("\t1: Valor máximo entre ficheros \n");
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
-    				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Salir de comparaciones.\n");
+    				printf("\t5: Comparar valores de 2 horas\n");
+    				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
 						case(1): {
@@ -309,9 +317,12 @@ int main() {
 							ford2MA(vectorMA, contador);
 							
 							break;
+						}case(5): {
+							fcompararME(vectorMA, contador);
+							break;
 						}
 					}
-    				} while (Opcion3 != 5);
+    				} while (Opcion3 != 6);
 				} else if (opcion == 4){
 					//FUNCION 4
 					int Opcion4;
@@ -420,8 +431,8 @@ int main() {
     				printf("\t1: Valor máximo entre ficheros \n");
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
-    				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Salir de comparaciones.\n");
+    				printf("\t5: Comparar valores de 2 horas\n");
+    				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
 						case(1): {
@@ -441,9 +452,12 @@ int main() {
 							ford2MA(vectorMA, contador);
 							
 							break;
+						}case(5): {
+							fcompararME(vectorMA, contador);
+							break;
 						}
 					}
-    				} while (Opcion3 != 5);
+    				} while (Opcion3 != 6);
 				} else if (opcion == 4){
 					//FUNCION 4
 					int Opcion4;
@@ -547,8 +561,8 @@ int main() {
     				printf("\t1: Valor máximo entre ficheros \n");
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
-    				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Salir de comparaciones.\n");
+    				printf("\t5: Comparar valores de 2 horas\n");
+    				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
 						case(1): {
@@ -580,9 +594,13 @@ int main() {
 							}						
 							
 							break;
+							
+						}case(5): {
+							
+							break;
 						}
 					}
-    				} while (Opcion3 != 5);
+    				} while (Opcion3 != 6);
 				} else if (opcion == 4){
 					//FUNCION 4
 					int Opcion4;
@@ -687,8 +705,8 @@ int main() {
     				printf("\t1: Valor máximo entre ficheros \n");
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
-    				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Salir de comparaciones.\n");
+    				printf("\t5: Comparar valores de 2 horas\n");
+    				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
 						case(1): {
@@ -720,9 +738,12 @@ int main() {
 							}
 							
 							break;
+						}case(5): {
+							
+							break;
 						}
 					}
-    				} while (Opcion3 != 5);
+    				} while (Opcion3 != 6);
 				} else if (opcion == 4){
 					//FUNCION 4
 					int Opcion4;
@@ -828,8 +849,8 @@ int main() {
     				printf("\t1: Valor máximo entre ficheros \n");
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
-    				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Salir de comparaciones.\n");
+    				printf("\t5: Comparar valores de 2 horas\n");
+    				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
 						case(1): {
@@ -860,9 +881,12 @@ int main() {
 							}						
 							
 							break;
+						}case(5): {
+							
+							break;
 						}
 					}
-    				} while (Opcion3 != 5);
+    				} while (Opcion3 != 6);
 				} else if (opcion == 4){
 					//FUNCION 4
 					int Opcion4;
@@ -1553,6 +1577,7 @@ void mostrarBOE_3(char *BOE_accesibilidad) {
 		
 		
 //COMPARACION
+
 void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 			int i, j, z; 
 			float aux1, aux2, aux3; 
@@ -1906,6 +1931,74 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 		return;
 		}
 		
-		
-
+	//COMPARARCIÓN ENTRE DOS HORAS	
+		//MENDEZ ALVARO	
+		void fcompararME(TMendezAlvaro vectorMA[], int contador){
+			int i, j; 
+				int hora1, hora2; 
+				int No21=0, No22=0;
+				float PM251=0, PM252=0;
+				float PM101=0, PM102=0;
+				 
+				do {
+					printf ("Introduce la primera hora que quiera comparar, del 0 al 23 \n");
+					scanf ("%i", &hora1);
+					printf ("Introduce la segunda hora que quiera comparar, del 0 al 23 \n");
+					scanf("%i", &hora2);	
+				}while (hora1 < 0 || hora1 > 23 || hora2 < 0 || hora2 > 23);
+			
+				for (i=0; i<contador; i++) {
+					if (vectorMA[i].hora == hora1) {
+            		No21 = vectorMA[i].NO2;
+					}
+					if (vectorMA[i].hora == hora2) {
+           		 	No22 = vectorMA[i].NO2;
+					}
+				}
+				
+				if (No21<No22) {
+					printf("\nEl valor de NO2 = %i a la hora %i, es MENOR que el valor de NO2 = %i a la hora %i\n", No21,hora1,No22,hora2);
+				} else if (No21>No22) {
+					printf ("\nEl valor de NO2 = %i a la hora %i, es MAYOR que el valor de NO2 = %i a la hora %i\n", No21,hora1,No22,hora2);
+				} else if (No21==No22) {
+					printf ("\nLas horas %i y %i tienen IGUAL valor de NO2 = %i \n",hora1,hora2, No21);
+				}
+				
+				for (i=0; i<contador; i++) {
+					if (vectorMA[i].hora == hora1) {
+            		PM251 = vectorMA[i].PM25;
+					}
+					if (vectorMA[i].hora == hora2) {
+           		 	PM252 = vectorMA[i].PM25;
+					}
+				}
+				
+				if (PM251<PM252) {
+					printf("\nEl valor de PM2.5 = %.3f a la hora %i, es MENOR que el valor de PM2.5 = %.3f a la hora %i\n", PM251,hora1,PM252,hora2);
+				} else if (PM251>PM252) {
+					printf ("\nEl valor de PM2.5 = %.3f a la hora %i, es MAYOR que el valor de PM2.5 = %.3f a la hora %i\n", PM251,hora1,PM252,hora2);
+				} else if (PM251==PM252) {
+					printf ("\nLas horas %i y %i tienen IGUAL valor de PM2.5 = %.3f \n",hora1,hora2, PM251);
+					}
+				
+				for (i=0; i<contador; i++) {
+					if (vectorMA[i].hora == hora1) {
+            		PM101 = vectorMA[i].PM10;
+					}
+					if (vectorMA[i].hora == hora2) {
+           		 	PM102 = vectorMA[i].PM10;
+        			}
+				}
+				
+				if (PM101<PM102) {
+					printf("\nEl valor de PM10 = %.3f a la hora %i, es MENOR que el valor de PM10 = %.3f a la hora %i\n", PM101,hora1,PM102,hora2);
+				} else if (PM101>PM102) {
+					printf ("\nEl valor de PM10 = %.3f a la hora %i, es MAYOR que el valor de PM10 = %.3f a la hora %i\n", PM101,hora1,PM102,hora2);
+				} else if (PM101==PM102) {
+					printf ("\nLas horas %i y %i tienen IGUAL valor de PM1O = %.3f \n",hora1,hora2, PM101);
+					}
+					
+				
+		}	
+				
 	
