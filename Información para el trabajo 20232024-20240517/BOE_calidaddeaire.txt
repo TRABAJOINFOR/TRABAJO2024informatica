@@ -1,10 +1,10 @@
-Es importante señalar que el índice refleja la situación de calidad del aire a corto plazo y 
-no la situación a largo plazo (periodo anual), que podría diferir de manera significativa con 
-el valor del índice. Por otra parte, la normativa en materia de calidad del aire establece 
-objetivos de calidad a largo plazo que son más estrictos que los objetivos a corto plazo. 
-Es por este motivo por el que el índice no es una herramienta diseñada para verificar el 
+Es importante senalar que el indice refleja la situacion de calidad del aire a corto plazo y 
+no la situacion a largo plazo (periodo anual), que podria diferir de manera significativa con 
+el valor del indice. Por otra parte, la normativa en materia de calidad del aire establece 
+objetivos de calidad a largo plazo que son mas estrictos que los objetivos a corto plazo. 
+Es por este motivo por el que el indice no es una herramienta diseñada para verificar el 
 cumplimiento de la normativa de calidad del aire en cuanto al cumplimiento de los objetivos
 reglamentarios.
-El valor del índice lo determinan las concentraciones, en cada estación de medida, de
-hasta cinco contaminantes clave: partículas en suspensión PM10 y PM2,5; O3 ozono; 
+El valor del indice lo determinan las concentraciones, en cada estación de medida, de
+hasta cinco contaminantes clave: particulas en suspensión PM10 y PM2,5; O3 ozono; 
 NO2 dióxido de carbono; SO2 dióxido de azufre.

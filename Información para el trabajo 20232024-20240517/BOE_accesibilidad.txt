@@ -1,5 +1,5 @@
-El índice de calidad del aire accesible a través de la página web del Ministerio
-de Transición Ecológica y Reto Demográfico utiliza datos provisionales y no 
+El indice de calidad del aire accesible a traves de la pagina web del Ministerio
+de Transicion Ecologica y Reto Demografico utiliza datos provisionales y no 
 validados y muestra por defecto la situación de la última hora disponible. 
-Los usuarios pueden seleccionar para su visualización cualquier hora específica 
-del histórico almacenado en el visor (con un mínimo de 48 horas).
+Los usuarios pueden seleccionar para su visualización cualquier hora especifica 
+del historico almacenado en el visor (con un mínimo de 48 horas).
