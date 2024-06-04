@@ -71,9 +71,10 @@ void fordHREA(TEscuelasAguirre vectorEA[], int contador);
 void fordMA(TMendezAlvaro vectorMA[], int contador);
 void ford2MA(TMendezAlvaro vectorMA[], int contador);
 
-
 void fcompararME(TMendezAlvaro vectorMA[], int contador);
 void fcompararEA(TEscuelasAguirre vectorEA[], int contador);
+
+
 
 int main() {
     setlocale(LC_CTYPE, "spanish"); // para que el compilador reconozca las ñ y tildes 
