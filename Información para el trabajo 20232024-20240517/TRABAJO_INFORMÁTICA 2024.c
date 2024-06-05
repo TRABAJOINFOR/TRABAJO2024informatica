@@ -220,7 +220,25 @@ int main() {
     				} while (Opcion4 != 4);
 				} else if (opcion == 5){
 					//FUNCION 5
+					float mediaNO2 = 0.0, mediaPM25 = 0.0, mediaPM10 = 0.0;
+			
+					int m;
+					for (m = 0; m < contador; m++) {
+						mediaNO2 += vectorMA[m].NO2;
+						mediaPM25 += vectorMA[m].PM25;
+						mediaPM10 += vectorMA[m].PM10;
+					}
+					
+					mediaNO2 /=  contador;
+					mediaPM25 /=  contador;
+					mediaPM10 /= contador;
+					
+					printf("\nLímite diario NO2 = 40 microgramos/m^3\n");
+					if(mediaNO2 <= 40|| mediaNO2 >=37.5){
+						printf("Como la media del NO2 es %.3f la calidad del aire con respecto a la concentración de NO2 es regular debido a su cercanía con el valor límite", mediaNO2);
+					}
 				}
+				
 			} while (opcion < 6);
 			
 				if(opcion == 6){
@@ -289,7 +307,7 @@ int main() {
 							break;
 						}
 					}
-    				} while (Opcion != 5);
+    				} while (Opcion != 6);
 				} else if (opcion == 3){
 					//FUNCION 3
 					int Opcion3;
@@ -424,7 +442,7 @@ int main() {
 							break;
 						}
 					}
-    				} while (Opcion != 5);
+    				} while (Opcion != 6);
 				} else if (opcion == 3){
 					//FUNCION 3
 					int Opcion3;
@@ -554,7 +572,7 @@ int main() {
 							break;
 						}
 					}
-    				} while (Opcion != 5);
+    				} while (Opcion != 6);
 				} else if (opcion == 3){
 					//FUNCION 3
 					int Opcion3;
@@ -698,7 +716,7 @@ int main() {
 							break;
 						}
 					}
-    				} while (Opcion != 5);
+    				} while (Opcion != 6);
 				} else if (opcion == 3){
 					//FUNCION 3
 					int Opcion3;
@@ -776,6 +794,7 @@ int main() {
     				} while (Opcion4 != 4);
 				} else if (opcion == 5){
 					//FUNCION 5
+					
 				}
 			} while (opcion < 6);
 			
@@ -842,7 +861,7 @@ int main() {
 						}
 					break;
 					}
-    				} while (Opcion != 5);
+    				} while (Opcion != 6);
 				} else if (opcion == 3){
 					//FUNCION 3
 					int Opcion3;
@@ -1146,7 +1165,7 @@ int mostrarArchivo6(TEscuelasAguirre vectorEA[]) {
 
 void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 	printf("\n     *** MENÚ PRINCIPAL ***        \n");
-		printf("Seleccione una opcion:\n \t\t\t1-Ver informe\n \t\t\t2-Estadísticas\n \t\t\t3-Comparación\n \t\t\t4-Información\n \t\t\t5-Imprimir todos los datos por pantalla\n \t\t\t6-Salir\n\n");
+		printf("Seleccione una opcion:\n \t\t\t1-Ver informe\n \t\t\t2-Estadísticas\n \t\t\t3-Comparación\n \t\t\t4-Información\n \t\t\t5-Consecuencias\n \t\t\t6-Salir\n\n");
 		
 	return;
 }
