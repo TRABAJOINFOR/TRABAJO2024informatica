@@ -83,8 +83,8 @@ int main() {
     TEscuelasAguirre vectorEA[TAM];
     
     while (1) {
-		
-		printf ("\nIndique el archivo con el que quiera trabajar:\n \t1.Mendez Álvaro 20-12-2023\n \t2.Mendez Álvaro 31-01-2024\n \t3.Mendez Álvaro 21-02-2024\n \t4.Escuelas Aguirre 20-12-2023\n \t5.Escuelas Aguirre 31-01-2024\n \t6.Escuelas Aguirre 21-02-2024\n");
+		printf("\t\t\t****** INDICE DE CALIDAD DEL AIRE ******\t\t\t\n");
+		printf ("\nIndique el archivo con el que quiera trabajar:\n\n\t1.Mendez Álvaro 20-12-2023\n \t2.Mendez Álvaro 31-01-2024\n \t3.Mendez Álvaro 21-02-2024\n \t4.Escuelas Aguirre 20-12-2023\n \t5.Escuelas Aguirre 31-01-2024\n \t6.Escuelas Aguirre 21-02-2024\n");
 		scanf ("%d", &archivo);
 		
 		if (archivo < 1 || archivo > 6) {
@@ -1145,7 +1145,7 @@ int mostrarArchivo6(TEscuelasAguirre vectorEA[]) {
 }
 
 void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
-	printf("\n           MENÚ PRINCIPAL           \n");
+	printf("\n     *** MENÚ PRINCIPAL ***        \n");
 		printf("Seleccione una opcion:\n \t\t\t1-Ver informe\n \t\t\t2-Estadísticas\n \t\t\t3-Comparación\n \t\t\t4-Información\n \t\t\t5-Imprimir todos los datos por pantalla\n \t\t\t6-Salir\n\n");
 		
 	return;
