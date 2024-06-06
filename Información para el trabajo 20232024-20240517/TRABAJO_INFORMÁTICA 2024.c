@@ -73,7 +73,8 @@ void ford2MA(TMendezAlvaro vectorMA[], int contador);
 
 void fcompararME(TMendezAlvaro vectorMA[], int contador);
 void fcompararEA(TEscuelasAguirre vectorEA[], int contador);
-
+																												//Marcos: Buscar por horas
+void DatosHoraME(TMendezAlvaro vectorMA[], int contador); 
 
 
 int main() {
@@ -81,6 +82,8 @@ int main() {
     int archivo, opcion, contador = 0, TAM = 25;
     TMendezAlvaro vectorMA[TAM];
     TEscuelasAguirre vectorEA[TAM];
+	int horaBuscada;
+	int numHora=0;
     
     while (1) {
 		printf("\t\t\t****** INDICE DE CALIDAD DEL AIRE ******\t\t\t\n");
@@ -159,7 +162,7 @@ int main() {
 					int Opcion3;
 					do { 
     				printf("\nElige una opción que desee\n");
-    				printf("\t1: Valor máximo entre ficheros \n");
+    				printf("\t1: Buscar una fuente concreta \n");
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
     				printf("\t5: Comparar valores de 2 horas\n");
@@ -167,7 +170,9 @@ int main() {
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
 						case(1): {
-						
+							int horaBuscada;
+							int numHora=0;
+							DatosHoraME( vectorMA,  contador);
 							break;
 						}
 						case(2): {
@@ -2087,4 +2092,38 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 				}
 		
 		}			
-	
+
+		//OBTENER DATOS DE UNA HORA
+		void DatosHoraME(TMendezAlvaro vectorMA[], int contador){
+		    int l, found = 0;
+		    int hora1; 
+			int No21=0, No22=0;
+			float PM251=0, PM252=0;
+			float PM101=0, PM102=0;
+			char calidas[30];
+		    do{
+		    printf("Introduce la hora que quieras buscar: \n"); 
+		    scanf("%i" ,&hora1);
+			}while (hora1 < 0 || hora1 > 23);
+		
+		    for (l = 0; l < contador; l++) {
+				if (vectorMA[l].hora == hora1) {
+					No21 = vectorMA[l].NO2;
+					PM251 = vectorMA[l].PM25;
+					PM101 = vectorMA[l].PM10;
+					calidas[30]= vectorMA[l].cal_aire[30];
+		
+				}else{
+					printf("\nHora '%i' no encontrada.\n", hora1);
+				}
+		    
+		        printf("\nInformacion de la hora buscada '%i':\n", hora1);
+		        printf("NO2: %.i\n", vectorMA[l].NO2);
+		        printf("PM2.5: %f\n", vectorMA[l].PM25);
+		        printf("PM10: %f\n", vectorMA[l].PM10);
+		        printf("Calidad del aire: %s\n", vectorMA[l].cal_aire);
+		
+		return;
+				      
+		}
+		}
