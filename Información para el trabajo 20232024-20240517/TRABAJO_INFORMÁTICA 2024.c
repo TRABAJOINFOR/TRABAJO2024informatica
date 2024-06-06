@@ -2106,7 +2106,8 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 			int No21=0, No22=0;
 			float PM251=0, PM252=0;
 			float PM101=0, PM102=0;
-			char calidas[30];
+			int calidad;
+			
 		    do{
 		    printf("Introduce la hora que quieras buscar: \n"); 
 		    scanf("%i" ,&hora1);
@@ -2117,14 +2118,14 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 					No21 = vectorMA[i].NO2;
 					PM251 = vectorMA[i].PM25;
 					PM101 = vectorMA[i].PM10;
-					calidas[30]= vectorMA[i].cal_aire;
+					calidad = i;
 				}
 			}
 		        printf("\nInformacion de la hora buscada '%i':\n", hora1);
 		        printf("NO2: %.i\n", No21);
 		        printf("PM2.5: %f\n", PM251);
 		        printf("PM10: %f\n", PM101);
-		        printf("Calidad del aire: %s\n", calidas);
+		        printf("Calidad del aire: %s\n", vectorMA[calidad].cal_aire);
 		
 		return;
 				      
