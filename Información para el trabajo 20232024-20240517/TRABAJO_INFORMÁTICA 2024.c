@@ -255,7 +255,7 @@ int main() {
 						scanf("%d", &Opcion5);
 						
 						if(Opcion5 == 1){
-							printf("\nCONSECUENCIAS PARA EL SER HUMANO\n-Provocar enfermedades en el aparato respiratorio (Bronquitis, Pulmonía)\n-Afecciones directas en bebés recién nacidos (Bajo peso al nacer, mayor probabilidad de parto prematura\)\n");
+							printf("\nCONSECUENCIAS PARA EL SER HUMANO\n-Provocar enfermedades en el aparato respiratorio (Bronquitis, Pulmonía)\n-Afecciones directas en bebés recién nacidos (Bajo peso al nacer, mayor probabilidad de parto prematura)\n");
 							printf("\nCONSECUENCIAS PARA EL MEDIOAMBIENTE\n-Aumento de la llúvia ácida\n-Formación de ozono y smog");
 						} else if(Opcion5 == 2){
 							printf("Volviendo al menú...");
@@ -2095,7 +2095,7 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 
 		//OBTENER DATOS DE UNA HORA
 		void DatosHoraME(TMendezAlvaro vectorMA[], int contador){
-		    int l, found = 0;
+		    int i, found = 0;
 		    int hora1; 
 			int No21=0, No22=0;
 			float PM251=0, PM252=0;
@@ -2106,24 +2106,20 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 		    scanf("%i" ,&hora1);
 			}while (hora1 < 0 || hora1 > 23);
 		
-		    for (l = 0; l < contador; l++) {
-				if (vectorMA[l].hora == hora1) {
-					No21 = vectorMA[l].NO2;
-					PM251 = vectorMA[l].PM25;
-					PM101 = vectorMA[l].PM10;
-					calidas[30]= vectorMA[l].cal_aire[30];
-		
-				}else{
-					printf("\nHora '%i' no encontrada.\n", hora1);
+		    for (i = 0; i < contador; i++) {
+				if (vectorMA[i].hora == hora1) {
+					No21 = vectorMA[i].NO2;
+					PM251 = vectorMA[i].PM25;
+					PM101 = vectorMA[i].PM10;
+					calidas[30]= vectorMA[i].cal_aire;
 				}
-		    
+			}
 		        printf("\nInformacion de la hora buscada '%i':\n", hora1);
-		        printf("NO2: %.i\n", vectorMA[l].NO2);
-		        printf("PM2.5: %f\n", vectorMA[l].PM25);
-		        printf("PM10: %f\n", vectorMA[l].PM10);
-		        printf("Calidad del aire: %s\n", vectorMA[l].cal_aire);
+		        printf("NO2: %.i\n", No21);
+		        printf("PM2.5: %f\n", PM251);
+		        printf("PM10: %f\n", PM101);
+		        printf("Calidad del aire: %s\n", calidas);
 		
 		return;
 				      
-		}
 		}
