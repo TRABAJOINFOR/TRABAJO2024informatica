@@ -222,7 +222,7 @@ int main() {
 					//FUNCION 5
 					float mediaNO2 = 0.0, mediaPM25 = 0.0, mediaPM10 = 0.0;
 			
-					int m;
+					int m, Opcion5;
 					for (m = 0; m < contador; m++) {
 						mediaNO2 += vectorMA[m].NO2;
 						mediaPM25 += vectorMA[m].PM25;
@@ -234,9 +234,31 @@ int main() {
 					mediaPM10 /= contador;
 					
 					printf("\nLímite diario NO2 = 40 microgramos/m^3\n");
-					if(mediaNO2 <= 40|| mediaNO2 >=37.5){
-						printf("Como la media del NO2 es %.3f la calidad del aire con respecto a la concentración de NO2 es regular debido a su cercanía con el valor límite", mediaNO2);
+					if(mediaNO2 < 40|| mediaNO2 >=37.5){
+						printf("Como la media del NO2 es %.3f la calidad del aire con respecto a la concentración de NO2 es regular, debido a su cercanía con el valor límite\n", mediaNO2);
+					} else if(mediaNO2 < 37.5){
+						printf("Como la media del NO2 es %.3f la calidad del aire con respecto a la concentración de NO2 es buena, debido a que está muy por debajo del valor límite\n", mediaNO2);
+					} else if(mediaNO2 == 40){
+						printf("La media del NO2 es de %.3f\t¡¡¡ESTAS EN EL LÍMITE DIARIO!!!\n");
+					} else if (mediaNO2 > 40){
+						printf("Como la media es de %.3f la calidad del aire con respecto a la concentración de NO2 es bastante desfavorable", mediaNO2);
 					}
+					
+					do{
+						printf("\n¿Quieres saber las posibles consecuencias de superar el límite diario?\n");
+						printf("1. Sí, quiero saber más\n2. Salir\n");
+						scanf("%d", &Opcion5);
+						
+						if(Opcion5 == 1){
+							printf("\nCONSECUENCIAS PARA EL SER HUMANO\n-Provocar enfermedades en el aparato respiratorio (Bronquitis, Pulmonía)\n-Afecciones directas en bebés recién nacidos (Bajo peso al nacer, mayor probabilidad de parto prematura\)\n");
+							printf("\nCONSECUENCIAS PARA EL MEDIOAMBIENTE\n-Aumento de la llúvia ácida\n-Formación de ozono y smog");
+						} else if(Opcion5 == 2){
+							printf("Volviendo al menú...");
+						} else {
+						printf("Elije una opción válida\n");
+						}
+						
+					}while(Opcion5 != 2);
 				}
 				
 			} while (opcion < 6);
