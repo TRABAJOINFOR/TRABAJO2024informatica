@@ -165,6 +165,7 @@ int main() {
     				printf("\t1: Buscar una fuente concreta \n");
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
+    				printf("\t4: Ordenar de mayor a menor \n");
     				printf("\t5: Comparar valores de 2 horas\n");
     				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
@@ -339,6 +340,7 @@ int main() {
     				printf("\t1: Valor máximo entre ficheros \n");
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
+    				printf("\t4: Ordenar de mayor a menor \n");
     				printf("\t5: Comparar valores de 2 horas\n");
     				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
@@ -474,6 +476,7 @@ int main() {
     				printf("\t1: Valor máximo entre ficheros \n");
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
+    				printf("\t4: Ordenar de mayor a menor \n");
     				printf("\t5: Comparar valores de 2 horas\n");
     				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
@@ -604,6 +607,7 @@ int main() {
     				printf("\t1: Valor máximo entre ficheros \n");
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
+    				printf("\t4: Ordenar de mayor a menor \n");
     				printf("\t5: Comparar valores de 2 horas\n");
     				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
@@ -748,6 +752,7 @@ int main() {
     				printf("\t1: Valor máximo entre ficheros \n");
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
+    				printf("\t4: Ordenar de mayor a menor \n");
     				printf("\t5: Comparar valores de 2 horas\n");
     				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
@@ -893,6 +898,7 @@ int main() {
     				printf("\t1: Valor máximo entre ficheros \n");
     				printf("\t2: Valor mínimo entre ficheros\n");
     				printf("\t3: Ordenar de menor a mayor \n");
+    				printf("\t4: Ordenar de mayor a menor \n");
     				printf("\t5: Comparar valores de 2 horas\n");
     				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
