@@ -75,7 +75,7 @@ void fcompararME(TMendezAlvaro vectorMA[], int contador);
 void fcompararEA(TEscuelasAguirre vectorEA[], int contador);
 																												//Marcos: Buscar por horas
 void DatosHoraME(TMendezAlvaro vectorMA[], int contador); 
-
+void DatosHoraEA(TEscuelasAguirre vectorEA[], int contador); 
 //FUNCIONES CONSECUENCIAS
 void mostrarCalidadDelAire(TMendezAlvaro vectorMA[], int contador);
 void mostrarConsecuencias();
@@ -111,6 +111,14 @@ int main() {
 				scanf("%d", &opcion);
 				
 				if (opcion == 1){
+					do{
+						int horaBuscada;
+						int numHora=0;
+						DatosHoraME( vectorMA,  contador);
+						break;
+						
+					}while(opcion != 99);
+					
 				
 				} else if (opcion == 2){
 					int Opcion;
@@ -165,35 +173,30 @@ int main() {
 					int Opcion3;
 					do { 
     				printf("\nElige una opción que desee\n");
-    				printf("\t1: Buscar una fuente concreta \n");
-    				printf("\t2: Valor mínimo entre ficheros\n");
-    				printf("\t3: Ordenar de menor a mayor \n");
-    				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Comparar valores de 2 horas\n");
+    				printf("\t1: Ordenar de menor a mayor \n");
+    				printf("\t2: Ordenar de mayor a menor \n");
+    				printf("\t3: Comparar valores de 2 horas\n");
     				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
-						case(1): {
-							int horaBuscada;
-							int numHora=0;
-							DatosHoraME( vectorMA,  contador);
-							break;
+					/*	case(1): {
+
 						}
 						case(2): {
 						
 							break;
-						}
-						case(3):{
+						}*/
+						case(1):{
 							fordMA(vectorMA, contador);
 
 							break;
 						}
-						case(4): {
+						case(2): {
 							ford2MA(vectorMA, contador);
 							
 							break;
 						}
-						case(5): {
+						case(3): {
 								fcompararME(vectorMA, contador);
 							break;
 						}
@@ -257,6 +260,13 @@ int main() {
 				
 				if (opcion == 1){
 					//FUNCION 1
+					do{
+						int horaBuscada;
+						int numHora=0;
+						DatosHoraME( vectorMA,  contador);
+						break;
+						
+					}while(opcion != 99);
 				} else if (opcion == 2){
 					int Opcion;
 				
@@ -310,32 +320,30 @@ int main() {
 					int Opcion3;
 					do { 
     				printf("\nElige una opción que desee\n");
-    				printf("\t1: Valor máximo entre ficheros \n");
-    				printf("\t2: Valor mínimo entre ficheros\n");
-    				printf("\t3: Ordenar de menor a mayor \n");
-    				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Comparar valores de 2 horas\n");
+    				printf("\t1: Ordenar de menor a mayor \n");
+    				printf("\t2: Ordenar de mayor a menor \n");
+    				printf("\t3: Comparar valores de 2 horas\n");
     				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
-						case(1): {
+					/*	case(1): {
 						
 							break;
 						}
 						case(2): {
 						
 							break;
-						}
-						case(3):{
+						}*/
+						case(1):{
 							fordMA(vectorMA, contador);
 
 							break;
 						}
-						case(4): {
+						case(2): {
 							ford2MA(vectorMA, contador);
 							
 							break;
-						}case(5): {
+						}case(3): {
 							fcompararME(vectorMA, contador);
 							break;
 						}
@@ -395,6 +403,13 @@ int main() {
 				
 				if (opcion == 1){
 					//FUNCION 1
+					do{
+						int horaBuscada;
+						int numHora=0;
+						DatosHoraME(vectorMA,  contador);
+						break;
+						
+					}while(opcion != 99);
 				} else if (opcion == 2){
 					int Opcion;
 				
@@ -449,32 +464,30 @@ int main() {
 					int Opcion3;
 					do { 
     				printf("\nElige una opción que desee\n");
-    				printf("\t1: Valor máximo entre ficheros \n");
-    				printf("\t2: Valor mínimo entre ficheros\n");
-    				printf("\t3: Ordenar de menor a mayor \n");
-    				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Comparar valores de 2 horas\n");
+    				printf("\t1: Ordenar de menor a mayor \n");
+    				printf("\t2: Ordenar de mayor a menor \n");
+    				printf("\t3: Comparar valores de 2 horas\n");
     				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
-						case(1): {
+					/*	case(1): {
 						
 							break;
 						}
 						case(2): {
 						
 							break;
-						}
-						case(3):{
+						}*/
+						case(1):{
 							fordMA(vectorMA, contador);
 
 							break;
 						}
-						case(4): {
+						case(2): {
 							ford2MA(vectorMA, contador);
 							
 							break;
-						}case(5): {
+						}case(3): {
 							fcompararME(vectorMA, contador);
 							break;
 						}
@@ -534,6 +547,13 @@ int main() {
 				
 				if (opcion == 1){
 					//FUNCION 1
+					do{
+						int horaBuscada;
+						int numHora=0;
+						DatosHoraEA( vectorEA,  contador);
+						break;
+						
+					}while(opcion != 99);
 				} else if (opcion == 2){
 					int Opcion;
 					do { 
@@ -583,23 +603,21 @@ int main() {
 					int Opcion3;
 					do { 
     				printf("\nElige una opción que desee\n");
-    				printf("\t1: Valor máximo entre ficheros \n");
-    				printf("\t2: Valor mínimo entre ficheros\n");
-    				printf("\t3: Ordenar de menor a mayor \n");
-    				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Comparar valores de 2 horas\n");
+    				printf("\t1: Ordenar de menor a mayor \n");
+    				printf("\t2: Ordenar de mayor a menor \n");
+    				printf("\t3: Comparar valores de 2 horas\n");
     				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
-						case(1): {
+					/*	case(1): {
 						
 							break;
 						}
 						case(2): {
 						
 							break;
-						}
-						case(3):{
+						}*/
+						case(1):{
 							printf("Temperatura 1 , humedad 2\n");
 							scanf("%i",&a);
 							if(a==1){
@@ -610,7 +628,7 @@ int main() {
 
 							break;
 						}
-						case(4): {
+						case(2): {
 							printf("Temperatura 1 , humedad 2\n");
 							scanf("%i",&a);
 							if(a==1){
@@ -621,7 +639,7 @@ int main() {
 							
 							break;
 							
-						}case(5): {
+						}case(3): {
 							fcompararEA(vectorEA, contador);
 							break;
 						}
@@ -678,6 +696,13 @@ int main() {
 				
 				if (opcion == 1){
 					//FUNCION 1
+					do{
+						int horaBuscada;
+						int numHora=0;
+						DatosHoraEA( vectorEA,  contador);
+						break;
+						
+					}while(opcion != 99);
 				} else if (opcion == 2){
 					int Opcion;
 					do { 
@@ -728,23 +753,21 @@ int main() {
 					int Opcion3;
 					do { 
     				printf("\nElige una opción que desee\n");
-    				printf("\t1: Valor máximo entre ficheros \n");
-    				printf("\t2: Valor mínimo entre ficheros\n");
-    				printf("\t3: Ordenar de menor a mayor \n");
-    				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Comparar valores de 2 horas\n");
+    				printf("\t1: Ordenar de menor a mayor \n");
+    				printf("\t2: Ordenar de mayor a menor \n");
+    				printf("\t3: Comparar valores de 2 horas\n");
     				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
-						case(1): {
+						/*case(1): {
 						
 							break;
 						}
 						case(2): {
 						
 							break;
-						}
-						case(3):{
+						}**/
+						case(1):{
 							printf("Temperatura 1 , humedad 2\n");
 							scanf("%i",&a);
 							if(a==1){
@@ -755,7 +778,7 @@ int main() {
 
 							break;
 						}
-						case(4): {
+						case(2): {
 							printf("Temperatura 1 , humedad 2\n");
 							scanf("%i",&a);
 							if(a==1){
@@ -765,7 +788,7 @@ int main() {
 							}
 							
 							break;
-						}case(5): {
+						}case(3): {
 							fcompararEA(vectorEA, contador);
 							break;
 						}
@@ -823,6 +846,13 @@ int main() {
 				
 				if (opcion == 1){
 					//FUNCION 1
+					do{
+						int horaBuscada;
+						int numHora=0;
+						DatosHoraEA( vectorEA,  contador);
+						break;
+						
+					}while(opcion != 99);
 				} else if (opcion == 2){
 					int Opcion;
 					do { 
@@ -874,15 +904,13 @@ int main() {
 					int Opcion3;
 					do { 
     				printf("\nElige una opción que desee\n");
-    				printf("\t1: Valor máximo entre ficheros \n");
-    				printf("\t2: Valor mínimo entre ficheros\n");
-    				printf("\t3: Ordenar de menor a mayor \n");
-    				printf("\t4: Ordenar de mayor a menor \n");
-    				printf("\t5: Comparar valores de 2 horas\n");
+    				printf("\t1: Ordenar de menor a mayor \n");
+    				printf("\t2: Ordenar de mayor a menor \n");
+    				printf("\t3: Comparar valores de 2 horas\n");
     				printf("\t6: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
-						case(1): {
+					/*	case(1): {
 						
 							break;
 						}
@@ -890,7 +918,8 @@ int main() {
 						
 							break;
 						}
-						case(3):{
+						*/
+						case(1):{
 							printf("Temperatura 1 , humedad 2\n");
 							scanf("%i",&a);
 							if(a==1){
@@ -900,7 +929,7 @@ int main() {
 							}
 							break;
 						}
-						case(4): {
+						case(2): {
 							printf("Temperatura 1 , humedad 2\n");
 							scanf("%i",&a);
 							if(a==1){
@@ -910,7 +939,7 @@ int main() {
 							}						
 							
 							break;
-						}case(5): {
+						}case(3): {
 							fcompararEA(vectorEA, contador);
 							break;
 						}
@@ -1173,7 +1202,7 @@ int mostrarArchivo6(TEscuelasAguirre vectorEA[]) {
 
 void mostrarMenuMA(TMendezAlvaro vectorMA[], int size){
 	printf("\n     *** MENÚ PRINCIPAL ***        \n");
-		printf("Seleccione una opcion:\n \t\t\t1-Ver informe\n \t\t\t2-Estadísticas\n \t\t\t3-Comparación\n \t\t\t4-Información\n \t\t\t5-Consecuencias\n \t\t\t6-Salir\n\n");
+		printf("Seleccione una opcion:\n \t\t\t1-Información de una hora concreta\n \t\t\t2-Estadísticas\n \t\t\t3-Comparación\n \t\t\t4-Información\n \t\t\t5-Consecuencias\n \t\t\t6-Salir\n\n");
 		
 	return;
 }
@@ -2079,6 +2108,8 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 		}			
 
 		//OBTENER DATOS DE UNA HORA
+		
+		//Mendez Alvaro
 		void DatosHoraME(TMendezAlvaro vectorMA[], int contador){
 		    int i, found = 0;
 		    int hora1; 
@@ -2088,7 +2119,7 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 			int calidad;
 			
 		    do{
-		    printf("Introduce la hora que quieras buscar: \n"); 
+		    printf("\nIntroduce la hora que quieras buscar: \n"); 
 		    scanf("%i" ,&hora1);
 			}while (hora1 < 0 || hora1 > 23);
 		
@@ -2105,6 +2136,32 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 		        printf("PM2.5: %f\n", PM251);
 		        printf("PM10: %f\n", PM101);
 		        printf("Calidad del aire: %s\n", vectorMA[calidad].cal_aire);
+		
+		return;
+				      
+		}
+		
+		//Escuelas Aguirre
+		void DatosHoraEA(TEscuelasAguirre vectorEA[], int contador){
+		    int i, found = 0;
+		    int hora1; 
+			int hr=0;
+			float t=0;
+			
+		    do{
+		    printf("\nIntroduce la hora que quieras buscar: \n"); 
+		    scanf("%i" ,&hora1);
+			}while (hora1 < 0 || hora1 > 23);
+		
+		    for (i = 0; i < contador; i++) {
+				if (vectorEA[i].hora == hora1) {
+					hr = vectorEA[i].HR;
+					t = vectorEA[i].T;
+				}
+			}
+		        printf("\nInformacion de la hora buscada '%i':\n", hora1);
+		        printf("T: %.2f\n", t);
+		        printf("HR: %i\n", hr);
 		
 		return;
 				      
