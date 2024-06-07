@@ -55,7 +55,7 @@ void calculoTmax(TEscuelasAguirre vectroEA[], int contador);
 void calculoHRmax(TEscuelasAguirre vectorEA[], int contador);
 void calculoTmin(TEscuelasAguirre vectorEA[], int contador);
 void calculoHRmin(TEscuelasAguirre vectorEA[], int contador);
-void calculoMedianaEA(TEscuelasAguirre vectorMA[], int contador);
+void calculoMedianaEA(TEscuelasAguirre vectorEA[], int contador);
 
 void Modano2( TMendezAlvaro vectorMA[], int contador);
 void ModaPM25(TMendezAlvaro vectorMA[], int contador);
@@ -76,6 +76,9 @@ void fcompararEA(TEscuelasAguirre vectorEA[], int contador);
 																												//Marcos: Buscar por horas
 void DatosHoraME(TMendezAlvaro vectorMA[], int contador); 
 
+//FUNCIONES CONSECUENCIAS
+void mostrarCalidadDelAire(TMendezAlvaro vectorMA[], int contador);
+void mostrarConsecuencias();
 
 int main() {
     setlocale(LC_CTYPE, "spanish"); // para que el compilador reconozca las ñ y tildes 
@@ -226,43 +229,13 @@ int main() {
     				} while (Opcion4 != 4);
 				} else if (opcion == 5){
 					//FUNCION 5
-					float mediaNO2 = 0.0, mediaPM25 = 0.0, mediaPM10 = 0.0;
-			
-					int m, Opcion5;
-					for (m = 0; m < contador; m++) {
-						mediaNO2 += vectorMA[m].NO2;
-						mediaPM25 += vectorMA[m].PM25;
-						mediaPM10 += vectorMA[m].PM10;
-					}
 					
-					mediaNO2 /=  contador;
-					mediaPM25 /=  contador;
-					mediaPM10 /= contador;
-					
-					printf("\nLímite diario NO2 = 40 microgramos/m^3\n");
-					if(mediaNO2 < 40|| mediaNO2 >=37.5){
-						printf("Como la media del NO2 es %.3f la calidad del aire con respecto a la concentración de NO2 es regular, debido a su cercanía con el valor límite\n", mediaNO2);
-					} else if(mediaNO2 < 37.5){
-						printf("Como la media del NO2 es %.3f la calidad del aire con respecto a la concentración de NO2 es buena, debido a que está muy por debajo del valor límite\n", mediaNO2);
-					} else if(mediaNO2 == 40){
-						printf("La media del NO2 es de %.3f\t¡¡¡ESTAS EN EL LÍMITE DIARIO!!!\n");
-					} else if (mediaNO2 > 40){
-						printf("Como la media es de %.3f la calidad del aire con respecto a la concentración de NO2 es bastante desfavorable", mediaNO2);
-					}
-					
-					
-						printf("\n¿Quieres saber las posibles consecuencias de superar el límite diario?\n");
-						printf("1. Sí, quiero saber más\n2. Salir\n");
-						scanf("%d", &Opcion5);
-						
-						if(Opcion5 == 1){
-							printf("\nCONSECUENCIAS PARA EL SER HUMANO\n-Provocar enfermedades en el aparato respiratorio (Bronquitis, Pulmonía)\n-Afecciones directas en bebés recién nacidos (Bajo peso al nacer, mayor probabilidad de parto prematura)\n");
-							printf("\nCONSECUENCIAS PARA EL MEDIOAMBIENTE\n-Aumento de la llúvia ácida\n-Formación de ozono y smog");
-						} else if(Opcion5 == 2){
-							printf("Volviendo al menú...");
-						}
+					mostrarCalidadDelAire(vectorMA, contador);
+					mostrarConsecuencias();
+										
+						 
 				}
-				
+				 
 			} while (opcion < 6);
 			
 				if(opcion == 6){
@@ -398,6 +371,9 @@ int main() {
     				} while (Opcion4 != 4);
 				} else if (opcion == 5){
 					//FUNCION 5
+					
+					mostrarCalidadDelAire(vectorMA, contador);
+					mostrarConsecuencias();
 				}
 			} while (opcion < 6);
 			
@@ -534,6 +510,9 @@ int main() {
     				} while (Opcion4 != 4);
 				} else if (opcion == 5){
 					//FUNCION 5
+					
+					mostrarCalidadDelAire(vectorMA, contador);
+					mostrarConsecuencias();
 				}
 			} while (opcion < 6);
 			
@@ -2130,3 +2109,80 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 		return;
 				      
 		}
+		
+		//CONSECUENCIAS
+		void mostrarCalidadDelAire(TMendezAlvaro vectorMA[], int contador){
+			float mediaNO2 = 0.0, mediaPM25 = 0.0, mediaPM10 = 0.0;
+			
+			int m;
+			for (m = 0; m < contador; m++) {
+				mediaNO2 += vectorMA[m].NO2;
+				mediaPM25 += vectorMA[m].PM25;
+				mediaPM10 += vectorMA[m].PM10;
+			}
+			mediaNO2 /=  contador;
+			mediaPM25 /=  contador;
+			mediaPM10 /= contador;
+			
+			printf("Concentración media de NO2 en el aire: %.3f\n", mediaNO2);
+			printf("Concentración media de PM 2.5 en el aire: %.3f\n", mediaPM25);
+			printf("Concentración media de PM 10 en el aire: %.3f\n", mediaPM10);
+			
+		    printf("\nLímite diario NO2 = 40 microgramos/m^3\n");
+		    if (mediaNO2 < 40 && mediaNO2 >= 35) {
+		        printf("La calidad del aire con respecto a la concentración de NO2 es regular, debido a su cercanía con el valor límite\n");
+		    } else if (mediaNO2 < 35) {
+		        printf("La calidad del aire con respecto a la concentración de NO2 es buena, debido a que está por debajo del valor límite\n");
+		    } else if (mediaNO2 == 40) {
+		        printf("¡¡¡ESTAS EN EL LÍMITE DIARIO!!!\n", mediaNO2);
+		    } else if (mediaNO2 > 40) {
+		        printf("La calidad del aire con respecto a la concentración de NO2 es bastante desfavorable\n");
+		    }
+		
+		    printf("\nLímite diario PM 2.5 = 25 microgramos/m^3\n");
+		    if (mediaPM25 < 25 && mediaPM25 >= 20) {
+		        printf("La calidad del aire con respecto a la concentración de PM 2.5 es regular, debido a su cercanía con el valor límite\n");
+		    } else if (mediaPM25 < 20) {
+		        printf("La calidad del aire con respecto a la concentración de PM 2.5 es buena, debido a que está por debajo del valor límite\n");
+		    } else if (mediaPM25 == 25) {
+		        printf("¡¡¡ESTAS EN EL LÍMITE DIARIO!!!\n", mediaPM25);
+		    } else if (mediaPM25 > 25) {
+		        printf("La calidad del aire con respecto a la concentración de PM 2.5 es bastante desfavorable\n");
+		    }
+		
+		    printf("\nLímite diario PM 10 = 50 microgramos/m^3\n");
+		    if (mediaPM10 < 50 && mediaPM10 >= 45) {
+		        printf("La calidad del aire con respecto a la concentración de PM 10 es regular, debido a su cercanía con el valor límite\n");
+		    } else if (mediaPM10 < 45) {
+		        printf("La calidad del aire con respecto a la concentración de PM 10 es buena, debido a que está por debajo del valor límite\n", mediaPM10);
+		    } else if (mediaPM10 == 50) {
+		        printf("¡¡¡ESTAS EN EL LÍMITE DIARIO!!!\n", mediaPM10);
+		    } else if (mediaPM10 > 50) {
+		        printf("La calidad del aire con respecto a la concentración de PM 10 es bastante desfavorable\n", mediaPM10);
+		    }
+	}
+	
+	void mostrarConsecuencias() {
+    int Opcion5;
+    while (1) {
+        printf("\nIndica de qué contaminante quieres saber sus consecuencias si superamos el valor límite diario\n");
+        printf("1. NO2\n2. PM 2.5 y PM 10\n3. Salir\n");
+        scanf("%d", &Opcion5);
+
+        if (Opcion5 == 1) {
+            printf("CONSECUENCIAS DEL NO2:\n");
+            printf("\nPARA EL SER HUMANO\n·Provocar enfermedades en el aparato respiratorio (Bronquitis, Pulmonía)\n·Afecciones directas en bebés recién nacidos (Bajo peso al nacer, mayor probabilidad de parto prematuro)\n");
+            printf("\nPARA EL MEDIOAMBIENTE\n·Aumento de la lluvia ácida\n·Formación de ozono y smog\n");
+        } else if (Opcion5 == 2) {
+            printf("CONSECUENCIAS DE LAS PM 2.5 y PM 10:\n");
+            printf("\nPARA EL SER HUMANO\n·Provocar enfermedades respiratorias y cardiovasculares\n·Cáncer y mortalidad prematura\n");
+            printf("\nPARA EL MEDIOAMBIENTE\n·Interferencia en la fotosíntesis de las plantas\n·Efecto invernadero\n");
+        } else if (Opcion5 == 3) {
+            break;
+        } else {
+            printf("Opción no válida, por favor intenta de nuevo.\n");
+        }
+    }
+    
+    return;
+}
