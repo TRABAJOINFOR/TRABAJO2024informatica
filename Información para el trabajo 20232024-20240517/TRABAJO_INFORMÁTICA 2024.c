@@ -26,7 +26,7 @@ typedef struct {
 }TEscuelasAguirre;
 
 
-//FUNCIONES MOSTRAR FICHEROS Y MENUS
+//FUNCIONES MOSTRAR FICHEROS Y MENUS (visualiación)
 int mostrarArchivo1(TMendezAlvaro vectorMA[]);
 int mostrarArchivo2(TMendezAlvaro vectorMA[]);
 int mostrarArchivo3(TMendezAlvaro vectorMA[]);
@@ -73,9 +73,10 @@ void ford2MA(TMendezAlvaro vectorMA[], int contador);
 
 void fcompararME(TMendezAlvaro vectorMA[], int contador);
 void fcompararEA(TEscuelasAguirre vectorEA[], int contador);
-																												//Marcos: Buscar por horas
+
 void DatosHoraME(TMendezAlvaro vectorMA[], int contador); 
 void DatosHoraEA(TEscuelasAguirre vectorEA[], int contador); 
+
 //FUNCIONES CONSECUENCIAS
 void mostrarCalidadDelAire(TMendezAlvaro vectorMA[], int contador);
 void mostrarCalidadDelAire2(TEscuelasAguirre vectorEA[], int contador);
@@ -149,9 +150,9 @@ int main() {
 						}
 						case(3):{
 							//MODA
-							Modano2(vectorMA, contador);
-							ModaPM25(vectorMA, contador);
-							ModaPM10(vectorMA, contador);
+						Modano2(vectorMA, contador);
+						ModaPM25(vectorMA, contador);
+						ModaPM10(vectorMA, contador);
 							break;
 						}
 						case(4):{
@@ -178,16 +179,9 @@ int main() {
     				printf("\t1: Ordenar de menor a mayor \n");
     				printf("\t2: Ordenar de mayor a menor \n");
     				printf("\t3: Comparar valores de 2 horas\n");
-    				printf("\t6: Salir de comparaciones.\n");
+    				printf("\t4: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
-					/*	case(1): {
-
-						}
-						case(2): {
-						
-							break;
-						}*/
 						case(1):{
 							fordMA(vectorMA, contador);
 
@@ -203,7 +197,7 @@ int main() {
 							break;
 						}
 					}
-    				} while (Opcion3 != 6);
+    				} while (Opcion3 != 4);
 				} else if (opcion == 4){
 					//FUNCION 4
 					int Opcion4;
@@ -325,17 +319,9 @@ int main() {
     				printf("\t1: Ordenar de menor a mayor \n");
     				printf("\t2: Ordenar de mayor a menor \n");
     				printf("\t3: Comparar valores de 2 horas\n");
-    				printf("\t6: Salir de comparaciones.\n");
+    				printf("\t4: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
-					/*	case(1): {
-						
-							break;
-						}
-						case(2): {
-						
-							break;
-						}*/
 						case(1):{
 							fordMA(vectorMA, contador);
 
@@ -350,7 +336,7 @@ int main() {
 							break;
 						}
 					}
-    				} while (Opcion3 != 6);
+    				} while (Opcion3 != 4);
 				} else if (opcion == 4){
 					//FUNCION 4
 					int Opcion4;
@@ -469,17 +455,9 @@ int main() {
     				printf("\t1: Ordenar de menor a mayor \n");
     				printf("\t2: Ordenar de mayor a menor \n");
     				printf("\t3: Comparar valores de 2 horas\n");
-    				printf("\t6: Salir de comparaciones.\n");
+    				printf("\t4: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
-					/*	case(1): {
-						
-							break;
-						}
-						case(2): {
-						
-							break;
-						}*/
 						case(1):{
 							fordMA(vectorMA, contador);
 
@@ -494,7 +472,7 @@ int main() {
 							break;
 						}
 					}
-    				} while (Opcion3 != 6);
+    				} while (Opcion3 != 4);
 				} else if (opcion == 4){
 					//FUNCION 4
 					int Opcion4;
@@ -608,17 +586,9 @@ int main() {
     				printf("\t1: Ordenar de menor a mayor \n");
     				printf("\t2: Ordenar de mayor a menor \n");
     				printf("\t3: Comparar valores de 2 horas\n");
-    				printf("\t6: Salir de comparaciones.\n");
+    				printf("\t4: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
-					/*	case(1): {
-						
-							break;
-						}
-						case(2): {
-						
-							break;
-						}*/
 						case(1):{
 							printf("Temperatura 1 , humedad 2\n");
 							scanf("%i",&a);
@@ -646,7 +616,7 @@ int main() {
 							break;
 						}
 					}
-    				} while (Opcion3 != 6);
+    				} while (Opcion3 != 4);
 				} else if (opcion == 4){
 					//FUNCION 4
 					int Opcion4;
@@ -760,17 +730,9 @@ int main() {
     				printf("\t1: Ordenar de menor a mayor \n");
     				printf("\t2: Ordenar de mayor a menor \n");
     				printf("\t3: Comparar valores de 2 horas\n");
-    				printf("\t6: Salir de comparaciones.\n");
+    				printf("\t4: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
-						/*case(1): {
-						
-							break;
-						}
-						case(2): {
-						
-							break;
-						}**/
 						case(1):{
 							printf("Temperatura 1 , humedad 2\n");
 							scanf("%i",&a);
@@ -797,7 +759,7 @@ int main() {
 							break;
 						}
 					}
-    				} while (Opcion3 != 6);
+    				} while (Opcion3 != 4);
 				} else if (opcion == 4){
 					//FUNCION 4
 					int Opcion4;
@@ -913,18 +875,9 @@ int main() {
     				printf("\t1: Ordenar de menor a mayor \n");
     				printf("\t2: Ordenar de mayor a menor \n");
     				printf("\t3: Comparar valores de 2 horas\n");
-    				printf("\t6: Salir de comparaciones.\n");
+    				printf("\t4: Salir de comparaciones.\n");
     				scanf("%d", &Opcion3);
     				switch(Opcion3){
-					/*	case(1): {
-						
-							break;
-						}
-						case(2): {
-						
-							break;
-						}
-						*/
 						case(1):{
 							printf("Temperatura 1 , humedad 2\n");
 							scanf("%i",&a);
@@ -950,7 +903,7 @@ int main() {
 							break;
 						}
 					}
-    				} while (Opcion3 != 6);
+    				} while (Opcion3 != 4);
 				} else if (opcion == 4){
 					//FUNCION 4
 					int Opcion4;
