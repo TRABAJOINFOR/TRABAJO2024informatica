@@ -78,7 +78,9 @@ void DatosHoraME(TMendezAlvaro vectorMA[], int contador);
 void DatosHoraEA(TEscuelasAguirre vectorEA[], int contador); 
 //FUNCIONES CONSECUENCIAS
 void mostrarCalidadDelAire(TMendezAlvaro vectorMA[], int contador);
+void mostrarCalidadDelAire2(TEscuelasAguirre vectorEA[], int contador);
 void mostrarConsecuencias();
+void mostrarConsecuencias2();
 
 int main() {
     setlocale(LC_CTYPE, "spanish"); // para que el compilador reconozca las ñ y tildes 
@@ -675,6 +677,8 @@ int main() {
     				} while (Opcion4 != 4);
 				} else if (opcion == 5){
 					//FUNCION 5
+					mostrarCalidadDelAire2(vectorEA, contador);
+					mostrarConsecuencias2();
 				}
 			} while (opcion < 6);
 			
@@ -824,7 +828,9 @@ int main() {
     				} while (Opcion4 != 4);
 				} else if (opcion == 5){
 					//FUNCION 5
-					
+					mostrarCalidadDelAire2(vectorEA, contador);
+					mostrarConsecuencias2();
+
 				}
 			} while (opcion < 6);
 			
@@ -975,6 +981,9 @@ int main() {
     				} while (Opcion4 != 4);
 				} else if (opcion == 5){
 					//FUNCION 5
+					mostrarCalidadDelAire2(vectorEA, contador);
+					mostrarConsecuencias2();
+
 				}
 			} while (opcion < 6);
 			
@@ -2191,7 +2200,7 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 		    } else if (mediaNO2 < 35) {
 		        printf("La calidad del aire con respecto a la concentración de NO2 es buena, debido a que está por debajo del valor límite\n");
 		    } else if (mediaNO2 == 40) {
-		        printf("¡¡¡ESTAS EN EL LÍMITE DIARIO!!!\n", mediaNO2);
+		        printf("¡¡¡ESTAS EN EL LÍMITE DIARIO!!!\n");
 		    } else if (mediaNO2 > 40) {
 		        printf("La calidad del aire con respecto a la concentración de NO2 es bastante desfavorable\n");
 		    }
@@ -2202,7 +2211,7 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 		    } else if (mediaPM25 < 20) {
 		        printf("La calidad del aire con respecto a la concentración de PM 2.5 es buena, debido a que está por debajo del valor límite\n");
 		    } else if (mediaPM25 == 25) {
-		        printf("¡¡¡ESTAS EN EL LÍMITE DIARIO!!!\n", mediaPM25);
+		        printf("¡¡¡ESTAS EN EL LÍMITE DIARIO!!!\n");
 		    } else if (mediaPM25 > 25) {
 		        printf("La calidad del aire con respecto a la concentración de PM 2.5 es bastante desfavorable\n");
 		    }
@@ -2211,13 +2220,54 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
 		    if (mediaPM10 < 50 && mediaPM10 >= 45) {
 		        printf("La calidad del aire con respecto a la concentración de PM 10 es regular, debido a su cercanía con el valor límite\n");
 		    } else if (mediaPM10 < 45) {
-		        printf("La calidad del aire con respecto a la concentración de PM 10 es buena, debido a que está por debajo del valor límite\n", mediaPM10);
+		        printf("La calidad del aire con respecto a la concentración de PM 10 es buena, debido a que está por debajo del valor límite\n");
 		    } else if (mediaPM10 == 50) {
-		        printf("¡¡¡ESTAS EN EL LÍMITE DIARIO!!!\n", mediaPM10);
+		        printf("¡¡¡ESTAS EN EL LÍMITE DIARIO!!!\n");
 		    } else if (mediaPM10 > 50) {
-		        printf("La calidad del aire con respecto a la concentración de PM 10 es bastante desfavorable\n", mediaPM10);
+		        printf("La calidad del aire con respecto a la concentración de PM 10 es bastante desfavorable\n");
 		    }
 	}
+	
+	void mostrarCalidadDelAire2(TEscuelasAguirre vectorEA[], int contador){
+		    float mediaT = 0.0, mediaHR = 0.0;
+			
+			int n;
+			for (n = 0; n < contador; n++) {
+				mediaT += vectorEA[n].T;
+				mediaHR += vectorEA[n].HR;
+			}
+			
+			mediaT /=  contador;
+			mediaHR /=  contador;
+			
+			
+			printf("Temperatura media en las Escuelas Aguirre: %.2f\n", mediaT);
+			printf("Humedad media en las Escuelas Aguirre: %.2f\n", mediaHR);
+			
+		
+		    printf("\nTemperatura media invernal en Madrid = 8.5 ºC\n");
+		    if (mediaT <= 9 && mediaT >= 8) {
+		        printf("La calidad del aire con respecto a la temperatura es aceptable, debido a su cercanía con el valor medio\n");
+		    } else if (mediaT < 8) {
+		        printf("La calidad del aire con respecto a la temperatura es regular, debido a que está por debajo del valor medio\n");
+		    } else if (mediaT == 8.5) {
+		        printf("¡¡¡ESTAS EN EL VALOR MEDIO!!!\n");
+		    } else if (mediaT > 9) {
+		        printf("La calidad del aire con respecto a la temperatura es regular, debido a que está por encima del valor medio\n");
+		    }
+		
+		    printf("\nHumedad relativa media invernal en Madrid = 63.33%\n");
+		    if (mediaHR < 65 && mediaHR >= 60) {
+		        printf("La calidad del aire con respecto a la humedad relativa es aceptable, debido a su cercanía con el valor medio\n");
+		    } else if (mediaHR < 60) {
+		        printf("La calidad del aire con respecto a la humedad relativa es regular, debido a que está por debajo del valor medio\n");
+		    } else if (mediaHR == 63.33) {
+		        printf("¡¡¡ESTAS EN EL LÍMITE DIARIO!!!\n");
+		    } else if (mediaHR > 65) {
+		        printf("La calidad del aire con respecto a la humedad relativa es regular, debido a que está por encima del valor medio\n");
+		    }
+			return;
+		}
 	
 	void mostrarConsecuencias() {
     int Opcion5;
@@ -2235,6 +2285,31 @@ void fordTEA(TEscuelasAguirre vectorEA[], int contador){
             printf("\nPARA EL SER HUMANO\n·Provocar enfermedades respiratorias y cardiovasculares\n·Cáncer y mortalidad prematura\n");
             printf("\nPARA EL MEDIOAMBIENTE\n·Interferencia en la fotosíntesis de las plantas\n·Efecto invernadero\n");
         } else if (Opcion5 == 3) {
+            break;
+        } else {
+            printf("Opción no válida, por favor intenta de nuevo.\n");
+        }
+    }
+    
+    return;
+}
+
+void mostrarConsecuencias2() {
+    int Opcion6;
+    while (1) {
+        printf("\nIndica de qué parámetro quieres saber sus consecuencias\n");
+        printf("1. Temperatura\n2. Humedad Relativa\n3. Salir\n");
+        scanf("%d", &Opcion6);
+
+        if (Opcion6 == 1) {
+            printf("CONSECUENCIAS DE LA TEMPERATURA:\n");
+            printf("\nTEMPERATURA ELEVADAS\n·Provocar neblina y ozono a nivel del suelo\n·Aumentan las olas de calor, por lo que aumenta la probabilidad de incendio forestal\n");
+            printf("\nTEMPERATURAS BAJAS\n·Aumento del uso de combustión para subir la temperatura\n·Aumento de la dispersión de contaminantes debido a las inversiones térmicas\n");
+        } else if (Opcion6 == 2) {
+            printf("CONSECUENCIAS DE LA HUMEDAD RELATIVA:\n");
+            printf("\nHUMEDAD RELATIVA ALTA\n·Provocar enfermedades respiratorias (Asma, Bronquitis\n·Desarrollo de hongos y moho\n");
+            printf("\nHUMEDAD RELATIVA BAJA\n·Provocar enfermedades respiratorias (Secreción mucosas, Irritación de la garganta)\n·Aumento de la electricidad estática\n·Contracción de grietas en edificios\n");
+        } else if (Opcion6 == 3) {
             break;
         } else {
             printf("Opción no válida, por favor intenta de nuevo.\n");
