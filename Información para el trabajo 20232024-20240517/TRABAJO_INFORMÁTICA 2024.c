@@ -26,7 +26,7 @@ typedef struct {
 }TEscuelasAguirre;
 
 
-//FUNCIONES MOSTRAR FICHEROS Y MENUS
+//FUNCIONES MOSTRAR FICHEROS Y MENUS (visualiación)
 int mostrarArchivo1(TMendezAlvaro vectorMA[]);
 int mostrarArchivo2(TMendezAlvaro vectorMA[]);
 int mostrarArchivo3(TMendezAlvaro vectorMA[]);
@@ -148,9 +148,9 @@ int main() {
 						}
 						case(3):{
 							//MODA
-							Modano2(vectorMA, contador);
-							ModaPM25(vectorMA, contador);
-							ModaPM10(vectorMA, contador);
+						Modano2(vectorMA, contador);
+						ModaPM25(vectorMA, contador);
+						ModaPM10(vectorMA, contador);
 							break;
 						}
 						case(4):{
